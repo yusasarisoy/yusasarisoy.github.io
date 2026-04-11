@@ -1,462 +1,349 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="auto">
+<html lang="tr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Yuşa Sarısoy — Senior iOS Developer">
+<meta name="description" content="Yuşa Sarısoy, Senior iOS Developer">
 <title>Yuşa Sarısoy</title>
 <style>
-:root {
-  --bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;
-  --fg:#1d1d1f;--fg2:#6e6e73;--fg3:#aeaeb2;
-  --line:rgba(0,0,0,0.08);
-  --blue:#0071e3;--blue-h:#0077ed;
-  --nav:rgba(255,255,255,0.82);
-  --tag-bg:rgba(0,113,227,0.08);--tag-fg:#0071e3;
-  --blur:blur(20px) saturate(180%);
-  --r:18px;--rm:12px;--rs:8px;
-}
-[data-theme="dark"]{
-  --bg:#000000;--bg2:#1c1c1e;--bg3:#2c2c2e;
-  --fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#636366;
-  --line:rgba(255,255,255,0.08);
-  --blue:#2997ff;--blue-h:#3aa8ff;
-  --nav:rgba(0,0,0,0.82);
-  --tag-bg:rgba(41,151,255,0.12);--tag-fg:#2997ff;
-}
-@media(prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#000000;--bg2:#1c1c1e;--bg3:#2c2c2e;
-    --fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#636366;
-    --line:rgba(255,255,255,0.08);
-    --blue:#2997ff;--blue-h:#3aa8ff;
-    --nav:rgba(0,0,0,0.82);
-    --tag-bg:rgba(41,151,255,0.12);--tag-fg:#2997ff;
-  }
-}
+:root{--bg:#f8f7f4;--fg:#111;--fg2:#888;--fg3:#ccc;--line:#ddd;--nav-bg:rgba(248,247,244,.94);--acc:#111}
+[data-theme="dark"]{--bg:#0e0e0c;--fg:#ede9e0;--fg2:#666;--fg3:#555;--line:#222;--nav-bg:rgba(14,14,12,.94);--acc:#ede9e0}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth;background:var(--bg);transition:background .3s}
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;background:var(--bg);color:var(--fg);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
-.wrap{max-width:800px;margin:0 auto;padding:0 24px}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+.wrap{max-width:1000px;margin:0 auto;padding:0 44px}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--nav);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border-bottom:.5px solid var(--line);transition:background .3s}
-.nav-i{max-width:800px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:52px}
-.nav-logo{font-size:17px;font-weight:600;letter-spacing:-.022em;color:var(--fg);text-decoration:none}
-.nav-r{display:flex;align-items:center;gap:4px}
-.nav-links{display:flex;gap:2px;list-style:none}
-.nav-links a{font-size:14px;color:var(--fg2);text-decoration:none;padding:6px 10px;border-radius:var(--rs);transition:color .2s,background .2s}
-.nav-links a:hover{color:var(--fg);background:var(--bg3)}
-.ibtn{height:32px;padding:0 12px;border-radius:100px;background:var(--bg3);border:none;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit;font-size:13px;font-weight:500;color:var(--fg2);transition:background .2s,transform .15s;white-space:nowrap}
-.ibtn:hover{transform:scale(1.04);background:var(--bg2)}
-.ibtn:active{transform:scale(.95)}
-.ibtn svg{width:13px;height:13px;fill:var(--fg2)}
-.tbtn{width:32px;height:32px;border-radius:50%;background:var(--bg3);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s}
-.tbtn:hover{transform:scale(1.08)}
-.tbtn:active{transform:scale(.94)}
-.tbtn svg{width:15px;height:15px;fill:var(--fg2);transition:fill .2s}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background .4s,border-color .4s}
+.nav-i{max-width:1000px;margin:0 auto;padding:0 44px;display:flex;justify-content:center;align-items:center;height:52px;position:relative}
+.nav-logo{font-size:13px;font-weight:600;color:var(--fg);text-decoration:none;transition:color .4s}
+.nav-r{display:flex;align-items:center;gap:6px;position:absolute;right:44px}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-size:13px;color:var(--fg2);text-decoration:none;padding:5px 10px;border-radius:6px;transition:color .15s,background .15s}
+.nav-links a:hover{color:var(--fg);background:rgba(128,128,128,.08)}
+.tbtn{width:32px;height:32px;border-radius:50%;background:none;border:1px solid var(--line);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
+.tbtn:hover{background:rgba(128,128,128,.07)}
+.tbtn svg{width:14px;height:14px;fill:var(--fg2);transition:fill .4s}
+.lbtn{font-size:11px;font-weight:700;color:var(--fg2);background:none;border:1px solid var(--line);cursor:pointer;padding:4px 10px;border-radius:6px;font-family:inherit;letter-spacing:.05em;transition:color .15s,border-color .15s}
+.lbtn:hover{color:var(--fg);border-color:var(--fg2)}
 
-#hero{padding:128px 0 88px;border-bottom:.5px solid var(--line)}
-.badge{display:inline-flex;align-items:center;gap:7px;background:var(--tag-bg);color:var(--tag-fg);font-size:13px;font-weight:500;padding:5px 13px;border-radius:100px;margin-bottom:24px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
-h1{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;font-size:clamp(44px,8vw,76px);font-weight:700;line-height:1.03;letter-spacing:-.035em;margin-bottom:22px}
-h1 span{color:var(--fg2);font-weight:400}
-.hsub{font-size:19px;color:var(--fg2);max-width:500px;line-height:1.6;font-weight:400;margin-bottom:34px;letter-spacing:-.01em}
-.hcta{display:flex;gap:12px;flex-wrap:wrap}
-.btnf{font-size:15px;font-weight:500;letter-spacing:-.01em;padding:11px 22px;border-radius:100px;background:var(--blue);color:#fff;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;display:inline-flex;align-items:center;gap:6px}
-.btnf:hover{background:var(--blue-h);transform:translateY(-1px);box-shadow:0 4px 18px rgba(0,113,227,.28)}
-.btnf:active{transform:scale(.97)}
-.btng{font-size:15px;font-weight:500;letter-spacing:-.01em;padding:11px 22px;border-radius:100px;background:var(--bg3);color:var(--fg);text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:6px}
-.btng:hover{background:var(--bg2);transform:translateY(-1px)}
-.btng:active{transform:scale(.97)}
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:52px 44px 0;position:relative;
+}
 
-section{padding:80px 0;border-bottom:.5px solid var(--line)}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
-h2{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.028em;line-height:1.08;margin-bottom:40px}
+/* The horizontal line */
+.h-line{
+  width:100%;max-width:1000px;height:1px;
+  background:var(--fg3);
+  transform:scaleX(0);transform-origin:left center;
+  animation:lineGrow .9s cubic-bezier(.86,0,.07,1) .2s forwards;
+  position:relative;
+}
+@keyframes lineGrow{to{transform:scaleX(1)}}
 
-.agrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.atxt p{font-size:16px;color:var(--fg2);line-height:1.8;margin-bottom:14px;letter-spacing:-.005em}
-.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.pill{font-size:13px;font-weight:500;padding:6px 14px;border-radius:100px;background:var(--bg2);color:var(--fg2);transition:background .2s,color .2s,transform .15s;cursor:default}
-.pill:hover{background:var(--tag-bg);color:var(--tag-fg);transform:translateY(-1px)}
-.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.scard{background:var(--bg2);border-radius:var(--rm);padding:18px;transition:background .2s,transform .2s}
-.scard:hover{background:var(--bg3);transform:scale(1.02)}
-.snum{font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
-.slbl{font-size:13px;color:var(--fg2)}
+/* Name above the line */
+.h-above{
+  width:100%;max-width:1000px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding-bottom:20px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .7s ease .95s forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
+.h-firstname{
+  font-size:clamp(64px,10vw,128px);
+  font-weight:800;letter-spacing:-.04em;line-height:1;
+  color:var(--fg);
+}
+.h-meta{
+  text-align:right;padding-bottom:8px;
+}
+.h-meta-role{font-size:13px;color:var(--fg2);font-weight:500;margin-bottom:4px}
+.h-meta-loc{font-size:12px;color:var(--fg3)}
+
+/* Name below the line */
+.h-below{
+  width:100%;max-width:1000px;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding-top:20px;
+  opacity:0;transform:translateY(-12px);
+  animation:fadeDown .7s ease .95s forwards;
+}
+@keyframes fadeDown{to{opacity:1;transform:translateY(0)}}
+
+.h-lastname{
+  font-size:clamp(64px,10vw,128px);
+  font-weight:800;letter-spacing:-.04em;line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--fg3);
+}
+.h-cta{
+  display:flex;flex-direction:column;gap:10px;
+  align-items:flex-end;padding-top:12px;
+}
+.lp{
+  font-size:13px;font-weight:700;color:var(--fg);
+  text-decoration:none;display:flex;align-items:center;gap:6px;
+  transition:gap .2s;
+}
+.lp:hover{gap:10px}
+.ls{font-size:13px;color:var(--fg2);text-decoration:none;transition:color .15s}
+.ls:hover{color:var(--fg)}
+
+/* Sub below everything */
+.h-sub-row{
+  width:100%;max-width:1000px;
+  margin-top:52px;padding-top:24px;
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  opacity:0;animation:fadeIn .6s ease 1.4s forwards;
+}
+@keyframes fadeIn{to{opacity:1}}
+.h-sub{font-size:15px;color:var(--fg2);max-width:440px;line-height:1.7}
+.h-scroll{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3)}
+
+/* ─── SECTIONS ─── */
+section:not(#hero){padding:96px 0;border-top:1px solid var(--line)}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px}
+h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:52px}
+
+/* ABOUT */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.atxt p{font-size:15px;color:var(--fg2);line-height:1.85;margin-bottom:16px}
+.sks{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.sk{font-size:12px;color:var(--fg2);padding:5px 11px;border:1px solid var(--line);border-radius:100px;transition:color .15s,border-color .15s}
+.sk:hover{color:var(--fg);border-color:var(--fg2)}
+.stats{display:grid;grid-template-columns:1fr 1fr}
+.scard{padding:28px 20px;border:1px solid var(--line);margin:-1px 0 0 -1px;transition:background .15s;text-align:center}
+.scard:hover{background:rgba(128,128,128,.04)}
+.sn{font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:5px}
+.sl{font-size:12px;color:var(--fg2)}
+
+/* PROJECTS */
 .plist{display:flex;flex-direction:column}
-.pcard{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;border-bottom:.5px solid var(--line);text-decoration:none;color:inherit;transition:padding-left .28s cubic-bezier(.25,.46,.45,.94)}
-.pcard:first-child{border-top:.5px solid var(--line)}
+.pcard{
+  display:grid;grid-template-columns:56px 1fr 28px;
+  align-items:center;gap:24px;padding:28px 0;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;color:inherit;
+  transition:padding-left .22s cubic-bezier(.25,.46,.45,.94);
+}
+.pcard:first-child{border-top:1px solid var(--line)}
 .pcard:hover{padding-left:10px}
-.pcard:hover .ptit{color:var(--blue)}
-.pcard:hover .parr{opacity:1;transform:translate(0,0)}
-.pnum{font-size:11px;font-weight:700;color:var(--fg3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px}
-.ptit{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:5px;transition:color .2s}
-.pdesc{font-size:14px;color:var(--fg2);line-height:1.5}
-.ptags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
-.tag{font-size:12px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--tag-bg);color:var(--tag-fg)}
-.parr{width:32px;height:32px;border-radius:50%;background:var(--tag-bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translate(-5px,5px);transition:opacity .25s,transform .25s}
-.parr svg{width:13px;height:13px;stroke:var(--blue);fill:none}
+.pcard:hover .pt{color:var(--fg)}
+.pcard:hover .parr{opacity:1;transform:none}
+.pn{font-size:11px;font-weight:700;color:var(--fg3);letter-spacing:.06em}
+.pt{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;color:#444;transition:color .15s}
+[data-theme="dark"] .pt{color:#999}
+.pd{font-size:13px;color:var(--fg2);line-height:1.5;margin-bottom:8px}
+.ptags{display:flex;gap:5px;flex-wrap:wrap}
+.ptag{font-size:11px;color:var(--fg3);padding:2px 7px;border:1px solid var(--line);border-radius:100px}
+.parr{font-size:18px;color:var(--fg3);opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s}
 
+/* CV */
 .cvb{margin-bottom:44px}
-.cvbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:16px;padding-bottom:12px;border-bottom:.5px solid var(--line)}
-.cvr{display:grid;grid-template-columns:148px 1fr;gap:16px;padding:16px 0;border-bottom:.5px solid var(--line)}
+.cvbl{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--fg3);padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.cvr{display:grid;grid-template-columns:152px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
 .cvr:last-child{border-bottom:none}
-.cvd{font-size:12px;color:var(--fg3);padding-top:2px}
-.cvt{font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
-.cvo{font-size:13px;color:var(--fg2)}
+.cvdate{font-size:12px;color:var(--fg3);padding-top:1px}
+.cvt{font-size:14px;font-weight:600;margin-bottom:2px}
+.cvsub{font-size:13px;color:var(--fg2)}
+.dl{display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:13px;font-weight:600;color:var(--fg2);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .15s,border-color .15s}
+.dl:hover{color:var(--fg);border-color:var(--fg2)}
+.dl svg{width:13px;height:13px;stroke:currentColor;fill:none}
 
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.cdesc{font-size:17px;color:var(--fg2);line-height:1.7;letter-spacing:-.01em}
-.clinks{margin-top:28px;display:flex;flex-direction:column;gap:2px}
-.clink{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--fg2);text-decoration:none;padding:10px 12px;border-radius:var(--rs);margin-left:-12px;transition:background .2s,color .2s}
-.clink:hover{background:var(--bg2);color:var(--fg)}
-.cico{width:30px;height:30px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}
-.clink:hover .cico{background:var(--tag-bg)}
-.cico svg{width:15px;height:15px;fill:var(--fg2);transition:fill .2s}
-.clink:hover .cico svg{fill:var(--blue)}
-.fwrap{display:flex;flex-direction:column;gap:12px}
-.ff{display:flex;flex-direction:column;gap:6px}
-.fl{font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--fg2)}
-.fi{background:var(--bg2);border:.5px solid var(--line);border-radius:var(--rm);padding:12px 14px;font-family:inherit;font-size:15px;color:var(--fg);outline:none;transition:border-color .2s,box-shadow .2s,background .2s;resize:none}
+/* CONTACT */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.ci{font-size:17px;color:var(--fg2);line-height:1.7;margin-bottom:28px}
+.cls{display:flex;flex-direction:column}
+.cl{font-size:14px;color:var(--fg2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;transition:color .15s}
+.cl:first-child{border-top:1px solid var(--line)}
+.cl:hover{color:var(--fg)}
+.cl span{transition:transform .15s;font-size:16px}
+.cl:hover span{transform:translateX(3px)}
+.fstack{display:flex;flex-direction:column;gap:12px}
+.ff{display:flex;flex-direction:column;gap:5px}
+.fl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2)}
+.fi{background:rgba(128,128,128,.05);border:1px solid var(--line);border-radius:8px;padding:11px 14px;font-family:inherit;font-size:14px;color:var(--fg);outline:none;transition:border-color .15s,background .4s,color .4s;resize:none}
 .fi::placeholder{color:var(--fg3)}
-.fi:focus{border-color:var(--blue);background:var(--bg);box-shadow:0 0 0 3px rgba(0,113,227,.1)}
+.fi:focus{border-color:var(--fg2);background:rgba(128,128,128,.02)}
 textarea.fi{min-height:110px}
-.fsub{font-family:inherit;font-size:15px;font-weight:600;padding:13px 0;border-radius:100px;background:var(--blue);color:#fff;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;letter-spacing:-.01em}
-.fsub:hover{background:var(--blue-h);transform:translateY(-1px);box-shadow:0 4px 18px rgba(0,113,227,.28)}
-.fsub:active{transform:scale(.98)}
-.fsuc{font-size:14px;color:#34c759;text-align:center;padding:10px;display:none;animation:fdi .4s ease}
-@keyframes fdi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fsub{font-family:inherit;font-size:14px;font-weight:700;padding:12px;border-radius:8px;background:var(--fg);color:var(--bg);border:none;cursor:pointer;transition:opacity .15s,transform .15s,background .4s,color .4s}
+.fsub:hover{opacity:.8;transform:translateY(-1px)}
+.fok{font-size:13px;color:var(--fg2);text-align:center;padding:8px;display:none}
 
-footer{padding:32px 0}
-.fi2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--fg3)}
-.flinks{display:flex;gap:20px}
-.flinks a{color:var(--fg3);text-decoration:none;transition:color .2s}
-.flinks a:hover{color:var(--fg)}
+footer{padding:28px 0;border-top:1px solid var(--line)}
+.fi2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--fg3)}
+.fls{display:flex;gap:18px}
+.fls a{color:var(--fg3);text-decoration:none;transition:color .15s}
+.fls a:hover{color:var(--fg)}
 
-.rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.25,.46,.45,.94),transform .65s cubic-bezier(.25,.46,.45,.94)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}
 
-@media(max-width:620px){
-  .agrid,.cgrid{grid-template-columns:1fr}
+@media(max-width:640px){
+  .ag,.cg{grid-template-columns:1fr}
   .cvr{grid-template-columns:1fr;gap:3px}
   .nav-links{display:none}
-  h1{font-size:40px}
-  h2{font-size:26px}
+  .h-firstname,.h-lastname{font-size:17vw}
+  .h-above,.h-below{flex-direction:column;gap:12px;align-items:flex-start}
+  .h-meta{text-align:left}
+  .h-cta{align-items:flex-start}
+  .h-sub-row{flex-direction:column;gap:16px}
+  .pcard{grid-template-columns:40px 1fr}
+  .parr{display:none}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-i">
-    <a class="nav-logo" href="#">Yuşa Sarısoy</a>
-    <div class="nav-r">
-      <ul class="nav-links">
-        <li><a href="#about" data-i="nav_about"></a></li>
-        <li><a href="#projects" data-i="nav_projects"></a></li>
-        <li><a href="#cv" data-i="nav_cv"></a></li>
-        <li><a href="#contact" data-i="nav_contact"></a></li>
-      </ul>
-      <button class="ibtn" id="lbtn" aria-label="Change language">
-        <svg viewBox="0 0 15 15"><path d="M7.5 1a6.5 6.5 0 1 0 0 13A6.5 6.5 0 0 0 7.5 1zM1.06 8h2.46c.07.96.27 1.86.56 2.65A5.51 5.51 0 0 1 1.06 8zm0-1a5.51 5.51 0 0 1 3.02-2.65A11.3 11.3 0 0 0 3.52 7H1.06zm5.44 5.94V10h-2c.08.82.26 1.56.5 2.16a5.52 5.52 0 0 0 1.5.78zm0-4.94H4.53c.08-.9.27-1.72.56-2.38C5.44 5.34 5.97 5.07 6.5 5.03V9zm1 0V5.03c.53.04 1.06.31 1.41.59.29.66.48 1.48.56 2.38H7.5zm0 1v2.94a5.52 5.52 0 0 0 1.5-.78c.24-.6.42-1.34.5-2.16H7.5zm1.94 2.65c.29-.79.49-1.69.56-2.65h2.46a5.51 5.51 0 0 1-3.02 2.65zm3.02-3.65H10c-.07-.96-.27-1.86-.56-2.65A5.51 5.51 0 0 1 12.44 7zm-5.94-4.97V5.03c-.53.04-1.06.31-1.41.59-.29.66-.48 1.48-.56 2.38H6.5V2.03zm1 0V4h2c-.08-.82-.26-1.56-.5-2.16a5.52 5.52 0 0 0-1.5-.78z" fill-rule="evenodd"/></svg>
-        <span id="lbtn-txt">EN</span>
-      </button>
-      <button class="tbtn" id="tbtn" aria-label="Toggle theme">
-        <svg id="tico" viewBox="0 0 16 16"><path id="tip" d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 1.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zM8 1.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 1.5zm0 11a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 12.5zm4.95-8.364a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 0 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM4.818 11.596a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 1 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM13.5 8a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 13.5 8zm-11 0a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 2.5 8zm9.718 3.182a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06zM5.65 5.65a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06z"/></svg>
-      </button>
-    </div>
+<nav><div class="nav-i">
+  <ul class="nav-links">
+    <li><a href="#about" data-i="nav_about"></a></li>
+    <li><a href="#projects" data-i="nav_projects"></a></li>
+    <li><a href="#cv" data-i="nav_cv"></a></li>
+    <li><a href="#contact" data-i="nav_contact"></a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="tbtn" id="tbtn"><svg viewBox="0 0 16 16"><path id="tpath" d=""/></svg></button>
+    <button class="lbtn" id="lbtn"><span id="lbtn-txt">EN</span></button>
   </div>
-</nav>
+</div></nav>
 
 <section id="hero">
-  <div class="wrap">
-    <div class="badge rv"><span class="dot"></span><span data-i="hero_badge"></span></div>
-    <h1 class="rv d1">Yuşa<br><span>Sarısoy.</span></h1>
-    <p class="hsub rv d2" data-i="hero_sub"></p>
-    <div class="hcta rv d3">
-      <a class="btnf" href="#projects">
-        <span data-i="hero_cta1"></span>
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a class="btng" href="#contact" data-i="hero_cta2"></a>
+  <!-- Above the line -->
+  <div class="h-above">
+    <div class="h-firstname">Yuşa</div>
+    <div class="h-meta">
+      <div class="h-meta-role" data-i="hero_role"></div>
+      <div class="h-meta-loc">Istanbul</div>
     </div>
+  </div>
+
+  <!-- The line -->
+  <div class="h-line"></div>
+
+  <!-- Below the line -->
+  <div class="h-below">
+    <div class="h-lastname">Sarısoy.</div>
+    <div class="h-cta">
+      <a class="lp" href="#projects"><span data-i="hero_cta1"></span> →</a>
+      <a class="ls" href="#contact" data-i="hero_cta2"></a>
+    </div>
+  </div>
+
+  <!-- Sub -->
+  <div class="h-sub-row">
+    <p class="h-sub" data-i="hero_sub"></p>
+    <span class="h-scroll" data-i="scroll_hint"></span>
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <p class="eyebrow rv" data-i="about_eyebrow"></p>
-    <h2 class="rv" data-i="about_h2"></h2>
-    <div class="agrid">
-      <div class="atxt rv">
-        <p data-i="about_p1"></p>
-        <p data-i="about_p2"></p>
-        <p data-i="about_p3"></p>
-        <div class="pills">
-          <span class="pill">Swift</span><span class="pill">SwiftUI</span><span class="pill">UIKit</span>
-          <span class="pill">Combine</span><span class="pill">MVVM-C</span><span class="pill">VIPER</span>
-          <span class="pill">SPM</span><span class="pill">Fastlane</span><span class="pill">GitLab CI</span>
-          <span class="pill">Core Data</span><span class="pill">Instruments</span>
-        </div>
-      </div>
-      <div class="rv d1">
-        <div class="sgrid">
-          <div class="scard"><div class="snum">6+</div><div class="slbl" data-i="stat1"></div></div>
-          <div class="scard"><div class="snum">8</div><div class="slbl" data-i="stat2"></div></div>
-          <div class="scard"><div class="snum">50K+</div><div class="slbl" data-i="stat3"></div></div>
-          <div class="scard"><div class="snum">C1</div><div class="slbl" data-i="stat4"></div></div>
-        </div>
-      </div>
+<section id="about"><div class="wrap">
+  <p class="sec-label rv" data-i="about_label"></p>
+  <h2 class="rv" data-i="about_h2"></h2>
+  <div class="ag">
+    <div class="rv"><div class="atxt"><p data-i="about_p1"></p><p data-i="about_p2"></p></div>
+      <div class="sks"><span class="sk">Swift</span><span class="sk">SwiftUI</span><span class="sk">UIKit</span><span class="sk">Combine</span><span class="sk">MVVM-C</span><span class="sk">VIPER</span><span class="sk">SPM</span><span class="sk">Core Data</span><span class="sk">CloudKit</span><span class="sk">Fastlane</span><span class="sk">CI/CD</span><span class="sk">Instruments</span></div>
     </div>
+    <div class="rv d1"><div class="stats">
+      <div class="scard"><div class="sn" data-target="6">0</div><div class="sl" data-i="stat1"></div></div>
+      <div class="scard"><div class="sn" data-target="9">0</div><div class="sl" data-i="stat2"></div></div>
+      <div class="scard" style="grid-column:span 2"><div class="sn">15+</div><div class="sl" data-i="stat3"></div></div>
+    </div></div>
   </div>
-</section>
+</div></section>
 
-<section id="projects">
-  <div class="wrap">
-    <p class="eyebrow rv" data-i="proj_eyebrow"></p>
-    <h2 class="rv" data-i="proj_h2"></h2>
-    <div class="plist">
-      <a class="pcard rv" href="https://github.com/yusasarisoy" target="_blank">
-        <div><div class="pnum">01</div><div class="ptit" data-i="p1_title"></div><div class="pdesc" data-i="p1_desc"></div><div class="ptags"><span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">Open Source</span></div></div>
-        <div class="parr"><svg viewBox="0 0 13 13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5h9M7.5 2.5l4 4-4 4"/></svg></div>
-      </a>
-      <div class="pcard rv">
-        <div><div class="pnum">02</div><div class="ptit" data-i="p2_title"></div><div class="pdesc" data-i="p2_desc"></div><div class="ptags"><span class="tag">Swift</span><span class="tag">Combine</span><span class="tag">MVVM-C</span><span class="tag">Instruments</span></div></div>
-        <div class="parr"><svg viewBox="0 0 13 13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5h9M7.5 2.5l4 4-4 4"/></svg></div>
-      </div>
-      <div class="pcard rv">
-        <div><div class="pnum">03</div><div class="ptit">WeWALK</div><div class="pdesc" data-i="p3_desc"></div><div class="ptags"><span class="tag">Swift</span><span class="tag">Accessibility</span><span class="tag">Core Data</span><span class="tag">Realm</span></div></div>
-        <div class="parr"><svg viewBox="0 0 13 13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5h9M7.5 2.5l4 4-4 4"/></svg></div>
-      </div>
-      <a class="pcard rv" href="https://www.kodeco.com" target="_blank">
-        <div><div class="pnum">04</div><div class="ptit" data-i="p4_title"></div><div class="pdesc" data-i="p4_desc"></div><div class="ptags"><span class="tag">SwiftUI</span><span class="tag">Core Image</span><span class="tag">SwiftLint</span><span class="tag">Writing</span></div></div>
-        <div class="parr"><svg viewBox="0 0 13 13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5h9M7.5 2.5l4 4-4 4"/></svg></div>
-      </a>
-    </div>
+<section id="projects"><div class="wrap">
+  <p class="sec-label rv" data-i="proj_label"></p>
+  <h2 class="rv" data-i="proj_h2"></h2>
+  <div class="plist">
+    <a class="pcard rv" href="https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722" target="_blank"><div class="pn">01</div><div><div class="pt" data-i="p5_title"></div><div class="pd" data-i="p5_desc"></div><div class="ptags"><span class="ptag">SwiftUI</span><span class="ptag">SwiftData</span><span class="ptag">CloudKit</span><span class="ptag">HealthKit</span></div></div><div class="parr">↗</div></a>
+    <a class="pcard rv" href="https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075?l=tr" target="_blank"><div class="pn">02</div><div><div class="pt" data-i="p2_title"></div><div class="pd" data-i="p2_desc"></div><div class="ptags"><span class="ptag">Swift</span><span class="ptag">Combine</span><span class="ptag">MVVM-C</span></div></div><div class="parr">↗</div></a>
+    <a class="pcard rv" href="https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572?l=tr" target="_blank"><div class="pn">03</div><div><div class="pt" data-i="p7_title"></div><div class="pd" data-i="p7_desc"></div><div class="ptags"><span class="ptag">Swift</span><span class="ptag">SwiftUI</span><span class="ptag">MVVM-C</span><span class="ptag">SPM</span></div></div><div class="parr">↗</div></a>
+    <a class="pcard rv" href="https://apps.apple.com/tr/app/doa/id6499423131?l=tr" target="_blank"><div class="pn">04</div><div><div class="pt" data-i="p8_title"></div><div class="pd" data-i="p8_desc"></div><div class="ptags"><span class="ptag">Swift</span><span class="ptag">SwiftUI</span><span class="ptag">Biometrics</span></div></div><div class="parr">↗</div></a>
+    <a class="pcard rv" href="https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265?l=tr" target="_blank"><div class="pn">05</div><div><div class="pt" data-i="p6_title"></div><div class="pd" data-i="p6_desc"></div><div class="ptags"><span class="ptag">Swift</span><span class="ptag">VIPER</span><span class="ptag">Fastlane</span></div></div><div class="parr">↗</div></a>
+    <a class="pcard rv" href="https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911?l=tr" target="_blank"><div class="pn">06</div><div><div class="pt">WeWALK</div><div class="pd" data-i="p3_desc"></div><div class="ptags"><span class="ptag">Swift</span><span class="ptag">Accessibility</span><span class="ptag">Core Data</span></div></div><div class="parr">↗</div></a>
   </div>
-</section>
+</div></section>
 
-<section id="cv">
-  <div class="wrap">
-    <p class="eyebrow rv" data-i="cv_eyebrow"></p>
-    <h2 class="rv" data-i="cv_h2"></h2>
-    <div class="cvb rv">
-      <div class="cvbl" data-i="cv_exp"></div>
-      <div class="cvr"><span class="cvd">Nov 2025 — <span data-i="cv_now"></span></span><div><div class="cvt">Senior iOS Developer</div><div class="cvo">Kafein Tech Solutions · İstanbul</div></div></div>
-      <div class="cvr"><span class="cvd">Mar 2025 — Aug 2025</span><div><div class="cvt">Senior iOS Developer</div><div class="cvo">DİAS Teknoloji · İstanbul</div></div></div>
-      <div class="cvr"><span class="cvd">Nov 2023 — Feb 2025</span><div><div class="cvt">Senior iOS Developer</div><div class="cvo">BMS Corporate Solutions GmbH · Berlin</div></div></div>
-      <div class="cvr"><span class="cvd">May 2023 — Oct 2023</span><div><div class="cvt">iOS Engineer</div><div class="cvo">Mobimeo · Berlin</div></div></div>
-      <div class="cvr"><span class="cvd">Mar 2022 — Mar 2023</span><div><div class="cvt">iOS Engineer</div><div class="cvo">Getir · İstanbul</div></div></div>
-      <div class="cvr"><span class="cvd">Sep 2020 — Feb 2022</span><div><div class="cvt">iOS Developer</div><div class="cvo">WeWALK · İstanbul</div></div></div>
-      <div class="cvr"><span class="cvd">Mar 2020 — Aug 2020</span><div><div class="cvt">Mobile App Developer</div><div class="cvo">Bluedot · İstanbul</div></div></div>
-      <div class="cvr"><span class="cvd">Jun 2018 — Aug 2019</span><div><div class="cvt">Android Developer</div><div class="cvo">Octovan · İstanbul</div></div></div>
+<section id="cv"><div class="wrap">
+  <p class="sec-label rv" data-i="cv_label"></p>
+  <h2 class="rv" data-i="cv_h2"></h2>
+  <div class="rv">
+    <div class="cvb"><div class="cvbl" data-i="cv_exp"></div>
+      <div class="cvr"><span class="cvdate">Mar 2026 – <span data-i="cv_now"></span></span><div><div class="cvt">Senior iOS Developer</div><div class="cvsub">İnnova Bilişim · İstanbul</div></div></div>
+      <div class="cvr"><span class="cvdate">Nov 2025 – Mar 2026</span><div><div class="cvt">Senior iOS Developer</div><div class="cvsub">Kafein Tech Solutions · İstanbul</div></div></div>
+      <div class="cvr"><span class="cvdate">Mar 2025 – Aug 2025</span><div><div class="cvt">Senior iOS Developer</div><div class="cvsub">DİAS Teknoloji · İstanbul</div></div></div>
+      <div class="cvr"><span class="cvdate">Nov 2023 – Feb 2025</span><div><div class="cvt">Senior iOS Developer</div><div class="cvsub">BMS Corporate Solutions GmbH · Berlin</div></div></div>
+      <div class="cvr"><span class="cvdate">May 2023 – Oct 2023</span><div><div class="cvt">iOS Engineer</div><div class="cvsub">Mobimeo · Berlin</div></div></div>
+      <div class="cvr"><span class="cvdate">Mar 2022 – Mar 2023</span><div><div class="cvt">iOS Engineer</div><div class="cvsub">Getir · İstanbul</div></div></div>
+      <div class="cvr"><span class="cvdate">Sep 2020 – Feb 2022</span><div><div class="cvt">iOS Developer</div><div class="cvsub">WeWALK · İstanbul</div></div></div>
+      <div class="cvr"><span class="cvdate">Mar 2020 – Aug 2020</span><div><div class="cvt">Mobile App Developer</div><div class="cvsub">Bluedot · İstanbul</div></div></div>
+      <div class="cvr"><span class="cvdate">Jun 2018 – Aug 2019</span><div><div class="cvt">Android Developer</div><div class="cvsub">Octovan · İstanbul</div></div></div>
     </div>
-    <div class="cvb rv">
-      <div class="cvbl" data-i="cv_edu"></div>
-      <div class="cvr"><span class="cvd">2016 — 2019</span><div><div class="cvt" data-i="cv_degree"></div><div class="cvo">Bahçeşehir Üniversitesi · İstanbul</div></div></div>
+    <div class="cvb"><div class="cvbl" data-i="cv_edu"></div>
+      <div class="cvr"><span class="cvdate">2016 – 2019</span><div><div class="cvt" data-i="cv_degree"></div><div class="cvsub">Bahçeşehir Üniversitesi · İstanbul</div></div></div>
     </div>
-    <div class="cvb rv">
-      <div class="cvbl" data-i="cv_vol"></div>
-      <div class="cvr"><span class="cvd">Jan 2022 — Sep 2025</span><div><div class="cvt">iOS Tech Editor</div><div class="cvo">Kodeco · Remote</div></div></div>
+    <div class="cvb"><div class="cvbl" data-i="cv_vol"></div>
+      <div class="cvr"><span class="cvdate">Jan 2022 – Sep 2025</span><div><div class="cvt">iOS Tech Editor</div><div class="cvsub">Kodeco · Remote</div></div></div>
     </div>
-    <div class="rv">
-      <a class="btng" href="MuhammedYusaSarisoy_SenioriOSDeveloper.pdf" download style="display:inline-flex">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span data-i="cv_dl"></span>
-      </a>
-    </div>
+    <a class="dl" href="MuhammedYusaSarisoy_SenioriOSDeveloper.pdf" download><svg viewBox="0 0 14 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 11h10"/></svg><span data-i="cv_dl"></span></a>
   </div>
-</section>
+</div></section>
 
-<section id="contact">
-  <div class="wrap">
-    <p class="eyebrow rv" data-i="ct_eyebrow"></p>
-    <h2 class="rv" data-i="ct_h2"></h2>
-    <div class="cgrid">
-      <div class="rv">
-        <p class="cdesc" data-i="ct_desc"></p>
-        <div class="clinks">
-          <a class="clink" href="mailto:yusasarisoy@icloud.com">
-            <span class="cico"><svg viewBox="0 0 15 15"><path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h10A1.5 1.5 0 0 1 14 3.5v8a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 1 11.5v-8zm1.5-.5a.5.5 0 0 0-.5.5v.341l5.5 3.143L13 3.841V3.5a.5.5 0 0 0-.5-.5h-10zm11 1.759-4.891 2.795a.5.5 0 0 1-.218.051.5.5 0 0 1-.218-.051L2.5 4.759V11.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V4.759z"/></svg></span>
-            yusasarisoy@icloud.com
-          </a>
-          <a class="clink" href="https://linkedin.com/in/yusasarisoy" target="_blank">
-            <span class="cico"><svg viewBox="0 0 15 15"><path d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM1 4.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-9zm4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V5.5a3 3 0 0 1 5 2v6a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-6a1.5 1.5 0 0 0-3 0v6a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-9z"/></svg></span>
-            linkedin.com/in/yusasarisoy
-          </a>
-          <a class="clink" href="https://github.com/yusasarisoy" target="_blank">
-            <span class="cico"><svg viewBox="0 0 15 15"><path d="M7.5 0C3.358 0 0 3.358 0 7.5c0 3.314 2.149 6.126 5.13 7.118.375.069.512-.163.512-.362v-1.27c-2.088.455-2.53-1.007-2.53-1.007-.342-.868-.835-1.1-.835-1.1-.683-.466.051-.457.051-.457.755.053 1.152.775 1.152.775.671 1.149 1.76.817 2.19.625.068-.486.263-.817.478-.1-1.668-.19-3.42-.834-3.42-3.71 0-.82.292-1.49.775-2.015-.078-.19-.336-.953.073-1.987 0 0 .633-.202 2.073.773A7.203 7.203 0 0 1 7.5 3.49c.641.003 1.287.087 1.89.255 1.439-.975 2.07-.773 2.07-.773.41 1.034.153 1.797.075 1.987.484.525.774 1.195.774 2.015 0 2.883-1.754 3.518-3.427 3.703.27.232.51.69.51 1.39v2.063c0 .2.135.435.516.361C12.853 13.623 15 10.813 15 7.5 15 3.358 11.642 0 7.5 0z"/></svg></span>
-            github.com/yusasarisoy
-          </a>
-        </div>
-      </div>
-      <div class="rv d1">
-        <form class="fwrap" action="https://formspree.io/f/mreynzwd" method="POST">
-          <div class="ff"><label class="fl" for="fn" data-i="f_name"></label><input class="fi" type="text" id="fn" name="name" data-i-ph="f_name_ph" required></div>
-          <div class="ff"><label class="fl" for="fe" data-i="f_email"></label><input class="fi" type="email" id="fe" name="email" data-i-ph="f_email_ph" required></div>
-          <div class="ff"><label class="fl" for="fm" data-i="f_msg"></label><textarea class="fi" id="fm" name="message" data-i-ph="f_msg_ph" required></textarea></div>
-          <button type="submit" class="fsub" data-i="f_send"></button>
-          <div class="fsuc" id="fsuc" data-i="f_ok"></div>
-        </form>
+<section id="contact"><div class="wrap">
+  <p class="sec-label rv" data-i="ct_label"></p>
+  <h2 class="rv" data-i="ct_h2"></h2>
+  <div class="cg">
+    <div class="rv"><p class="ci" data-i="ct_desc"></p>
+      <div class="cls">
+        <a class="cl" href="mailto:yusasarisoy@icloud.com">yusasarisoy@icloud.com <span>→</span></a>
+        <a class="cl" href="https://linkedin.com/in/yusasarisoy" target="_blank">linkedin.com/in/yusasarisoy <span>→</span></a>
+        <a class="cl" href="https://github.com/yusasarisoy" target="_blank">github.com/yusasarisoy <span>→</span></a>
       </div>
     </div>
+    <div class="rv d1"><form class="fstack" action="https://formspree.io/f/mreynzwd" method="POST">
+      <div class="ff"><label class="fl" for="fn" data-i="f_name"></label><input class="fi" type="text" id="fn" name="name" data-i-ph="f_name_ph" required></div>
+      <div class="ff"><label class="fl" for="fe" data-i="f_email"></label><input class="fi" type="email" id="fe" name="email" data-i-ph="f_email_ph" required></div>
+      <div class="ff"><label class="fl" for="fm" data-i="f_msg"></label><textarea class="fi" id="fm" name="message" data-i-ph="f_msg_ph" required></textarea></div>
+      <button type="submit" class="fsub" data-i="f_send"></button>
+      <div class="fok" id="fsuc" data-i="f_ok"></div>
+    </form></div>
   </div>
-</section>
+</div></section>
 
-<footer>
-  <div class="wrap">
-    <div class="fi2">
-      <span>© 2026 Yuşa Sarısoy</span>
-      <div class="flinks">
-        <a href="https://github.com/yusasarisoy" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/yusasarisoy" target="_blank">LinkedIn</a>
-        <a href="mailto:yusasarisoy@icloud.com" data-i="footer_email"></a>
-      </div>
-    </div>
-  </div>
-</footer>
+<footer><div class="wrap"><div class="fi2">
+  <span>© 2026 Yuşa Sarısoy</span>
+  <div class="fls"><a href="https://github.com/yusasarisoy" target="_blank">GitHub</a><a href="https://linkedin.com/in/yusasarisoy" target="_blank">LinkedIn</a><a href="mailto:yusasarisoy@icloud.com" data-i="footer_email"></a></div>
+</div></div></footer>
 
 <script>
 (function(){
+const S={tr:{nav_about:'Hakkımda',nav_projects:'Projeler',nav_cv:'CV',nav_contact:'İletişim',hero_role:'Senior iOS Developer',hero_sub:'6+ yıldır iOS geliştiriyorum. Swift, SwiftUI ve modüler mimarilerle milyonlarca kullanıcıya ulaşan ürünler inşa ettim; etmeye devam ediyorum.',hero_cta1:'Projelere bak',hero_cta2:'İletişime geç',scroll_hint:'Aşağı kaydır',about_label:'Hakkımda',about_h2:'Mühendis.\nMimar.',about_p1:'Swift ve SwiftUI ile milyonlarca kullanıcıya dokunan iOS uygulamaları geliştirdim. İstanbul ve Berlin\'de iki farklı kültürde çalıştım.',about_p2:'Mimari, test ve süreçte standartlarımı yüksek tutuyorum. Ekibimi de bu yönde geliştirmekten keyif alıyorum.',stat1:'Yıl deneyim',stat2:'Şirket',stat3:'Canlı uygulama',stat4:'Kodeco okuyucu / ay',proj_label:'Projeler',proj_h2:'Seçili çalışmalar.',p1_title:'GitHub',p1_desc:'Open source katkılarım ve kişisel projelerim.',p2_title:'Türk Telekom e-Dergi',p2_desc:'MVVM-C ve Combine ile modernizasyon. 60 FPS, milyonlarca kullanıcı.',p3_desc:'Görme engelliler için erişilebilirlik uygulaması. Objective-C\'den Swift\'e tam migrasyon.',p4_title:'Kodeco',p4_desc:'SwiftUI, Core Image ve SwiftLint üzerine teknik editörlük. Aylık 50K+ okuyucu.',p5_title:'Nora',p5_desc:'Ruh hali, semptom ve nefes takibi. SwiftData, CloudKit ve HealthKit.',p6_title:'Getir',p6_desc:'VIPER, DI ve protokol odaklı tasarım. Firebase Crashlytics ve Sentry ile crash-free session iyileştirmesi.',p7_title:'UTTS',p7_desc:'Ulusal Taşıt Tanıma Sistemi. Güvenli QR tarama ve offline-first yetenekler.',p8_title:'DOA',p8_desc:'Güvenli depozito sistemi. Biometrik kimlik doğrulama ve offline veri modelleri.',cv_label:'CV',cv_h2:'Deneyim.',cv_exp:'İş deneyimi',cv_edu:'Eğitim',cv_vol:'Gönüllü',cv_now:'günümüz',cv_degree:'Yazılım Mühendisliği',cv_dl:'CV\'yi indir',ct_label:'İletişim',ct_h2:'Konuşalım.',ct_desc:'Bir proje ya da iş birliği için yazabilirsin. En kısa sürede dönerim.',f_name:'İsim',f_name_ph:'Adın Soyadın',f_email:'E-posta',f_email_ph:'ornek@mail.com',f_msg:'Mesaj',f_msg_ph:'Ne hakkında konuşmak istersin?',f_send:'Gönder',f_ok:'Mesajın alındı.',footer_email:'E-posta'},en:{nav_about:'About',nav_projects:'Projects',nav_cv:'CV',nav_contact:'Contact',hero_role:'Senior iOS Developer',hero_sub:'I\'ve been building iOS for 6+ years. With Swift, SwiftUI, and modular architecture, I\'ve shipped products used by millions. Still going.',hero_cta1:'View work',hero_cta2:'Get in touch',scroll_hint:'Scroll down',about_label:'About',about_h2:'Engineer.\nArchitect.',about_p1:'I\'ve built iOS apps used by millions, working across Istanbul and Berlin.',about_p2:'I hold high standards in architecture, testing, and process. Helping my team grow in the same direction is something I genuinely enjoy.',stat1:'Years',stat2:'Companies',stat3:'Live apps',stat4:'Kodeco readers / mo',proj_label:'Projects',proj_h2:'Selected work.',p1_title:'GitHub',p1_desc:'Open source contributions and personal projects.',p2_title:'Türk Telekom e-Magazine',p2_desc:'Rebuilt with MVVM-C and Combine. 60 FPS, millions of users.',p3_desc:'Accessibility app for visually impaired users. Full migration from Objective-C to Swift.',p4_title:'Kodeco',p4_desc:'Tech editing on SwiftUI, Core Image and SwiftLint. 50K+ monthly readers.',p5_title:'Nora',p5_desc:'Mood, symptom and breathing tracker. SwiftData, CloudKit and HealthKit.',p6_title:'Getir',p6_desc:'VIPER, DI, and protocol-oriented design. Boosted crash-free sessions with Firebase Crashlytics and Sentry.',p7_title:'UTTS',p7_desc:'National Vehicle Recognition System. Secure QR scanning and offline-first capabilities.',p8_title:'DOA',p8_desc:'Secure deposit system. Biometric authentication and offline data models.',cv_label:'CV',cv_h2:'Experience.',cv_exp:'Work',cv_edu:'Education',cv_vol:'Volunteer',cv_now:'present',cv_degree:'Software Engineering',cv_dl:'Download CV',ct_label:'Contact',ct_h2:'Let\'s talk.',ct_desc:'Reach out about a project or collaboration. I\'ll get back to you shortly.',f_name:'Name',f_name_ph:'Your name',f_email:'Email',f_email_ph:'you@example.com',f_msg:'Message',f_msg_ph:'What\'s on your mind?',f_send:'Send',f_ok:'Message received.',footer_email:'Email'}};
 
-const STRINGS = {
-  tr: {
-    nav_about:'Hakkımda', nav_projects:'Projeler', nav_cv:'CV', nav_contact:'İletişim',
-    hero_badge:'Senior iOS Developer',
-    hero_sub:'6+ yıldır iOS uygulamaları geliştiriyorum. Swift, SwiftUI ve modüler mimariler; temiz kod ve CI/CD olmadan çalışmıyorum.',
-    hero_cta1:'Projelere bak', hero_cta2:'İletişime geç',
-    about_eyebrow:'Hakkımda', about_h2:'Kod yazan,\nmimar düşünen.',
-    about_p1:'Swift ve SwiftUI ile İstanbul ve Berlin\'de ölçeklenebilir iOS uygulamaları geliştirdim. MVVM-C, VIPER ve modüler SPM yapıları tercihim.',
-    about_p2:'Performans optimizasyonu, CI/CD pipeline kurulumu ve junior geliştiricilere mentorluk işin ayrılmaz parçaları benim için.',
-    about_p3:'Kodeco\'da SwiftUI ve Core Image üzerine teknik editörlük yaptım — yazarak öğrenmek, sadece yaparak öğrenmekten daha iyi.',
-    stat1:'Yıl deneyim', stat2:'Şirket', stat3:'Kodeco okuyucu / ay', stat4:'İngilizce seviye',
-    proj_eyebrow:'Projeler', proj_h2:'Yaptığım işler.',
-    p1_title:'GitHub Projelerim', p1_desc:'Open source katkılarım ve kişisel projelerim.',
-    p2_title:'Türk Telekom e-Dergi', p2_desc:'MVVM-C ve Combine ile modernizasyon. 60 FPS performans, milyonlarca kullanıcıya KVKK-uyumlu bildirim sistemi.',
-    p3_desc:'Görme engelliler için erişilebilirlik uygulaması. Objective-C\'den Swift\'e migrasyon, Core Data ve Realm entegrasyonu.',
-    p4_title:'Kodeco — Teknik Editörlük', p4_desc:'SwiftUI, Core Image ve SwiftLint üzerine tutorial\'lar. Aylık 50K+ okuyucu.',
-    cv_eyebrow:'Özgeçmiş', cv_h2:'Kariyer yolculuğum.',
-    cv_exp:'Deneyim', cv_edu:'Eğitim', cv_vol:'Gönüllü', cv_now:'günümüz',
-    cv_degree:'Yazılım Mühendisliği', cv_dl:'CV indir (PDF)',
-    ct_eyebrow:'İletişim', ct_h2:'Konuşalım.',
-    ct_desc:'Bir proje, iş birliği ya da sadece merhaba demek için yazabilirsin. En kısa sürede dönerim.',
-    f_name:'İsim', f_name_ph:'Adın Soyadın',
-    f_email:'E-posta', f_email_ph:'ornek@mail.com',
-    f_msg:'Mesaj', f_msg_ph:'Ne hakkında konuşmak istersin?',
-    f_send:'Gönder', f_ok:'Mesajın alındı, en kısa sürede dönerim.',
-    footer_email:'E-posta',
-  },
-  en: {
-    nav_about:'About', nav_projects:'Projects', nav_cv:'CV', nav_contact:'Contact',
-    hero_badge:'Senior iOS Developer',
-    hero_sub:'6+ years building scalable, user-focused iOS apps. Swift, SwiftUI, modular architectures — clean code and CI/CD are non-negotiable.',
-    hero_cta1:'View projects', hero_cta2:'Get in touch',
-    about_eyebrow:'About', about_h2:'Engineer by craft,\narchitect by mindset.',
-    about_p1:'I\'ve built scalable iOS applications in Istanbul and Berlin. MVVM-C, VIPER and modular SPM structures are my architecture of choice.',
-    about_p2:'Performance optimization, CI/CD pipeline setup and mentoring junior developers are an integral part of how I work.',
-    about_p3:'I also served as iOS Tech Editor at Kodeco, writing tutorials on SwiftUI and Core Image — teaching something is the best way to truly understand it.',
-    stat1:'Years experience', stat2:'Companies', stat3:'Kodeco readers / mo', stat4:'English level',
-    proj_eyebrow:'Projects', proj_h2:'Selected work.',
-    p1_title:'GitHub Projects', p1_desc:'Open source contributions and personal projects.',
-    p2_title:'Türk Telekom e-Magazine', p2_desc:'Modernized with MVVM-C and Combine. 60 FPS performance, KVKK-compliant notification system for millions of users.',
-    p3_desc:'Accessibility app for visually impaired users. Objective-C to Swift migration, Core Data and Realm integration.',
-    p4_title:'Kodeco — Tech Editor', p4_desc:'Published tutorials on SwiftUI, Core Image and SwiftLint. 50K+ monthly readers.',
-    cv_eyebrow:'Résumé', cv_h2:'Career journey.',
-    cv_exp:'Experience', cv_edu:'Education', cv_vol:'Volunteer', cv_now:'present',
-    cv_degree:'Software Engineering', cv_dl:'Download CV (PDF)',
-    ct_eyebrow:'Contact', ct_h2:'Let\'s talk.',
-    ct_desc:'Reach out about a project, collaboration, or just to say hello. I\'ll get back to you as soon as possible.',
-    f_name:'Name', f_name_ph:'Your Full Name',
-    f_email:'Email', f_email_ph:'you@example.com',
-    f_msg:'Message', f_msg_ph:'What would you like to talk about?',
-    f_send:'Send', f_ok:'Message received — I\'ll be in touch soon.',
-    footer_email:'Email',
-  }
-};
-
-let lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().startsWith('tr') ? 'tr' : 'en';
-
-function applyLang(l) {
-  lang = l;
-  const s = STRINGS[l];
-  document.documentElement.lang = l;
-  document.getElementById('lbtn-txt').textContent = l === 'tr' ? 'EN' : 'TR';
-
-  document.querySelectorAll('[data-i]').forEach(el => {
-    const key = el.getAttribute('data-i');
-    if (!s[key]) return;
-    if (key === 'about_h2' || key === 'cv_h2') {
-      el.innerHTML = s[key].replace('\n', '<br>');
-    } else {
-      el.textContent = s[key];
-    }
-  });
-
-  document.querySelectorAll('[data-i-ph]').forEach(el => {
-    const key = el.getAttribute('data-i-ph');
-    if (s[key]) el.placeholder = s[key];
-  });
-}
-
-applyLang(lang);
-
-document.getElementById('lbtn').addEventListener('click', () => {
-  const next = lang === 'tr' ? 'en' : 'tr';
-  const lbtn = document.getElementById('lbtn');
-  lbtn.style.transition = 'transform .18s ease, opacity .18s ease';
-  lbtn.style.transform = 'scale(.85)';
-  lbtn.style.opacity = '.6';
-  setTimeout(() => {
-    applyLang(next);
-    lbtn.style.transform = '';
-    lbtn.style.opacity = '';
-  }, 160);
-});
-
-const html = document.documentElement;
-const path = document.getElementById('tip');
-const sun = 'M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 1.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zM8 1.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 1.5zm0 11a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 12.5zm4.95-8.364a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 0 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM4.818 11.596a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 1 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM13.5 8a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 13.5 8zm-11 0a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 2.5 8zm9.718 3.182a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06zM5.65 5.65a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06z';
-const moon = 'M7.5 1.5A6 6 0 1 0 13.5 9a.75.75 0 0 1-.671-.415.75.75 0 0 1 .085-.818A4.5 4.5 0 0 1 8.5 3a4.48 4.48 0 0 1 2.47.736.75.75 0 0 1-.02 1.254A4.5 4.5 0 1 0 7.5 12a4.48 4.48 0 0 0 2.83-.998.75.75 0 0 1 1.16.283A6 6 0 0 1 7.5 13.5 6 6 0 0 1 1.5 7.5 6 6 0 0 1 7.5 1.5z';
-let sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
-let forced = null;
-function isDark(){ return forced !== null ? forced : sys; }
-function applyTheme(){
-  const d = isDark();
-  html.setAttribute('data-theme', d ? 'dark' : 'light');
-  path.setAttribute('d', d ? moon : sun);
-}
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => { sys = e.matches; if(forced===null) applyTheme(); });
-document.getElementById('tbtn').addEventListener('click', () => {
-  forced = !isDark();
-  const ico = document.getElementById('tico');
-  ico.style.transition = 'transform .22s ease';
-  ico.style.transform = 'rotate(22deg) scale(.8)';
-  setTimeout(() => { applyTheme(); ico.style.transform = ''; }, 140);
-});
+let lang=(navigator.language||'en').toLowerCase().startsWith('tr')?'tr':'en';
+const SUN='M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 1.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zM8 1.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 1.5zm0 11a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 12.5zm4.95-8.364a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 0 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM4.818 11.596a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 1 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM13.5 8a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 13.5 8zm-11 0a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 2.5 8zm9.718 3.182a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06zM5.65 5.65a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06z';
+const MOON='M7.5 1.5A6 6 0 1 0 13.945 9.5.75.75 0 0 0 13 8.572a4.5 4.5 0 1 1-4.5-4.5.75.75 0 0 0 .832-1.244A6 6 0 0 0 7.5 1.5z';
+let dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+function applyTheme(){document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.getElementById('tpath').setAttribute('d',dark?MOON:SUN);}
 applyTheme();
+document.getElementById('tbtn').addEventListener('click',()=>{dark=!dark;applyTheme();});
 
-const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }), { threshold:.08 });
-document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+function applyLang(l){lang=l;const s=S[l];document.documentElement.lang=l;document.getElementById('lbtn-txt').textContent=l==='tr'?'EN':'TR';document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(!s[k])return;if(k==='about_h2'||k==='cv_h2')el.innerHTML=s[k].replace('\n','<br>');else el.textContent=s[k];});document.querySelectorAll('[data-i-ph]').forEach(el=>{const k=el.getAttribute('data-i-ph');if(s[k])el.placeholder=s[k];});}
+applyLang(lang);
+document.getElementById('lbtn').addEventListener('click',()=>{const n=lang==='tr'?'en':'tr';const b=document.getElementById('lbtn');b.style.opacity='.4';setTimeout(()=>{applyLang(n);b.style.opacity='';},140);});
 
-const form = document.querySelector('form');
-if(form){
-  form.addEventListener('submit', async e => {
-    if(form.action.includes('YOUR_FORM_ID')) return;
-    e.preventDefault();
-    const sb = form.querySelector('.fsub');
-    sb.textContent = lang === 'tr' ? 'Gönderiliyor…' : 'Sending…';
-    sb.disabled = true;
-    try {
-      const r = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{ Accept:'application/json' } });
-      if(r.ok){ form.reset(); document.getElementById('fsuc').style.display='block'; sb.style.display='none'; }
-      else { sb.textContent = STRINGS[lang].f_send; sb.disabled = false; }
-    } catch { sb.textContent = STRINGS[lang].f_send; sb.disabled = false; }
-  });
-}
+function countUp(el){const t=parseInt(el.dataset.target);if(!t)return;let s=0;const d=Math.floor(800/t);const iv=setInterval(()=>{s=Math.min(s+1,t);el.textContent=s+(t===6?'+':'');if(s>=t)clearInterval(iv);},d);}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);e.target.querySelectorAll('[data-target]').forEach(el=>countUp(el));}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
+const form=document.querySelector('form');if(form){form.addEventListener('submit',async e=>{e.preventDefault();const btn=form.querySelector('.fsub');btn.disabled=true;btn.style.opacity='.5';try{const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(r.ok){form.reset();document.getElementById('fsuc').style.display='block';}}catch(_){}btn.disabled=false;btn.style.opacity='';});}
 })();
 </script>
 </body>
