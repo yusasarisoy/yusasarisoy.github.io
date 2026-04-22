@@ -944,6 +944,8 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 (function(){
 const S={
   tr:{
+    page_title:"Yuşa Sarısoy | Ürün Odaklı iOS Mühendisi",
+    page_desc:"Yuşa Sarısoy, Ürün Odaklı iOS Mühendisi",
     nav_about:"Hakkımda",nav_projects:"Projeler",nav_cv:"CV",nav_contact:"İletişim",
     hero_stage_badge:"Ürün Odaklı iOS Mühendisi",
     hero_stage_title:"Ürünü düşünür,\u00A0mobilde hayata geçiririm.",
@@ -983,6 +985,8 @@ const S={
     footer_email:"E-posta"
   },
   en:{
+    page_title:"Yuşa Sarısoy | Product-Minded iOS Engineer",
+    page_desc:"Yuşa Sarısoy, Product-Minded iOS Engineer",
     nav_about:"About",nav_projects:"Projects",nav_cv:"CV",nav_contact:"Contact",
     hero_stage_badge:"Product-Minded iOS Engineer",
     hero_stage_title:"I think through the product and ship it on mobile.",
@@ -1037,7 +1041,10 @@ function applyTheme(){
 function applyLang(next){
   lang=next;
   const d=S[lang];
+  const metaDescription=document.querySelector('meta[name="description"]');
   document.documentElement.lang=lang;
+  document.title=d.page_title;
+  if(metaDescription)metaDescription.setAttribute("content",d.page_desc);
   document.getElementById("langLabel").textContent=lang==="tr"?"EN":"TR";
   document.querySelectorAll("[data-i]").forEach(el=>{const k=el.getAttribute("data-i");if(d[k])el.textContent=d[k]});
   document.querySelectorAll("[data-i-ph]").forEach(el=>{const k=el.getAttribute("data-i-ph");if(d[k])el.placeholder=d[k]});
