@@ -412,12 +412,12 @@ textarea.input{min-height:120px;resize:vertical}
 .form-ok{display:none;text-align:center;color:var(--muted);font-size:13px}
 
 /* ─── FOOTER ──────────────────────────────────────────────── */
-footer{background:#000;border-top:1px solid rgba(255,255,255,.08);padding:24px 0}
+footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;transition:background .35s,border-color .35s}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.foot-left{font-size:13px;color:rgba(255,255,255,.3)}
+.foot-left{font-size:13px;color:var(--soft)}
 .foot-links{display:flex;gap:20px}
-.foot-links a{font-size:13px;color:rgba(255,255,255,.3);transition:color .2s}
-.foot-links a:hover{color:rgba(255,255,255,.65)}
+.foot-links a{font-size:13px;color:var(--soft);transition:color .2s}
+.foot-links a:hover{color:var(--ink)}
 
 /* ─── REVEAL ──────────────────────────────────────────────── */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
