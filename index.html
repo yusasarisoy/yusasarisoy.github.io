@@ -515,6 +515,68 @@ nav{
 .map-start{fill:var(--blue);filter:drop-shadow(0 2px 6px rgba(0,113,227,.4))}
 .map-end{fill:var(--green);filter:drop-shadow(0 2px 6px rgba(29,158,117,.4))}
 
+/* Taily — pet task checklist */
+.card.taily{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#fff6ee,#fff5f9)}
+[data-theme="dark"] .card.taily{background:linear-gradient(145deg,#2a1200,#1a081a)}
+.taily-check{width:216px;height:186px}
+.taily-panel{
+  position:absolute;right:14px;bottom:12px;
+  width:200px;
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(240,140,80,.22);
+  border-radius:16px;
+  padding:16px 16px 12px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 14px 40px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.85);
+}
+[data-theme="dark"] .taily-panel{
+  background:rgba(28,12,0,.6);
+  border-color:rgba(240,140,80,.18);
+  box-shadow:0 14px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.taily-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+[data-theme="dark"] .taily-row{border-bottom-color:rgba(255,255,255,.06)}
+.taily-row:last-child{border-bottom:0}
+.taily-box{
+  width:20px;height:20px;flex-shrink:0;border-radius:6px;
+  border:2px solid rgba(240,140,80,.45);
+  background:transparent;
+  display:grid;place-items:center;
+  transition:background .25s,border-color .25s;
+}
+.taily-mark{
+  width:11px;height:7px;
+  border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;
+  transform:rotate(-45deg) scale(0);
+  transform-origin:30% 70%;
+  transition:transform .2s;
+}
+.taily-bar{height:8px;border-radius:4px;background:rgba(0,0,0,.1);flex:1}
+[data-theme="dark"] .taily-bar{background:rgba(255,255,255,.12)}
+.taily-pet{
+  margin-top:10px;display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.04em;
+  color:rgba(240,140,80,.75);
+}
+.taily-paw{font-size:16px;line-height:1;animation:paw-bounce 4s ease-in-out infinite}
+@keyframes paw-bounce{0%,100%{transform:scale(1)}48%{transform:scale(1.22)}52%{transform:scale(.96)}}
+@keyframes task-check{
+  0%,6%{background:transparent;border-color:rgba(240,140,80,.45)}
+  14%,82%{background:rgba(41,198,130,.88);border-color:rgba(41,198,130,.88)}
+  92%,100%{background:transparent;border-color:rgba(240,140,80,.45)}
+}
+@keyframes mark-pop{
+  0%,6%{transform:rotate(-45deg) scale(0)}
+  14%,82%{transform:rotate(-45deg) scale(1)}
+  92%,100%{transform:rotate(-45deg) scale(0)}
+}
+.tr1 .taily-box{animation:task-check 4.8s ease-in-out infinite}
+.tr1 .taily-mark{animation:mark-pop 4.8s ease-in-out infinite}
+.tr2 .taily-box{animation:task-check 4.8s ease-in-out infinite 1.2s}
+.tr2 .taily-mark{animation:mark-pop 4.8s ease-in-out infinite 1.2s}
+.tr3 .taily-box{animation:task-check 4.8s ease-in-out infinite 2.4s}
+.tr3 .taily-mark{animation:mark-pop 4.8s ease-in-out infinite 2.4s}
+
 /* ─── CV ──────────────────────────────────────────────────── */
 .cv{
   padding:120px 0;
@@ -612,7 +674,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 @media(max-width:960px){
   .nav-inner{grid-template-columns:auto 1fr auto}
   .nav-links{display:none}
-  .card.doza,.card.nora{grid-column:span 12}
+  .card.taily,.card.doza,.card.nora{grid-column:span 12}
   .card.edergi,.card.utts,.card.doa,.card.getir,.card.wewalk{grid-column:span 12}
   .about-bottom,.cv-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
   .about-stats{grid-template-columns:1fr 1fr}
@@ -729,10 +791,37 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
     <h2 class="section-title reveal d1" data-i="proj_h2"></h2>
     <div class="bento">
 
-      <a class="card doza reveal" href="https://apps.apple.com/tr/app/doza-daily-mind-feed/id6762082345?l=tr" target="_blank" rel="noreferrer">
+      <a class="card taily reveal" href="https://apps.apple.com/tr/app/taily-daily-pet-care-tracker/id6761016212?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
           <p class="card-num">01</p>
+          <h3 data-i="pt_title"></h3>
+          <p data-i="pt_desc"></p>
+        </div>
+        <div class="pv taily-check">
+          <div class="taily-panel">
+            <div class="taily-row tr1">
+              <div class="taily-box"><div class="taily-mark"></div></div>
+              <div class="taily-bar" style="width:62%"></div>
+            </div>
+            <div class="taily-row tr2">
+              <div class="taily-box"><div class="taily-mark"></div></div>
+              <div class="taily-bar" style="width:48%"></div>
+            </div>
+            <div class="taily-row tr3">
+              <div class="taily-box"><div class="taily-mark"></div></div>
+              <div class="taily-bar" style="width:70%"></div>
+            </div>
+            <div class="taily-pet"><span class="taily-paw">🐾</span><span data-i="pt_done"></span></div>
+          </div>
+        </div>
+        <div class="card-tags"><span data-i="pt_tag1"></span><span data-i="pt_tag2"></span><span data-i="pt_tag3"></span></div>
+      </a>
+
+      <a class="card doza reveal" href="https://apps.apple.com/tr/app/doza-daily-mind-feed/id6762082345?l=tr" target="_blank" rel="noreferrer">
+        <span class="card-arrow">↗</span>
+        <div class="card-head">
+          <p class="card-num">02</p>
           <h3 data-i="p9_title"></h3>
           <p data-i="p9_desc"></p>
         </div>
@@ -747,7 +836,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card nora reveal d1" href="https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">02</p>
+          <p class="card-num">03</p>
           <h3 data-i="p5_title"></h3>
           <p data-i="p5_desc"></p>
         </div>
@@ -780,7 +869,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card edergi reveal" href="https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">03</p>
+          <p class="card-num">04</p>
           <h3 data-i="p2_title"></h3>
           <p data-i="p2_desc"></p>
         </div>
@@ -799,7 +888,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card utts reveal d1" href="https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">04</p>
+          <p class="card-num">05</p>
           <h3 data-i="p7_title"></h3>
           <p data-i="p7_desc"></p>
         </div>
@@ -819,7 +908,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card doa reveal d2" href="https://apps.apple.com/tr/app/doa/id6499423131?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">05</p>
+          <p class="card-num">06</p>
           <h3 data-i="p8_title"></h3>
           <p data-i="p8_desc"></p>
         </div>
@@ -834,7 +923,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card getir reveal" href="https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">06</p>
+          <p class="card-num">07</p>
           <h3 data-i="p6_title"></h3>
           <p data-i="p6_desc"></p>
         </div>
@@ -850,7 +939,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card wewalk reveal d1" href="https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">07</p>
+          <p class="card-num">08</p>
           <h3>WeWALK</h3>
           <p data-i="p3_desc"></p>
         </div>
@@ -962,6 +1051,7 @@ const S={
     about_quote_dim:"Ama ürün neyi gerektiriyorsa onu seçerim. Araç, ihtiyaca göre şekillenir.",
     stat1:"Yıllık deneyim",stat2:"Şirket",stat3:"Yayındaki uygulama",
     proj_label:"Seçtiğim işler",proj_h2:"Yayına çıkan, kullanılan ve büyüyen ürünler.",
+    pt_title:"Taily",pt_desc:"Evcil hayvan bakımını evdekilerle paylaşan günlük kontrol listesi. Kim mama verdi, kum kabı temizlendi mi - herkes anında görür.",pt_done:"Bugün tamamlandı",pt_tag1:"Evcil hayvan",pt_tag2:"Evdekiler",pt_tag3:"Anlık bildirim",
     p2_title:"e-Dergi",
     p2_desc:"Yüzlerce e-dergi ve gazeteyi tek yerde sunan dijital okuma platformu. Favoriler, çevrimdışı okuma ve yapay zeka destekli Sesli Gündem.",
     p3_desc:"Görme engelli kullanıcıların şehirde daha özgür hareket etmesine yardımcı olan akıllı harita deneyimi.",
@@ -1003,6 +1093,7 @@ const S={
     about_quote_dim:"But I choose what the product requires. The tool follows the need.",
     stat1:"Years",stat2:"Companies",stat3:"Live apps",
     proj_label:"Selected work",proj_h2:"App Store work with real users and real scale.",
+    pt_title:"Taily",pt_desc:"A shared daily checklist for pet care. Who fed the cat? Was the litter box cleaned? Everyone in the household knows instantly.",pt_done:"Done today",pt_tag1:"Pet care",pt_tag2:"Household",pt_tag3:"Push notifications",
     p2_title:"e-Magazine",
     p2_desc:"A digital reading platform for hundreds of magazines and newspapers. Favorites, offline reading, and AI-powered audio news highlights.",
     p3_desc:"A smart map experience that helps visually impaired users move through the city with more confidence and independence.",
