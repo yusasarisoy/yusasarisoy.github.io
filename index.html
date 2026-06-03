@@ -197,14 +197,12 @@ nav{
   transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
 }
 .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
-.card.doza{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#f1efff,#f0fff6)}
 .card.nora{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#eef6ff,#f0f8ff)}
 .card.edergi{grid-column:span 6;background:linear-gradient(145deg,#eefbf2,#fff)}
 .card.utts{grid-column:span 6;background:linear-gradient(145deg,#f3efff,#fff)}
 .card.doa{grid-column:span 6;background:linear-gradient(145deg,#fff0ed,#fff)}
 .card.getir{grid-column:span 6;background:linear-gradient(145deg,#fff8dd,#fff)}
 .card.wewalk{grid-column:span 6;background:linear-gradient(145deg,#eafffb,#fff)}
-[data-theme="dark"] .card.doza{background:linear-gradient(145deg,#171226,#0f1714)}
 [data-theme="dark"] .card.nora{background:linear-gradient(145deg,#06192a,#101013)}
 [data-theme="dark"] .card.edergi{background:linear-gradient(145deg,#061b0e,#101013)}
 [data-theme="dark"] .card.utts{background:linear-gradient(145deg,#1b1031,#101013)}
@@ -242,21 +240,6 @@ nav{
 
 /* ─── CARD VISUALS ────────────────────────────────────────── */
 .pv{position:absolute;right:20px;bottom:68px;z-index:0;pointer-events:none}
-
-/* Doza */
-.doza-cards{width:220px;height:180px}
-.doza-card{
-  position:absolute;width:112px;height:142px;
-  border:1px solid rgba(255,255,255,.28);border-radius:12px;
-  background:linear-gradient(160deg,rgba(139,135,236,.38),rgba(29,158,117,.18));
-  box-shadow:0 20px 48px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.55);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-}
-.doza-card::before{content:"";position:absolute;left:14px;right:14px;top:18px;height:7px;border-radius:8px;background:rgba(255,255,255,.48);box-shadow:0 18px 0 rgba(255,255,255,.24),0 36px 0 rgba(255,255,255,.14)}
-.doza-card::after{content:"?";position:absolute;left:14px;bottom:12px;width:32px;height:32px;display:grid;place-items:center;border-radius:8px;background:rgba(255,255,255,.18);color:#fff;font-weight:800;border:1px solid rgba(255,255,255,.22)}
-.doza-card.one{right:96px;bottom:18px;transform:rotate(-9deg)}
-.doza-card.two{right:56px;bottom:36px;transform:rotate(4deg);background:linear-gradient(160deg,rgba(255,209,102,.36),rgba(139,135,236,.22))}
-.doza-card.three{right:14px;bottom:8px;transform:rotate(11deg);background:linear-gradient(160deg,rgba(41,151,255,.32),rgba(29,158,117,.22))}
 
 /* Nora — neural network */
 .nora-neural{width:280px;height:200px;right:0;bottom:68px}
@@ -419,25 +402,6 @@ nav{
 @keyframes nora-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.4);opacity:.92}}
 @keyframes route-draw{0%{stroke-dashoffset:320}80%,100%{stroke-dashoffset:0}}
 
-.doza-cards{perspective:700px}
-@keyframes doza-flip-one{
-  0%,18%{transform:rotate(-9deg) rotateY(0deg)}
-  32%,68%{transform:rotate(-9deg) rotateY(-180deg)}
-  82%,100%{transform:rotate(-9deg) rotateY(0deg)}
-}
-@keyframes doza-flip-two{
-  0%,35%{transform:rotate(4deg) rotateY(0deg)}
-  49%,85%{transform:rotate(4deg) rotateY(-180deg)}
-  99%,100%{transform:rotate(4deg) rotateY(0deg)}
-}
-@keyframes doza-flip-three{
-  0%,52%{transform:rotate(11deg) rotateY(0deg)}
-  66%,96%{transform:rotate(11deg) rotateY(-180deg)}
-  100%{transform:rotate(11deg) rotateY(0deg)}
-}
-.doza-card.one{animation:doza-flip-one 7s ease-in-out infinite}
-.doza-card.two{animation:doza-flip-two 7s ease-in-out infinite}
-.doza-card.three{animation:doza-flip-three 7s ease-in-out infinite}
 .reader-item:nth-child(1){animation:float-y-sm 3.8s ease-in-out infinite}
 .reader-item:nth-child(2){animation:float-y-sm 3.8s ease-in-out infinite .45s}
 .reader-item:nth-child(3){animation:float-y-sm 3.8s ease-in-out infinite .9s}
@@ -674,7 +638,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 @media(max-width:960px){
   .nav-inner{grid-template-columns:auto 1fr auto}
   .nav-links{display:none}
-  .card.taily,.card.doza,.card.nora{grid-column:span 12}
+  .card.taily,.card.nora{grid-column:span 12}
   .card.edergi,.card.utts,.card.doa,.card.getir,.card.wewalk{grid-column:span 12}
   .about-bottom,.cv-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
   .about-stats{grid-template-columns:1fr 1fr}
@@ -818,25 +782,10 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
         <div class="card-tags"><span data-i="pt_tag1"></span><span data-i="pt_tag2"></span><span data-i="pt_tag3"></span></div>
       </a>
 
-      <a class="card doza reveal" href="https://apps.apple.com/tr/app/doza-daily-mind-feed/id6762082345?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">02</p>
-          <h3 data-i="p9_title"></h3>
-          <p data-i="p9_desc"></p>
-        </div>
-        <div class="pv doza-cards">
-          <div class="doza-card one"></div>
-          <div class="doza-card two"></div>
-          <div class="doza-card three"></div>
-        </div>
-        <div class="card-tags"><span>Günlük kartlar</span><span>Görüş soruları</span><span>Global yanıtlar</span><span>6 dil</span></div>
-      </a>
-
       <a class="card nora reveal d1" href="https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">03</p>
+          <p class="card-num">02</p>
           <h3 data-i="p5_title"></h3>
           <p data-i="p5_desc"></p>
         </div>
@@ -869,7 +818,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card edergi reveal" href="https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">04</p>
+          <p class="card-num">03</p>
           <h3 data-i="p2_title"></h3>
           <p data-i="p2_desc"></p>
         </div>
@@ -888,7 +837,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card utts reveal d1" href="https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">05</p>
+          <p class="card-num">04</p>
           <h3 data-i="p7_title"></h3>
           <p data-i="p7_desc"></p>
         </div>
@@ -908,7 +857,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card doa reveal d2" href="https://apps.apple.com/tr/app/doa/id6499423131?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">06</p>
+          <p class="card-num">05</p>
           <h3 data-i="p8_title"></h3>
           <p data-i="p8_desc"></p>
         </div>
@@ -923,7 +872,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card getir reveal" href="https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">07</p>
+          <p class="card-num">06</p>
           <h3 data-i="p6_title"></h3>
           <p data-i="p6_desc"></p>
         </div>
@@ -939,7 +888,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card wewalk reveal d1" href="https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">08</p>
+          <p class="card-num">07</p>
           <h3>WeWALK</h3>
           <p data-i="p3_desc"></p>
         </div>
@@ -1063,8 +1012,6 @@ const S={
     p7_desc:"Akaryakıt satışlarında vergi güvenliği için geliştirilen Ulusal Taşıt Tanıma Sistemi. Plaka bilgisinin otomatik iletildiği ve satışın kayıt altına alındığı akışlar.",
     p8_title:"DOA",
     p8_desc:"Depozitosu olan ambalajları iade noktalarıyla buluşturan geri dönüşüm sistemi.",
-    p9_title:"Doza",
-    p9_desc:"Her sabah gelen kısa bilgi kartları, tek bir görüş sorusu ve dünyanın nasıl düşündüğünü gösteren yanıt oranları. Algoritmasız, reklamsız.",
     cv_label:"CV",cv_h2:"Deneyim. Ürünle birlikte büyüyen.",
     cv_intro:"Ürün Odaklı iOS Mühendisi olarak odağım net: iyi mobil ürün, güçlü ekip standardı ve zamanında teslimat.",
     cv_now:"günümüz",cv_degree:"Yazılım Mühendisliği",cv_dl:"CV'yi indir",
@@ -1105,8 +1052,6 @@ const S={
     p7_desc:"National Vehicle Recognition System for tax-secure fuel sales. Vehicle plate data is transferred automatically and each sale is recorded in the regulated flow.",
     p8_title:"DOA",
     p8_desc:"A recycling system that connects deposit packaging with return points. Each return supports the environment and gives users deposit value back.",
-    p9_title:"Doza",
-    p9_desc:"A daily mind feed with short knowledge cards, one opinion question, and global response stats. No algorithmic feed, no ads.",
     cv_label:"CV",cv_h2:"Experience line.",
     cv_intro:"A career shaped around product-minded iOS engineering, mobile product development, team standards, and delivery.",
     cv_now:"present",cv_degree:"Software Engineering",cv_dl:"Download CV",
