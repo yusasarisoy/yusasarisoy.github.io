@@ -658,6 +658,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
   .bento{gap:10px}
 }
 </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -960,6 +961,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
         <div class="field"><label for="fn" data-i="f_name"></label><input class="input" type="text" id="fn" name="name" data-i-ph="f_name_ph" required></div>
         <div class="field"><label for="fe" data-i="f_email"></label><input class="input" type="email" id="fe" name="email" data-i-ph="f_email_ph" required></div>
         <div class="field"><label for="fm" data-i="f_msg"></label><textarea class="input" id="fm" name="message" data-i-ph="f_msg_ph" required></textarea></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADr3tYCkkKvWW9q-" data-theme="auto"></div>
         <button class="submit" type="submit" data-i="f_send"></button>
         <div class="form-ok" id="formOk" data-i="f_ok"></div>
       </form>
