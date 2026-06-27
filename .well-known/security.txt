@@ -1,0 +1,4 @@
+Contact: mailto:yusasarisoy@icloud.com
+Expires: 2027-06-27T00:00:00.000Z
+Preferred-Languages: en, tr
+Canonical: https://yusasarisoy.com/.well-known/security.txt
