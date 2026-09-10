@@ -479,6 +479,41 @@ nav{
 .map-start{fill:var(--blue);filter:drop-shadow(0 2px 6px rgba(0,113,227,.4))}
 .map-end{fill:var(--green);filter:drop-shadow(0 2px 6px rgba(29,158,117,.4))}
 
+/* Burnin: on-device video captions */
+.card.burnin{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#fff3e6,#fff9f2)}
+[data-theme="dark"] .card.burnin{background:linear-gradient(145deg,#2a1600,#101013)}
+.burnin-frame{width:220px;height:158px}
+.burnin-screen{
+  position:absolute;right:0;top:0;width:220px;height:112px;
+  border-radius:14px;border:1px solid rgba(255,138,31,.28);
+  background:rgba(255,138,31,.07);
+}
+.burnin-caption{
+  position:absolute;right:38px;top:78px;width:144px;height:22px;
+  border-radius:6px;background:rgba(20,16,12,.84);
+  animation:burnin-caption-fade 4.4s ease-in-out infinite;
+}
+.burnin-caption::before{
+  content:"";position:absolute;left:14px;top:9px;width:116px;height:5px;
+  border-radius:3px;background:rgba(255,255,255,.88);
+}
+.burnin-timeline{
+  position:absolute;right:0;top:130px;width:220px;height:22px;
+  border-radius:8px;border:1px solid rgba(255,138,31,.22);background:rgba(255,138,31,.05);
+  display:flex;align-items:center;gap:6px;padding:0 8px;
+}
+.burnin-block{height:12px;border-radius:4px;background:rgba(255,138,31,.5)}
+.burnin-block.b1{width:34px}
+.burnin-block.b2{width:52px}
+.burnin-block.b3{width:28px}
+.burnin-playhead{
+  position:absolute;top:126px;width:2px;height:30px;background:rgba(255,90,60,.9);
+  filter:drop-shadow(0 0 4px rgba(255,90,60,.5));
+  animation:burnin-scrub 4.4s ease-in-out infinite;
+}
+@keyframes burnin-caption-fade{0%,40%{opacity:1}50%{opacity:0}60%,100%{opacity:1}}
+@keyframes burnin-scrub{0%,100%{right:194px}50%{right:34px}}
+
 /* Taily — pet task checklist */
 .card.taily{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#fff6ee,#fff5f9)}
 [data-theme="dark"] .card.taily{background:linear-gradient(145deg,#2a1200,#1a081a)}
@@ -638,7 +673,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 @media(max-width:960px){
   .nav-inner{grid-template-columns:auto 1fr auto}
   .nav-links{display:none}
-  .card.taily,.card.nora{grid-column:span 12}
+  .card.burnin,.card.taily,.card.nora{grid-column:span 12}
   .card.edergi,.card.utts,.card.doa,.card.getir,.card.wewalk{grid-column:span 12}
   .about-bottom,.cv-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
   .about-stats{grid-template-columns:1fr 1fr}
@@ -756,6 +791,28 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
     <h2 class="section-title reveal d1" data-i="proj_h2"></h2>
     <div class="bento">
 
+      <!-- Hidden until Burnin has a real App Store listing. Remove `hidden`, point the
+           href at the App Store URL, and renumber the cards below back up by one when it ships. -->
+      <a class="card burnin reveal" href="https://getburninapp.netlify.app/" target="_blank" rel="noreferrer" hidden>
+        <span class="card-arrow">↗</span>
+        <div class="card-head">
+          <p class="card-num">01</p>
+          <h3 data-i="pb_title"></h3>
+          <p data-i="pb_desc"></p>
+        </div>
+        <div class="pv burnin-frame">
+          <div class="burnin-screen"></div>
+          <div class="burnin-caption"></div>
+          <div class="burnin-timeline">
+            <div class="burnin-block b1"></div>
+            <div class="burnin-block b2"></div>
+            <div class="burnin-block b3"></div>
+          </div>
+          <div class="burnin-playhead"></div>
+        </div>
+        <div class="card-tags"><span data-i="pb_tag1"></span><span data-i="pb_tag2"></span><span data-i="pb_tag3"></span></div>
+      </a>
+
       <a class="card taily reveal" href="https://apps.apple.com/tr/app/taily-daily-pet-care-tracker/id6761016212?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
@@ -813,7 +870,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
             <circle class="nn-node-calm nn-c3" cx="245" cy="115" r="6"/>
           </svg>
         </div>
-        <div class="card-tags"><span>HRV takibi</span><span>Kriz modu</span><span>Apple Watch</span><span>Gizlilik</span></div>
+        <div class="card-tags"><span data-i="p5_tag1"></span><span data-i="p5_tag2"></span><span data-i="p5_tag3"></span><span data-i="p5_tag4"></span></div>
       </a>
 
       <a class="card edergi reveal" href="https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075?l=tr" target="_blank" rel="noreferrer">
@@ -832,7 +889,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
             <div class="page-back"></div>
           </div>
         </div>
-        <div class="card-tags"><span>Dergi &amp; gazete</span><span>Sesli Gündem</span><span>Çevrimdışı okuma</span></div>
+        <div class="card-tags"><span data-i="p2_tag1"></span><span data-i="p2_tag2"></span><span data-i="p2_tag3"></span></div>
       </a>
 
       <a class="card utts reveal d1" href="https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572?l=tr" target="_blank" rel="noreferrer">
@@ -852,7 +909,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
             <div class="plate-check">✓</div>
           </div>
         </div>
-        <div class="card-tags"><span>Akaryakıt istasyonu</span><span>Plaka aktarımı</span><span>Pompa fişi</span></div>
+        <div class="card-tags"><span data-i="p7_tag1"></span><span data-i="p7_tag2"></span><span data-i="p7_tag3"></span></div>
       </a>
 
       <a class="card doa reveal d2" href="https://apps.apple.com/tr/app/doa/id6499423131?l=tr" target="_blank" rel="noreferrer">
@@ -867,7 +924,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
           <div class="bottle two"></div>
           <div class="return-arrow"></div>
         </div>
-        <div class="card-tags"><span>İade noktaları</span><span>Geri dönüşüm</span><span>İade bedeli</span></div>
+        <div class="card-tags"><span data-i="p8_tag1"></span><span data-i="p8_tag2"></span><span data-i="p8_tag3"></span></div>
       </a>
 
       <a class="card getir reveal" href="https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265?l=tr" target="_blank" rel="noreferrer">
@@ -883,7 +940,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
           <div class="bag-item b2"></div>
           <div class="bag"></div>
         </div>
-        <div class="card-tags"><span>Market</span><span>Yemek</span><span>Sipariş akışı</span></div>
+        <div class="card-tags"><span data-i="p6_tag1"></span><span data-i="p6_tag2"></span><span data-i="p6_tag3"></span></div>
       </a>
 
       <a class="card wewalk reveal d1" href="https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911?l=tr" target="_blank" rel="noreferrer">
@@ -901,7 +958,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
             <circle class="map-end" cx="218" cy="44" r="9"/>
           </svg>
         </div>
-        <div class="card-tags"><span>Erişilebilirlik</span><span>Akıllı harita</span><span>Bağımsız hareket</span></div>
+        <div class="card-tags"><span data-i="p3_tag1"></span><span data-i="p3_tag2"></span><span data-i="p3_tag3"></span></div>
       </a>
 
     </div>
@@ -1002,18 +1059,25 @@ const S={
     about_quote_dim:"Ama ürün neyi gerektiriyorsa onu seçerim. Araç, ihtiyaca göre şekillenir.",
     stat1:"Yıllık deneyim",stat2:"Şirket",stat3:"Yayındaki uygulama",
     proj_label:"Seçtiğim işler",proj_h2:"Yayına çıkan, kullanılan ve büyüyen ürünler.",
+    pb_title:"Burnin",pb_desc:"Videodaki konuşmayı telefonda yazıya döken, boşlukları ve konuşmacıları otomatik tespit eden, düzenlenebilir altyazıları videoya gömen iOS uygulaması.",pb_tag1:"Otomatik altyazı",pb_tag2:"Konuşmacı ayrımı",pb_tag3:"Hesap yok",
     pt_title:"Taily",pt_desc:"Evcil hayvan bakımını evdekilerle paylaşan günlük kontrol listesi. Kim mama verdi, kum kabı temizlendi mi - herkes anında görür.",pt_done:"Bugün tamamlandı",pt_tag1:"Evcil hayvan",pt_tag2:"Evdekiler",pt_tag3:"Anlık bildirim",
     p2_title:"e-Dergi",
     p2_desc:"Yüzlerce e-dergi ve gazeteyi tek yerde sunan dijital okuma platformu. Favoriler, çevrimdışı okuma ve yapay zeka destekli Sesli Gündem.",
+    p2_tag1:"Dergi & gazete",p2_tag2:"Sesli Gündem",p2_tag3:"Çevrimdışı okuma",
     p3_desc:"Görme engelli kullanıcıların şehirde daha özgür hareket etmesine yardımcı olan akıllı harita deneyimi.",
+    p3_tag1:"Erişilebilirlik",p3_tag2:"Akıllı harita",p3_tag3:"Bağımsız hareket",
     p5_title:"Nora",
     p5_desc:"Panik anında nefes egzersiziyle yanında olan, sakinleşince de HRV, semptom ve duygu kayıtlarından bedeninin verdiği sinyalleri anlamana yardım eden sağlık uygulaması.",
+    p5_tag1:"HRV takibi",p5_tag2:"Kriz modu",p5_tag3:"Apple Watch",p5_tag4:"Gizlilik",
     p6_title:"getir",
     p6_desc:"Market, yemek ve günlük ihtiyaç siparişlerini hızlıca kullanıcıya ulaştıran yüksek trafikli teslimat deneyimi.",
+    p6_tag1:"Market",p6_tag2:"Yemek",p6_tag3:"Sipariş akışı",
     p7_title:"UTTS",
     p7_desc:"Akaryakıt satışlarında vergi güvenliği için geliştirilen Ulusal Taşıt Tanıma Sistemi. Plaka bilgisinin otomatik iletildiği ve satışın kayıt altına alındığı akışlar.",
+    p7_tag1:"Akaryakıt istasyonu",p7_tag2:"Plaka aktarımı",p7_tag3:"Pompa fişi",
     p8_title:"DOA",
     p8_desc:"Depozitosu olan ambalajları iade noktalarıyla buluşturan geri dönüşüm sistemi.",
+    p8_tag1:"İade noktaları",p8_tag2:"Geri dönüşüm",p8_tag3:"İade bedeli",
     cv_label:"CV",cv_h2:"Deneyim. Ürünle birlikte büyüyen.",
     cv_intro:"Ürün Odaklı iOS Mühendisi olarak odağım net: iyi mobil ürün, güçlü ekip standardı ve zamanında teslimat.",
     cv_now:"günümüz",cv_degree:"Yazılım Mühendisliği",cv_dl:"CV'yi indir",
@@ -1042,18 +1106,25 @@ const S={
     about_quote_dim:"But I choose what the product requires. The tool follows the need.",
     stat1:"Years",stat2:"Companies",stat3:"Live apps",
     proj_label:"Selected work",proj_h2:"App Store work with real users and real scale.",
+    pb_title:"Burnin",pb_desc:"An iOS app that transcribes speech on the phone, detects gaps and speakers automatically, and burns editable captions into the video.",pb_tag1:"Automatic captions",pb_tag2:"Speaker labeling",pb_tag3:"No account",
     pt_title:"Taily",pt_desc:"A shared daily checklist for pet care. Who fed the cat? Was the litter box cleaned? Everyone in the household knows instantly.",pt_done:"Done today",pt_tag1:"Pet care",pt_tag2:"Household",pt_tag3:"Push notifications",
     p2_title:"e-Magazine",
     p2_desc:"A digital reading platform for hundreds of magazines and newspapers. Favorites, offline reading, and AI-powered audio news highlights.",
+    p2_tag1:"Magazines & newspapers",p2_tag2:"Audio digest",p2_tag3:"Offline reading",
     p3_desc:"A smart map experience that helps visually impaired users move through the city with more confidence and independence.",
+    p3_tag1:"Accessibility",p3_tag2:"Smart map",p3_tag3:"Independent mobility",
     p5_title:"Nora",
     p5_desc:"A health app that guides users through panic moments, then helps them understand body signals through HRV, symptom logs, mood check-ins, and privacy-first insights.",
+    p5_tag1:"HRV tracking",p5_tag2:"Crisis mode",p5_tag3:"Apple Watch",p5_tag4:"Privacy",
     p6_title:"getir",
     p6_desc:"A high-traffic delivery experience for groceries, food, and daily needs. Work focused on making core ordering flows more reliable at scale.",
+    p6_tag1:"Groceries",p6_tag2:"Food",p6_tag3:"Order flow",
     p7_title:"UTTS",
     p7_desc:"National Vehicle Recognition System for tax-secure fuel sales. Vehicle plate data is transferred automatically and each sale is recorded in the regulated flow.",
+    p7_tag1:"Fuel stations",p7_tag2:"Plate recognition",p7_tag3:"Pump receipts",
     p8_title:"DOA",
     p8_desc:"A recycling system that connects deposit packaging with return points. Each return supports the environment and gives users deposit value back.",
+    p8_tag1:"Return points",p8_tag2:"Recycling",p8_tag3:"Deposit refund",
     cv_label:"CV",cv_h2:"Experience line.",
     cv_intro:"A career shaped around product-minded iOS engineering, mobile product development, team standards, and delivery.",
     cv_now:"present",cv_degree:"Software Engineering",cv_dl:"Download CV",
