@@ -514,6 +514,52 @@ nav{
 @keyframes burnin-caption-fade{0%,40%{opacity:1}50%{opacity:0}60%,100%{opacity:1}}
 @keyframes burnin-scrub{0%,100%{right:194px}50%{right:34px}}
 
+/* ─── SHIPPING ────────────────────────────────────────────── */
+.shipping{
+  padding:120px 0;
+  background:var(--paper);
+  border-top:1px solid var(--hair);
+  transition:background .35s,border-color .35s;
+}
+.shipping-lead{color:var(--muted);font-size:18px;line-height:1.6;max-width:680px;margin-top:28px}
+.shipping-pipeline{
+  list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;
+  margin-top:52px;
+}
+.shipping-step{
+  position:relative;padding:22px 20px;
+  border:1px solid var(--line);border-radius:16px;background:var(--bg);
+  transition:background .35s,border-color .35s;
+}
+.shipping-step::after{
+  content:"→";content:"→"/"";
+  position:absolute;top:50%;right:-21px;transform:translateY(-50%);
+  font-size:16px;color:var(--soft);
+}
+.shipping-step:last-child::after{display:none}
+.shipping-step-human{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.shipping-step-num{display:block;font-size:12px;font-weight:700;color:var(--soft);margin-bottom:10px}
+.shipping-step-human .shipping-step-num{color:var(--blue)}
+.shipping-step h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.shipping-step p{color:var(--muted);font-size:14px;line-height:1.5}
+.shipping-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+.shipping-card{
+  padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--bg);
+  transition:background .35s,border-color .35s;
+}
+.shipping-card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.shipping-card p{color:var(--muted);font-size:15px;line-height:1.5}
+.shipping-live{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:40px}
+.shipping-live-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-right:6px}
+.shipping-live a{
+  display:inline-flex;align-items:center;gap:6px;min-height:36px;
+  padding:7px 14px;border:1px solid var(--line);border-radius:999px;
+  background:var(--panel);color:var(--ink);font-size:13px;font-weight:600;
+  transition:background .2s,border-color .35s;
+}
+.shipping-live a:hover{background:rgba(128,128,128,.12)}
+.shipping-live a span{color:var(--soft)}
+
 /* ─── CV ──────────────────────────────────────────────────── */
 .cv{
   padding:120px 0;
@@ -618,6 +664,9 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
   .about-stat:nth-child(2){border-right:0}
   .about-stat:nth-child(3){grid-column:span 2;border-right:0}
   .job{grid-template-columns:140px 1fr}
+  .shipping-pipeline{grid-template-columns:1fr;gap:28px;max-width:560px}
+  .shipping-step::after{content:"↓";content:"↓"/"";top:auto;right:auto;bottom:-25px;left:28px;transform:none}
+  .shipping-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   .card.edergi,.card.utts,.card.doa{grid-column:span 12}
@@ -629,6 +678,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
   .job{grid-template-columns:1fr;gap:4px}
   .hero-name{font-size:22vw}
   .bento{gap:10px}
+  .shipping-grid{grid-template-columns:1fr}
 }
 </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -648,6 +698,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
     <ul class="nav-links">
       <li><a href="#about" data-i="nav_about"></a></li>
       <li><a href="#projects" data-i="nav_projects"></a></li>
+      <li><a href="#shipping" data-i="nav_shipping"></a></li>
       <li><a href="#cv" data-i="nav_cv"></a></li>
       <li><a href="#contact" data-i="nav_contact"></a></li>
     </ul>
@@ -688,11 +739,11 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 
     <div class="about-stats reveal d2">
       <div class="about-stat">
-        <div class="about-stat-num"><span id="s1">0</span><sup>+</sup></div>
+        <div class="about-stat-num"><span id="s1">6</span><sup>+</sup></div>
         <p class="about-stat-label" data-i="stat1"></p>
       </div>
       <div class="about-stat">
-        <div class="about-stat-num"><span id="s2">0</span></div>
+        <div class="about-stat-num"><span id="s2">9</span></div>
         <p class="about-stat-label" data-i="stat2"></p>
       </div>
       <div class="about-stat">
@@ -875,6 +926,61 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 </section>
 
 
+<!-- ─── SHIPPING ──────────────────────────────────────────── -->
+<section class="shipping" id="shipping" aria-labelledby="shippingTitle">
+  <div class="wrap">
+    <p class="section-eyebrow reveal" data-i="ship_label"></p>
+    <h2 class="section-title reveal d1" id="shippingTitle" data-i="ship_h2"></h2>
+    <p class="shipping-lead reveal d2" data-i="ship_lead"></p>
+
+    <ol class="shipping-pipeline reveal">
+      <li class="shipping-step">
+        <span class="shipping-step-num">01</span>
+        <h3 data-i="ship_step1_title"></h3>
+        <p data-i="ship_step1_desc"></p>
+      </li>
+      <li class="shipping-step">
+        <span class="shipping-step-num">02</span>
+        <h3 data-i="ship_step2_title"></h3>
+        <p data-i="ship_step2_desc"></p>
+      </li>
+      <li class="shipping-step">
+        <span class="shipping-step-num">03</span>
+        <h3 data-i="ship_step3_title"></h3>
+        <p data-i="ship_step3_desc"></p>
+      </li>
+      <li class="shipping-step">
+        <span class="shipping-step-num">04</span>
+        <h3 data-i="ship_step4_title"></h3>
+        <p data-i="ship_step4_desc"></p>
+      </li>
+      <li class="shipping-step shipping-step-human">
+        <span class="shipping-step-num">05</span>
+        <h3 data-i="ship_step5_title"></h3>
+        <p data-i="ship_step5_desc"></p>
+      </li>
+    </ol>
+
+    <div class="shipping-grid">
+      <div class="shipping-card reveal"><h3 data-i="ship_card1_title"></h3><p data-i="ship_card1_desc"></p></div>
+      <div class="shipping-card reveal d1"><h3 data-i="ship_card2_title"></h3><p data-i="ship_card2_desc"></p></div>
+      <div class="shipping-card reveal d2"><h3 data-i="ship_card3_title"></h3><p data-i="ship_card3_desc"></p></div>
+      <div class="shipping-card reveal"><h3 data-i="ship_card4_title"></h3><p data-i="ship_card4_desc"></p></div>
+      <div class="shipping-card reveal d1"><h3 data-i="ship_card5_title"></h3><p data-i="ship_card5_desc"></p></div>
+      <div class="shipping-card reveal d2"><h3 data-i="ship_card6_title"></h3><p data-i="ship_card6_desc"></p></div>
+      <div class="shipping-card reveal"><h3 data-i="ship_card7_title"></h3><p data-i="ship_card7_desc"></p></div>
+      <div class="shipping-card reveal d1"><h3 data-i="ship_card8_title"></h3><p data-i="ship_card8_desc"></p></div>
+    </div>
+
+    <div class="shipping-live reveal">
+      <span class="shipping-live-label" data-i="ship_live"></span>
+      <a href="https://bito.yusasarisoy.com" target="_blank" rel="noopener">bito.yusasarisoy.com <span aria-hidden="true">↗</span></a>
+      <a href="https://burnin.yusasarisoy.com" target="_blank" rel="noopener">burnin.yusasarisoy.com <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+
 <!-- ─── CV ────────────────────────────────────────────────── -->
 <section class="cv" id="cv">
   <div class="wrap">
@@ -955,7 +1061,7 @@ const S={
   tr:{
     page_title:"Yuşa Sarısoy | Ürün Odaklı iOS Mühendisi",
     page_desc:"Yuşa Sarısoy, Ürün Odaklı iOS Mühendisi",
-    nav_about:"Hakkımda",nav_projects:"Projeler",nav_cv:"CV",nav_contact:"İletişim",
+    nav_about:"Hakkımda",nav_projects:"Projeler",nav_shipping:"Yayın",nav_cv:"CV",nav_contact:"İletişim",
     hero_stage_badge:"Ürün Odaklı iOS Mühendisi",
     hero_stage_title:"Kullanıcı gibi düşünür, mühendis gibi uygularım.",
     hero_stage_sub:"İyi kod yazmak gerekir ama asıl ölçüt kullanıcıya ne hissettirdiğim.",
@@ -986,6 +1092,22 @@ const S={
     p8_title:"DOA",
     p8_desc:"Depozitosu olan ambalajları iade noktalarıyla buluşturan geri dönüşüm sistemi.",
     p8_tag1:"İade noktaları",p8_tag2:"Geri dönüşüm",p8_tag3:"İade bedeli",
+    ship_label:"Perde arkası",ship_h2:"Uygulamalarımı nasıl yayınlıyorum",
+    ship_lead:"Kendi uygulamalarım, kurduğum ve sürdürdüğüm bir yayın hattında çalışıyor. Tek merkez, beş uygulama, her ayın 10'unda yeni bir sürüm. Sürüm notları her uygulamanın desteklediği tüm dillerde yazılıyor.",
+    ship_step1_title:"Commit",ship_step1_desc:"İş main'e gelir. Son sürümden bu yana atılan commit'ler sürüm notlarının kaynağı olur.",
+    ship_step2_title:"Build",ship_step2_desc:"Her ayın 10'unda merkez her uygulamanın sürümünü belirleyip tag'ler. Xcode Cloud bu tag'i derler.",
+    ship_step3_title:"Lokalizasyon",ship_step3_desc:"Yenilikler metni bu commit'lerden, uygulamanın desteklediği her dilde yazılır ve sürümle birlikte commit'lenir.",
+    ship_step4_title:"Yayın",ship_step4_desc:"Build ve notları App Store Connect'e ulaşır. Yayın hattına bağlı uygulama siteleri Cloudflare Pages'te güncellenir.",
+    ship_step5_title:"İnceleme",ship_step5_desc:"Her sürümü ve notu okur, gerekirse düzenler, incelemeye elle gönderirim. Bilerek.",
+    ship_card1_title:"Yayın otomasyonu",ship_card1_desc:"Tek merkez beş uygulamayı sabit bir aylık ritimde yürütür: sürüm, tag, sürüm notları ve App Store Connect, hepsi ortak iş akışlarından.",
+    ship_card2_title:"Lokalize sürüm notları",ship_card2_desc:"Her dil için Yenilikler metni commit geçmişinden yazılır, otomatik doğrulanır ve yayından önce benim tarafımdan okunur.",
+    ship_card3_title:"Site ve mağaza uyumlu",ship_card3_desc:"Her sürümden sonra Nora ve Burnin sitelerindeki özellik kartları yayına çıkanla karşılaştırılıp her dilde güncellenir. Site ve mağaza sayfası aynı şeyi anlatır.",
+    ship_card4_title:"8 dil için hazır",ship_card4_desc:"Bito ve Nora; uygulamayı, web sitesini ve sürüm notlarını İngilizce, Türkçe, Almanca, Fransızca, İspanyolca, İtalyanca, Japonca ve Korece sunuyor.",
+    ship_card5_title:"Üretilen mağaza görselleri",ship_card5_desc:"Bito'nun App Store görselleri tasarımlarından her cihaz boyutu ve sekiz dilin tamamı için üretilir. Her metin uygulamanın String Catalog'undan gelir.",
+    ship_card6_title:"Mağazaya hazır siteler",ship_card6_desc:"Canonical URL'ler, sosyal kartlar, çok dilli sayfalar ve App Review için gizlilik, kullanım koşulları ve destek sayfaları.",
+    ship_card7_title:"Yayın bekçisi",ship_card7_desc:"Planlanan saatten altı saat sonra bir kontrol, yayının gerçekten çalıştığını doğrular. Çalışmadıysa issue açar.",
+    ship_card8_title:"İnsan kontrol noktası",ship_card8_desc:"İncelemeye gönderime kadar her şey otomatik. Son karar bir insanda kalıyor.",
+    ship_live:"Canlı örnekler",
     cv_label:"CV",cv_h2:"Deneyim. Ürünle birlikte büyüyen.",
     cv_intro:"Ürün Odaklı iOS Mühendisi olarak odağım net: iyi mobil ürün, güçlü ekip standardı ve zamanında teslimat.",
     cv_now:"günümüz",cv_degree:"Yazılım Mühendisliği",cv_dl:"CV'yi indir",
@@ -1001,7 +1123,7 @@ const S={
   en:{
     page_title:"Yuşa Sarısoy | Product-Minded iOS Engineer",
     page_desc:"Yuşa Sarısoy, Product-Minded iOS Engineer",
-    nav_about:"About",nav_projects:"Projects",nav_cv:"CV",nav_contact:"Contact",
+    nav_about:"About",nav_projects:"Projects",nav_shipping:"Shipping",nav_cv:"CV",nav_contact:"Contact",
     hero_stage_badge:"Product-Minded iOS Engineer",
     hero_stage_title:"I think like a user, build like an engineer.",
     hero_stage_sub:"Good code matters, but what the user feels is what counts.",
@@ -1032,6 +1154,22 @@ const S={
     p8_title:"DOA",
     p8_desc:"A recycling system that connects deposit packaging with return points. Each return supports the environment and gives users deposit value back.",
     p8_tag1:"Return points",p8_tag2:"Recycling",p8_tag3:"Deposit refund",
+    ship_label:"Under the hood",ship_h2:"How I ship apps",
+    ship_lead:"My own apps run on a release pipeline I built and maintain. One hub, five apps, a new release on the 10th of every month, with release notes written in every language each app supports.",
+    ship_step1_title:"Commit",ship_step1_desc:"Work lands on main. The commits since the last release become the source for the release notes.",
+    ship_step2_title:"Build",ship_step2_desc:"On the 10th of every month the hub versions and tags each app. Xcode Cloud builds the tag.",
+    ship_step3_title:"Localize",ship_step3_desc:"What's New is written from those commits, in each language the app supports, and committed with the release.",
+    ship_step4_title:"Publish",ship_step4_desc:"The build and its notes reach App Store Connect. App sites wired into the pipeline update on Cloudflare Pages.",
+    ship_step5_title:"Review",ship_step5_desc:"I read every version and note, edit if needed, and submit by hand. On purpose.",
+    ship_card1_title:"Release automation",ship_card1_desc:"One hub runs five apps on a fixed monthly rhythm: version, tag, release notes and App Store Connect, all from shared workflows.",
+    ship_card2_title:"Localized release notes",ship_card2_desc:"Per-language What's New written from commit history, validated automatically and read by me before release.",
+    ship_card3_title:"Web and store in sync",ship_card3_desc:"After each release, the feature cards on the Nora and Burnin sites are checked against what shipped and updated in every language, so the site and the listing tell the same story.",
+    ship_card4_title:"Built for 8 languages",ship_card4_desc:"Bito and Nora ship their app, website and release notes in English, Turkish, German, French, Spanish, Italian, Japanese and Korean.",
+    ship_card5_title:"Generated store screenshots",ship_card5_desc:"Bito's App Store images are rendered from its designs for every device size in all eight languages, with every string taken from the app's String Catalog.",
+    ship_card6_title:"Store-ready landing pages",ship_card6_desc:"Canonical URLs, social cards, multilingual pages, plus privacy, terms and support for App Review.",
+    ship_card7_title:"Release watchdog",ship_card7_desc:"Six hours after the scheduled time, a check confirms the release actually ran, and opens an issue if it did not.",
+    ship_card8_title:"A human gate",ship_card8_desc:"Everything up to submission is automated. The final call stays with a person.",
+    ship_live:"See it live",
     cv_label:"CV",cv_h2:"Experience line.",
     cv_intro:"A career shaped around product-minded iOS engineering, mobile product development, team standards, and delivery.",
     cv_now:"present",cv_degree:"Software Engineering",cv_dl:"Download CV",
@@ -1099,20 +1237,25 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-/* ─── Count-up ─── */
-function countUp(id,target){
-  let n=0;const el=document.getElementById(id);if(!el)return;
+/* ─── Count-up (visual only: the real values are already in the HTML) ─── */
+function countUp(id){
+  const el=document.getElementById(id);if(!el)return;
+  const target=parseInt(el.textContent,10);if(!(target>0))return;
+  let n=0;
   const go=()=>{n++;el.textContent=n;if(n<target)requestAnimationFrame(go)};go();
 }
-const sobs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    countUp("s1",6);countUp("s2",9);
-    sobs.disconnect();
-  });
-},{threshold:.3});
+const reducedMotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
 const stats=document.querySelector(".about-stats");
-if(stats)sobs.observe(stats);
+if(stats&&!reducedMotion){
+  const sobs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      countUp("s1");countUp("s2");
+      sobs.disconnect();
+    });
+  },{threshold:.3});
+  sobs.observe(stats);
+}
 
 /* ─── Form ─── */
 const form=document.querySelector("form");
