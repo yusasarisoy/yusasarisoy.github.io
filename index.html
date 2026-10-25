@@ -528,25 +528,32 @@ nav{
 }
 .shipping-step{
   position:relative;padding:22px 20px;
-  border:1px solid var(--line);border-radius:16px;background:var(--bg);
-  transition:background .35s,border-color .35s;
+  border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(145deg,var(--bg),var(--paper));
+  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
 }
+.shipping-step:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
 .shipping-step::after{
   content:"→";content:"→"/"";
   position:absolute;top:50%;right:-21px;transform:translateY(-50%);
   font-size:16px;color:var(--soft);
 }
 .shipping-step:last-child::after{display:none}
-.shipping-step-human{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.shipping-step-human,.shipping-step-human:hover{border-color:var(--blue);background:linear-gradient(145deg,#eef6ff,#fff)}
+.shipping-step-human{box-shadow:0 0 0 1px var(--blue)}
+.shipping-step-human:hover{box-shadow:0 0 0 1px var(--blue),var(--shadow)}
+[data-theme="dark"] .shipping-step-human{background:linear-gradient(145deg,#06192a,#101013)}
 .shipping-step-num{display:block;font-size:12px;font-weight:700;color:var(--soft);margin-bottom:10px}
 .shipping-step-human .shipping-step-num{color:var(--blue)}
 .shipping-step h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
 .shipping-step p{color:var(--muted);font-size:14px;line-height:1.5}
 .shipping-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
 .shipping-card{
-  padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--bg);
-  transition:background .35s,border-color .35s;
+  padding:24px;border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(145deg,var(--bg),var(--paper));
+  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
 }
+.shipping-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
 .shipping-card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
 .shipping-card p{color:var(--muted);font-size:15px;line-height:1.5}
 .shipping-live{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:40px}
@@ -563,7 +570,7 @@ nav{
 /* ─── CV ──────────────────────────────────────────────────── */
 .cv{
   padding:120px 0;
-  background:var(--paper);
+  background:var(--bg);
   border-top:1px solid var(--hair);
   transition:background .35s,border-color .35s;
 }
@@ -590,7 +597,7 @@ nav{
 /* ─── CONTACT ─────────────────────────────────────────────── */
 .contact{
   padding:120px 0;
-  background:var(--bg);
+  background:var(--paper);
   border-top:1px solid var(--hair);
   overflow:hidden;position:relative;z-index:10;
   transition:background .35s,border-color .35s;
@@ -620,14 +627,14 @@ nav{
 form{
   display:grid;gap:12px;padding:20px;
   border:1px solid var(--line);border-radius:16px;
-  background:var(--paper);
+  background:var(--bg);
   transition:background .35s,border-color .35s;
 }
 .field{display:grid;gap:7px}
 .field label{font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--soft)}
 .input{
   width:100%;border:1px solid var(--line);border-radius:8px;
-  background:var(--bg);color:var(--ink);padding:12px 13px;
+  background:var(--paper);color:var(--ink);padding:12px 13px;
   outline:none;transition:border-color .18s,box-shadow .18s,background .35s;
 }
 .input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.12)}
