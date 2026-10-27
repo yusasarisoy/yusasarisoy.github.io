@@ -50,6 +50,7 @@
     {
       "@type": "MobileApplication",
       "name": "Airy",
+      "url": "https://airy.yusasarisoy.com/",
       "installUrl": "https://apps.apple.com/app/airy-photo-and-video-cleaner/id6818994109",
       "operatingSystem": "iOS",
       "applicationCategory": "UtilitiesApplication",
@@ -664,16 +665,45 @@ nav{
 .shipping-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
 .shipping-card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
 .shipping-card p{color:var(--muted);font-size:15px;line-height:1.5}
-.shipping-live{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:40px}
-.shipping-live-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-right:6px}
-.shipping-live a{
-  display:inline-flex;align-items:center;gap:6px;min-height:36px;
-  padding:7px 14px;border:1px solid var(--line);border-radius:999px;
-  background:var(--panel);color:var(--ink);font-size:13px;font-weight:600;
-  transition:background .2s,border-color .35s;
+.shipping-live{margin-top:52px}
+.shipping-live-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
+.shipping-live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.live-site{
+  --accent:var(--blue);
+  position:relative;display:flex;flex-direction:column;overflow:hidden;
+  border:1px solid var(--line);border-radius:18px;color:var(--ink);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 9%,var(--paper)),var(--paper) 70%);
+  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
 }
-.shipping-live a:hover{background:rgba(128,128,128,.12)}
-.shipping-live a span{color:var(--soft)}
+.live-site.airy{--accent:#ff4f8b}
+.live-site.burnin{--accent:#ff8a1f}
+.live-site::after{
+  content:"";position:absolute;right:-40px;bottom:-60px;width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%);
+  pointer-events:none;transition:transform .4s;
+}
+.live-site:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.live-site:hover::after{transform:scale(1.25)}
+.live-bar{
+  display:flex;align-items:center;gap:6px;padding:10px 14px;
+  border-bottom:1px solid var(--hair);background:var(--panel);
+}
+.live-bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.live-url{
+  flex:1;min-width:0;margin-left:8px;padding:4px 10px;border-radius:999px;
+  background:var(--hair);color:var(--muted);font-size:12px;font-weight:500;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.live-body{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;padding:24px 20px 8px}
+.live-name{font-size:30px;font-weight:800;letter-spacing:-.01em;line-height:1}
+.live-arrow{font-size:18px;color:var(--soft);transition:transform .25s,color .25s}
+.live-site:hover .live-arrow{transform:translate(3px,-3px);color:var(--accent)}
+.live-status{
+  position:relative;z-index:1;display:flex;align-items:center;gap:8px;
+  padding:0 20px 20px;color:var(--muted);font-size:12px;font-weight:600;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:live-ping 2.4s ease-out infinite}
+@keyframes live-ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent)}70%,100%{box-shadow:0 0 0 7px transparent}}
 
 /* ─── CV ──────────────────────────────────────────────────── */
 .cv{
@@ -795,6 +825,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
   .bento{gap:10px}
   .airy-clean{bottom:110px}
   .shipping-grid{grid-template-columns:1fr}
+  .shipping-live-grid{grid-template-columns:1fr}
 }
 </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -1112,9 +1143,24 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
     </div>
 
     <div class="shipping-live reveal">
-      <span class="shipping-live-label" data-i="ship_live"></span>
-      <a href="https://bito.yusasarisoy.com" target="_blank" rel="noopener">bito.yusasarisoy.com <span aria-hidden="true">↗</span></a>
-      <a href="https://burnin.yusasarisoy.com" target="_blank" rel="noopener">burnin.yusasarisoy.com <span aria-hidden="true">↗</span></a>
+      <p class="shipping-live-label" data-i="ship_live"></p>
+      <div class="shipping-live-grid">
+      <a class="live-site airy" href="https://airy.yusasarisoy.com" target="_blank" rel="noopener">
+        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">airy.yusasarisoy.com</span></span>
+        <span class="live-body"><span class="live-name">Airy</span><span class="live-arrow" aria-hidden="true">↗</span></span>
+        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
+      </a>
+      <a class="live-site" href="https://bito.yusasarisoy.com" target="_blank" rel="noopener">
+        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">bito.yusasarisoy.com</span></span>
+        <span class="live-body"><span class="live-name">Bito</span><span class="live-arrow" aria-hidden="true">↗</span></span>
+        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
+      </a>
+      <a class="live-site burnin" href="https://burnin.yusasarisoy.com" target="_blank" rel="noopener">
+        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">burnin.yusasarisoy.com</span></span>
+        <span class="live-body"><span class="live-name">Burnin</span><span class="live-arrow" aria-hidden="true">↗</span></span>
+        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
+      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1247,7 +1293,7 @@ const S={
     ship_card6_title:"Mağazaya hazır siteler",ship_card6_desc:"Canonical URL'ler, sosyal kartlar, çok dilli sayfalar ve App Review için gizlilik, kullanım koşulları ve destek sayfaları.",
     ship_card7_title:"Yayın bekçisi",ship_card7_desc:"Planlanan bir yayın çalışmazsa aynı gün haberim olur.",
     ship_card8_title:"İnsan kontrol noktası",ship_card8_desc:"İncelemeye gönderime kadar her şey otomatik. Son karar bir insanda kalıyor.",
-    ship_live:"Canlı örnekler",
+    ship_live:"Canlı örnekler",ship_live_status:"Yayında",
     cv_label:"CV",cv_h2:"Deneyim. Ürünle birlikte büyüyen.",
     cv_intro:"Ürün Odaklı iOS Mühendisi olarak odağım net: iyi mobil ürün, güçlü ekip standardı ve zamanında teslimat.",
     cv_now:"günümüz",cv_degree:"Yazılım Mühendisliği",cv_dl:"CV'yi indir",
@@ -1310,7 +1356,7 @@ const S={
     ship_card6_title:"Store-ready landing pages",ship_card6_desc:"Canonical URLs, social cards, multilingual pages, plus privacy, terms and support for App Review.",
     ship_card7_title:"Release watchdog",ship_card7_desc:"If a scheduled release doesn't run, I hear about it the same day.",
     ship_card8_title:"A human gate",ship_card8_desc:"Everything up to submission is automated. The final call stays with a person.",
-    ship_live:"See it live",
+    ship_live:"See it live",ship_live_status:"Live",
     cv_label:"CV",cv_h2:"Experience line.",
     cv_intro:"A career shaped around product-minded iOS engineering, mobile product development, team standards, and delivery.",
     cv_now:"present",cv_degree:"Software Engineering",cv_dl:"Download CV",
