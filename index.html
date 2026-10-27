@@ -49,6 +49,14 @@
     },
     {
       "@type": "MobileApplication",
+      "name": "Airy",
+      "installUrl": "https://apps.apple.com/app/airy-photo-and-video-cleaner/id6818994109",
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "author": { "@id": "https://yusasarisoy.com/#person" }
+    },
+    {
+      "@type": "MobileApplication",
       "name": "Nora",
       "url": "https://nora.yusasarisoy.com/",
       "installUrl": "https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722",
@@ -577,6 +585,43 @@ nav{
 @keyframes burnin-caption-fade{0%,40%{opacity:1}50%{opacity:0}60%,100%{opacity:1}}
 @keyframes burnin-scrub{0%,100%{right:194px}50%{right:34px}}
 
+/* Airy: photo and video cleanup */
+.card.airy{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#fff0f6,#fff8fb)}
+[data-theme="dark"] .card.airy{background:linear-gradient(145deg,#2a0b1c,#101013)}
+.airy-clean{width:220px;height:158px}
+.airy-grid{position:absolute;right:0;top:0;display:grid;grid-template-columns:repeat(4,46px);gap:8px}
+.airy-tile{
+  position:relative;width:46px;height:46px;border-radius:10px;
+  border:1px solid rgba(255,79,139,.22);background:rgba(255,79,139,.1);
+}
+.airy-tile.t3,.airy-tile.t8{background:rgba(255,79,139,.18)}
+.airy-tile.t5{background:rgba(255,79,139,.06)}
+.airy-tile.junk{animation:airy-sweep 5s ease-in-out infinite}
+.airy-tile.t4{animation-delay:.15s}
+.airy-tile.t6{animation-delay:.3s}
+.airy-tile.junk::after{
+  content:"";position:absolute;right:-5px;top:-5px;width:16px;height:16px;border-radius:50%;
+  background:#ff4f8b;box-shadow:0 0 0 2px var(--paper);
+  animation:airy-mark 5s ease-in-out infinite;animation-delay:inherit;
+}
+.airy-storage{
+  position:absolute;right:0;top:128px;width:208px;height:12px;border-radius:6px;
+  border:1px solid rgba(255,79,139,.22);background:rgba(255,79,139,.05);overflow:hidden;
+}
+.airy-storage-fill{
+  height:100%;width:86%;border-radius:6px;background:linear-gradient(90deg,#ff4f8b,#ff8fb4);
+  animation:airy-free 5s ease-in-out infinite;
+}
+[data-theme="dark"] .airy-tile.junk::after{box-shadow:0 0 0 2px #101013}
+@keyframes airy-mark{0%,15%{transform:scale(0)}25%,45%{transform:scale(1)}55%,100%{transform:scale(0)}}
+@keyframes airy-sweep{
+  0%,25%{transform:none;opacity:1;border-color:rgba(255,79,139,.22)}
+  30%,42%{transform:none;opacity:1;border-color:rgba(255,79,139,.9)}
+  55%,85%{transform:translateY(-14px) scale(.4);opacity:0}
+  95%,100%{transform:none;opacity:1;border-color:rgba(255,79,139,.22)}
+}
+@keyframes airy-free{0%,45%{width:86%}60%,85%{width:48%}97%,100%{width:86%}}
+
 /* ─── SHIPPING ────────────────────────────────────────────── */
 .shipping{
   padding:120px 0;
@@ -727,7 +772,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
 @media(max-width:960px){
   .nav-inner{grid-template-columns:auto 1fr auto}
   .nav-links{display:none}
-  .card.burnin,.card.nora{grid-column:span 12}
+  .card.airy,.card.burnin,.card.nora{grid-column:span 12}
   .card.edergi,.card.utts,.card.doa,.card.getir,.card.wewalk{grid-column:span 12}
   .about-bottom,.cv-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
   .about-stats{grid-template-columns:1fr 1fr}
@@ -748,6 +793,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
   .job{grid-template-columns:1fr;gap:4px}
   .hero-name{font-size:22vw}
   .bento{gap:10px}
+  .airy-clean{bottom:110px}
   .shipping-grid{grid-template-columns:1fr}
 }
 </style>
@@ -850,10 +896,33 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
     <h2 class="section-title reveal d1" data-i="proj_h2"></h2>
     <div class="bento">
 
-      <a class="card burnin reveal" href="https://apps.apple.com/tr/app/burnin-video-captions/id6810343491?l=tr" target="_blank" rel="noreferrer">
+      <a class="card airy reveal" href="https://apps.apple.com/app/airy-photo-and-video-cleaner/id6818994109" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
           <p class="card-num">01</p>
+          <h3 data-i="pa_title"></h3>
+          <p data-i="pa_desc"></p>
+        </div>
+        <div class="pv airy-clean">
+          <div class="airy-grid">
+            <div class="airy-tile t1"></div>
+            <div class="airy-tile t2 junk"></div>
+            <div class="airy-tile t3"></div>
+            <div class="airy-tile t4 junk"></div>
+            <div class="airy-tile t5"></div>
+            <div class="airy-tile t6 junk"></div>
+            <div class="airy-tile t7"></div>
+            <div class="airy-tile t8"></div>
+          </div>
+          <div class="airy-storage"><div class="airy-storage-fill"></div></div>
+        </div>
+        <div class="card-tags"><span data-i="pa_tag1"></span><span data-i="pa_tag2"></span><span data-i="pa_tag3"></span></div>
+      </a>
+
+      <a class="card burnin reveal d1" href="https://apps.apple.com/tr/app/burnin-video-captions/id6810343491?l=tr" target="_blank" rel="noreferrer">
+        <span class="card-arrow">↗</span>
+        <div class="card-head">
+          <p class="card-num">02</p>
           <h3 data-i="pb_title"></h3>
           <p data-i="pb_desc"></p>
         </div>
@@ -870,10 +939,10 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
         <div class="card-tags"><span data-i="pb_tag1"></span><span data-i="pb_tag2"></span><span data-i="pb_tag3"></span></div>
       </a>
 
-      <a class="card nora reveal d1" href="https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722" target="_blank" rel="noreferrer">
+      <a class="card nora reveal" href="https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">02</p>
+          <p class="card-num">03</p>
           <h3 data-i="p5_title"></h3>
           <p data-i="p5_desc"></p>
         </div>
@@ -906,7 +975,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card edergi reveal" href="https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">03</p>
+          <p class="card-num">04</p>
           <h3 data-i="p2_title"></h3>
           <p data-i="p2_desc"></p>
         </div>
@@ -925,7 +994,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card utts reveal d1" href="https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">04</p>
+          <p class="card-num">05</p>
           <h3 data-i="p7_title"></h3>
           <p data-i="p7_desc"></p>
         </div>
@@ -945,7 +1014,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card doa reveal d2" href="https://apps.apple.com/tr/app/doa/id6499423131?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">05</p>
+          <p class="card-num">06</p>
           <h3 data-i="p8_title"></h3>
           <p data-i="p8_desc"></p>
         </div>
@@ -960,7 +1029,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card getir reveal" href="https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">06</p>
+          <p class="card-num">07</p>
           <h3 data-i="p6_title"></h3>
           <p data-i="p6_desc"></p>
         </div>
@@ -976,7 +1045,7 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
       <a class="card wewalk reveal d1" href="https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911?l=tr" target="_blank" rel="noreferrer">
         <span class="card-arrow">↗</span>
         <div class="card-head">
-          <p class="card-num">07</p>
+          <p class="card-num">08</p>
           <h3>WeWALK</h3>
           <p data-i="p3_desc"></p>
         </div>
@@ -1144,6 +1213,7 @@ const S={
     about_quote_dim:"Ama ürün neyi gerektiriyorsa onu seçerim. Araç, ihtiyaca göre şekillenir.",
     stat1:"Yıllık deneyim",stat2:"Şirket",stat3:"Yayındaki uygulama",
     proj_label:"Seçtiğim işler",proj_h2:"Yayına çıkan, kullanılan ve büyüyen ürünler.",
+    pa_title:"Airy",pa_desc:"Galerindeki artık ihtiyacın olmayan fotoğraf ve videoları ayıklayıp telefonunda yer açmana yardım eden iOS uygulaması.",pa_tag1:"Fotoğraf temizliği",pa_tag2:"Video temizliği",pa_tag3:"Daha fazla alan",
     pb_title:"Burnin",pb_desc:"Videodaki konuşmayı telefonda yazıya döken, boşlukları ve konuşmacıları otomatik tespit eden, düzenlenebilir altyazıları videoya gömen iOS uygulaması.",pb_tag1:"Otomatik altyazı",pb_tag2:"Konuşmacı ayrımı",pb_tag3:"Hesap yok",
     p2_title:"e-Dergi",
     p2_desc:"Yüzlerce e-dergi ve gazeteyi tek yerde sunan dijital okuma platformu. Favoriler, çevrimdışı okuma ve yapay zeka destekli Sesli Gündem.",
@@ -1206,6 +1276,7 @@ const S={
     about_quote_dim:"But I choose what the product requires. The tool follows the need.",
     stat1:"Years",stat2:"Companies",stat3:"Live apps",
     proj_label:"Selected work",proj_h2:"App Store work with real users and real scale.",
+    pa_title:"Airy",pa_desc:"An iOS app that helps you sort out the photos and videos you no longer need and free up space on your phone.",pa_tag1:"Photo cleanup",pa_tag2:"Video cleanup",pa_tag3:"More space",
     pb_title:"Burnin",pb_desc:"An iOS app that transcribes speech on the phone, detects gaps and speakers automatically, and burns editable captions into the video.",pb_tag1:"Automatic captions",pb_tag2:"Speaker labeling",pb_tag3:"No account",
     p2_title:"e-Magazine",
     p2_desc:"A digital reading platform for hundreds of magazines and newspapers. Favorites, offline reading, and AI-powered audio news highlights.",
