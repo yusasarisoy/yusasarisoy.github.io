@@ -269,13 +269,13 @@ nav{
   transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
 }
 .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
-.card.nora{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#eef6ff,#f0f8ff)}
+.card.nora{--nn-hot:217,116,111;--nn-mid:226,166,58;--nn-calm:62,134,80;grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#f4efe6,#f8f4ee)}
 .card.edergi{grid-column:span 6;background:linear-gradient(145deg,#eefbf2,#fff)}
 .card.utts{grid-column:span 6;background:linear-gradient(145deg,#f3efff,#fff)}
 .card.doa{grid-column:span 6;background:linear-gradient(145deg,#fff0ed,#fff)}
 .card.getir{grid-column:span 6;background:linear-gradient(145deg,#fff8dd,#fff)}
 .card.wewalk{grid-column:span 6;background:linear-gradient(145deg,#eafffb,#fff)}
-[data-theme="dark"] .card.nora{background:linear-gradient(145deg,#06192a,#101013)}
+[data-theme="dark"] .card.nora{--nn-hot:210,126,121;--nn-mid:240,180,77;--nn-calm:99,167,114;background:linear-gradient(145deg,#221f17,#101013)}
 [data-theme="dark"] .card.edergi{background:linear-gradient(145deg,#061b0e,#101013)}
 [data-theme="dark"] .card.utts{background:linear-gradient(145deg,#1b1031,#101013)}
 [data-theme="dark"] .card.doa{background:linear-gradient(145deg,#32110f,#101013)}
@@ -316,13 +316,13 @@ nav{
 /* Nora: neural network */
 .nora-neural{width:280px;height:200px;right:0;bottom:68px}
 .nora-neural svg{width:100%;height:100%;overflow:visible}
-.nn-line-hot{stroke:rgba(255,90,95,.32);stroke-width:1.5;fill:none}
-.nn-line{stroke:rgba(139,135,236,.26);stroke-width:1.5;fill:none}
-.nn-line-calm{stroke:rgba(41,198,130,.22);stroke-width:1.5;fill:none}
+.nn-line-hot{stroke:rgba(var(--nn-hot),.32);stroke-width:1.5;fill:none}
+.nn-line{stroke:rgba(var(--nn-mid),.26);stroke-width:1.5;fill:none}
+.nn-line-calm{stroke:rgba(var(--nn-calm),.22);stroke-width:1.5;fill:none}
 .nn-node-hot,.nn-node-mid,.nn-node-calm{transform-box:fill-box;transform-origin:center}
-.nn-node-hot{fill:rgba(255,90,95,.68);filter:drop-shadow(0 0 5px rgba(255,90,95,.65))}
-.nn-node-mid{fill:rgba(139,135,236,.58);filter:drop-shadow(0 0 4px rgba(139,135,236,.5))}
-.nn-node-calm{fill:rgba(41,198,130,.52);filter:drop-shadow(0 0 5px rgba(41,198,130,.5))}
+.nn-node-hot{fill:rgba(var(--nn-hot),.68);filter:drop-shadow(0 0 5px rgba(var(--nn-hot),.65))}
+.nn-node-mid{fill:rgba(var(--nn-mid),.58);filter:drop-shadow(0 0 4px rgba(var(--nn-mid),.5))}
+.nn-node-calm{fill:rgba(var(--nn-calm),.52);filter:drop-shadow(0 0 5px rgba(var(--nn-calm),.5))}
 @keyframes nn-hot{0%,100%{opacity:.65;transform:scale(1)}40%{opacity:1;transform:scale(1.5)}70%{opacity:.75;transform:scale(1.15)}}
 @keyframes nn-mid{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.35)}}
 @keyframes nn-calm{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.88;transform:scale(1.28)}}
@@ -587,39 +587,39 @@ nav{
 @keyframes burnin-scrub{0%,100%{right:194px}50%{right:34px}}
 
 /* Airy: photo and video cleanup */
-.card.airy{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#fff0f6,#fff8fb)}
-[data-theme="dark"] .card.airy{background:linear-gradient(145deg,#2a0b1c,#101013)}
+.card.airy{--airy:15,123,83;grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#e2f2ea,#f6fbf8)}
+[data-theme="dark"] .card.airy{--airy:76,203,147;background:linear-gradient(145deg,#0a2a1d,#101013)}
 .airy-clean{width:220px;height:158px}
 .airy-grid{position:absolute;right:0;top:0;display:grid;grid-template-columns:repeat(4,46px);gap:8px}
 .airy-tile{
   position:relative;width:46px;height:46px;border-radius:10px;
-  border:1px solid rgba(255,79,139,.22);background:rgba(255,79,139,.1);
+  border:1px solid rgba(var(--airy),.22);background:rgba(var(--airy),.1);
 }
-.airy-tile.t3,.airy-tile.t8{background:rgba(255,79,139,.18)}
-.airy-tile.t5{background:rgba(255,79,139,.06)}
+.airy-tile.t3,.airy-tile.t8{background:rgba(var(--airy),.18)}
+.airy-tile.t5{background:rgba(var(--airy),.06)}
 .airy-tile.junk{animation:airy-sweep 5s ease-in-out infinite}
 .airy-tile.t4{animation-delay:.15s}
 .airy-tile.t6{animation-delay:.3s}
 .airy-tile.junk::after{
   content:"";position:absolute;right:-5px;top:-5px;width:16px;height:16px;border-radius:50%;
-  background:#ff4f8b;box-shadow:0 0 0 2px var(--paper);
+  background:rgb(var(--airy));box-shadow:0 0 0 2px var(--paper);
   animation:airy-mark 5s ease-in-out infinite;animation-delay:inherit;
 }
 .airy-storage{
   position:absolute;right:0;top:128px;width:208px;height:12px;border-radius:6px;
-  border:1px solid rgba(255,79,139,.22);background:rgba(255,79,139,.05);overflow:hidden;
+  border:1px solid rgba(var(--airy),.22);background:rgba(var(--airy),.05);overflow:hidden;
 }
 .airy-storage-fill{
-  height:100%;width:86%;border-radius:6px;background:linear-gradient(90deg,#ff4f8b,#ff8fb4);
+  height:100%;width:86%;border-radius:6px;background:linear-gradient(90deg,rgb(var(--airy)),rgba(var(--airy),.55));
   animation:airy-free 5s ease-in-out infinite;
 }
 [data-theme="dark"] .airy-tile.junk::after{box-shadow:0 0 0 2px #101013}
 @keyframes airy-mark{0%,15%{transform:scale(0)}25%,45%{transform:scale(1)}55%,100%{transform:scale(0)}}
 @keyframes airy-sweep{
-  0%,25%{transform:none;opacity:1;border-color:rgba(255,79,139,.22)}
-  30%,42%{transform:none;opacity:1;border-color:rgba(255,79,139,.9)}
+  0%,25%{transform:none;opacity:1;border-color:rgba(var(--airy),.22)}
+  30%,42%{transform:none;opacity:1;border-color:rgba(var(--airy),.9)}
   55%,85%{transform:translateY(-14px) scale(.4);opacity:0}
-  95%,100%{transform:none;opacity:1;border-color:rgba(255,79,139,.22)}
+  95%,100%{transform:none;opacity:1;border-color:rgba(var(--airy),.22)}
 }
 @keyframes airy-free{0%,45%{width:86%}60%,85%{width:48%}97%,100%{width:86%}}
 
@@ -669,17 +669,21 @@ nav{
 .shipping-live-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
 .shipping-live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .live-site{
-  --accent:var(--blue);
+  --accent:var(--blue);--tint:color-mix(in srgb,var(--accent) 9%,var(--paper));--glow:var(--accent);
   position:relative;display:flex;flex-direction:column;overflow:hidden;
   border:1px solid var(--line);border-radius:18px;color:var(--ink);
-  background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 9%,var(--paper)),var(--paper) 70%);
+  background:linear-gradient(145deg,var(--tint),var(--paper) 70%);
   transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
 }
-.live-site.airy{--accent:#ff4f8b}
-.live-site.burnin{--accent:#ff8a1f}
+.live-site.airy{--accent:#0f7b53;--tint:#e2f2ea}
+.live-site.burnin{--accent:#ff8a1f;--tint:#ffead4}
+.live-site.nora{--accent:#1a1814;--tint:#f4efe6;--glow:#ddcfbc}
+[data-theme="dark"] .live-site.airy{--accent:#4ccb93;--tint:#0c2a1e}
+[data-theme="dark"] .live-site.burnin{--tint:#2e1c0b}
+[data-theme="dark"] .live-site.nora{--accent:#f4efe6;--tint:#221f17;--glow:#6b6459}
 .live-site::after{
   content:"";position:absolute;right:-40px;bottom:-60px;width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%);
+  background:radial-gradient(circle,color-mix(in srgb,var(--glow) 28%,transparent),transparent 70%);
   pointer-events:none;transition:transform .4s;
 }
 .live-site:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
@@ -1150,14 +1154,14 @@ footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;tran
         <span class="live-body"><span class="live-name">Airy</span><span class="live-arrow" aria-hidden="true">↗</span></span>
         <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
       </a>
-      <a class="live-site" href="https://bito.yusasarisoy.com" target="_blank" rel="noopener">
-        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">bito.yusasarisoy.com</span></span>
-        <span class="live-body"><span class="live-name">Bito</span><span class="live-arrow" aria-hidden="true">↗</span></span>
-        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
-      </a>
       <a class="live-site burnin" href="https://burnin.yusasarisoy.com" target="_blank" rel="noopener">
         <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">burnin.yusasarisoy.com</span></span>
         <span class="live-body"><span class="live-name">Burnin</span><span class="live-arrow" aria-hidden="true">↗</span></span>
+        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
+      </a>
+      <a class="live-site nora" href="https://nora.yusasarisoy.com" target="_blank" rel="noopener">
+        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">nora.yusasarisoy.com</span></span>
+        <span class="live-body"><span class="live-name">Nora</span><span class="live-arrow" aria-hidden="true">↗</span></span>
         <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
       </a>
       </div>
