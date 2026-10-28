@@ -119,7 +119,7 @@ button{font:inherit;color:inherit}
 .dim{color:var(--dim)}
 .wrap{max-width:1280px;margin:0 auto;padding-left:24px;padding-right:24px}
 [data-entry]{scroll-margin-top:72px}
-kbd{display:inline-block;position:relative;overflow:hidden;font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;line-height:1.5;color:var(--ink);border:1px solid var(--strong);border-radius:4px;padding:0 6px;margin-right:6px}
+kbd{display:inline-block;position:relative;clip-path:inset(0 round 4px);font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;line-height:1.5;color:var(--ink);border:1px solid var(--strong);border-radius:4px;padding:0 6px;margin-right:6px}
 .hold-fill{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--ink)}
 .skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 12px;z-index:100}
 .skip:focus{left:8px}
@@ -392,7 +392,7 @@ body.still .still-layer .dot{animation:breathe 10s ease-in-out infinite}
   <dl class="mono">
     <dt><kbd>w</kbd></dt><dd data-i="keys_w">previous section</dd>
     <dt><kbd>s</kbd></dt><dd data-i="keys_s">next section</dd>
-    <dt><kbd>c</kbd></dt><dd data-i="keys_c">tap for the CV view, hold to save it as a PDF</dd>
+    <dt><kbd>c</kbd></dt><dd data-i="keys_c">tap to open or close the CV view, hold to save it as a PDF</dd>
     <dt><kbd id="keyLight">l</kbd></dt><dd data-i="keys_light">light</dd>
     <dt><kbd id="keyDark">d</kbd></dt><dd data-i="keys_dark">dark</dd>
     <dt><kbd>t</kbd></dt><dd lang="tr">Türkçe</dd>
@@ -485,7 +485,7 @@ const S = {
     hold_aria: "Tap for the CV view, hold to save the CV as a PDF",
     hold_idle: "cv · hold to save", hold_active: "keep holding", hold_saved: "CV.pdf saved",
     keys_title: "Keyboard", keys_w: "previous section", keys_s: "next section",
-    keys_c: "tap for the CV view, hold to save it as a PDF", keys_light: "light", keys_dark: "dark",
+    keys_c: "tap to open or close the CV view, hold to save it as a PDF", keys_light: "light", keys_dark: "dark",
     keys_q: "this list", keys_esc: "close", keys_close: "Close",
     cv_print: "print", cv_pdf: "pdf ↓",
     cv_title: "Product-Minded iOS Engineer, based in İstanbul",
@@ -527,7 +527,7 @@ const S = {
     hold_aria: "Dokun: CV görünümü, basılı tut: CV'yi PDF olarak indir",
     hold_idle: "cv · basılı tut, indir", hold_active: "bırakma", hold_saved: "CV.pdf indirildi",
     keys_title: "Klavye", keys_w: "önceki bölüm", keys_s: "sonraki bölüm",
-    keys_c: "dokun: CV görünümü, basılı tut: PDF olarak indir", keys_light: "açık", keys_dark: "koyu",
+    keys_c: "dokun: CV görünümünü aç ya da kapat, basılı tut: PDF olarak indir", keys_light: "açık", keys_dark: "koyu",
     keys_q: "bu liste", keys_esc: "kapat", keys_close: "Kapat",
     cv_print: "yazdır", cv_pdf: "pdf ↓",
     cv_title: "Ürün Odaklı iOS Mühendisi, İstanbul",
@@ -835,23 +835,34 @@ function beginHold() {
     const progress = Math.min(1, (now - holdStartedAt) / HOLD_MS);
     setFill(progress);
     if (progress < 1) { holdFrame = requestAnimationFrame(tick); return; }
-    holdDone = true;
-    holdStartedAt = 0;
-    downloadPDF();
-    setHoldText("saved");
-    holdReset = setTimeout(() => { setFill(0); setHoldText("idle"); }, 2400);
+    finishHold();
   };
   holdFrame = requestAnimationFrame(tick);
 }
 
+function finishHold() {
+  cancelAnimationFrame(holdFrame);
+  holdDone = true;
+  holdStartedAt = 0;
+  setFill(1);
+  downloadPDF();
+  setHoldText("saved");
+  holdReset = setTimeout(() => { setFill(0); setHoldText("idle"); }, 2400);
+}
+
+/* Releasing decides by elapsed time, so a hold still counts when frames were throttled. */
 function endHold(openOnTap) {
   if (!holdStartedAt) { return; }
   cancelAnimationFrame(holdFrame);
-  const wasTap = performance.now() - holdStartedAt < HOLD_MS;
+  const elapsed = performance.now() - holdStartedAt;
+  if (elapsed >= HOLD_MS && openOnTap) { finishHold(); return; }
+  const wasTap = elapsed < HOLD_MS;
   holdStartedAt = 0;
   setFill(0);
   setHoldText("idle");
-  if (openOnTap && wasTap && !holdDone) { openCV(); }
+  if (openOnTap && wasTap && !holdDone) {
+    if (cvView.hidden) { openCV(); } else { closeCV(); }
+  }
 }
 
 const holdBtn = $("#holdBtn");
