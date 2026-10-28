@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Product-minded iOS engineer with 6+ years and 15+ live apps, built with teams in Istanbul and Berlin: consumer, accessibility, finance and content products.">
+<meta name="theme-color" content="#0a0a0a">
 <title>Yuşa Sarısoy | Product-Minded iOS Engineer</title>
 <link rel="canonical" href="https://yusasarisoy.com/">
 <meta property="og:type" content="profile">
@@ -80,1390 +81,870 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23111'/><path d='M32 16 L48 48' stroke='%23f8f7f4' stroke-width='2.5' stroke-linecap='round'/><path d='M16 48 L38 48' stroke='%23f8f7f4' stroke-width='2.5' stroke-linecap='round'/><path d='M22 36 L32 16' stroke='%23f8f7f4' stroke-width='2.5' stroke-linecap='round' stroke-dasharray='4 4'/></svg>">
 <link rel="icon" media="(prefers-color-scheme: light)" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23111'/><path d='M32 16 L48 48' stroke='%23f8f7f4' stroke-width='2.5' stroke-linecap='round'/><path d='M16 48 L38 48' stroke='%23f8f7f4' stroke-width='2.5' stroke-linecap='round'/><path d='M22 36 L32 16' stroke='%23f8f7f4' stroke-width='2.5' stroke-linecap='round' stroke-dasharray='4 4'/></svg>">
 <link rel="icon" media="(prefers-color-scheme: dark)" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23ede9e0'/><path d='M32 16 L48 48' stroke='%230e0e0c' stroke-width='2.5' stroke-linecap='round'/><path d='M16 48 L38 48' stroke='%230e0e0c' stroke-width='2.5' stroke-linecap='round'/><path d='M22 36 L32 16' stroke='%230e0e0c' stroke-width='2.5' stroke-linecap='round' stroke-dasharray='4 4'/></svg>">
+<script>
+/* Theme before first paint: the saved choice wins, otherwise the system setting. */
+(function(){
+  var t=null;
+  try{t=localStorage.getItem("ys-theme")}catch(e){}
+  if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}
+  document.documentElement.setAttribute("data-theme",t);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ─── TOKENS ──────────────────────────────────────────────── */
-:root{
-  --bg:#f5f5f7;--paper:#fff;--ink:#1d1d1f;--muted:#6e6e73;--soft:#86868b;
-  --line:rgba(0,0,0,.12);--hair:rgba(0,0,0,.07);--nav:rgba(245,245,247,.78);
-  --blue:#0071e3;--green:#28a745;--coral:#ff5a5f;--gold:#b8860b;
-  --shadow:0 22px 60px rgba(0,0,0,.12);--panel:rgba(255,255,255,.72);
+/* ─── Tokens ─── */
+:root,[data-theme="dark"]{
+  --bg:#0a0a0a;--ink:#ecebe6;--body:#b5b4ae;--dim:#8b8a84;--line:#1e1e1d;--strong:#3a3a38;--plate:#121211;
+  --hdr:rgba(10,10,10,.88);--hover:#ffffff;
+  --airy:#4ccb93;--burnin:#ff8a1f;--nora:#ddcfbc;
+  color-scheme:dark;
 }
-[data-theme="dark"]{
-  --bg:#000;--paper:#161617;--ink:#f5f5f7;--muted:#a1a1a6;--soft:#6e6e73;
-  --line:rgba(255,255,255,.18);--hair:rgba(255,255,255,.1);--nav:rgba(22,22,23,.78);
-  --blue:#2997ff;--green:#32d74b;--coral:#ff6961;--gold:#ffd166;
-  --shadow:0 22px 70px rgba(0,0,0,.5);--panel:rgba(22,22,23,.72);
+[data-theme="light"]{
+  --bg:#f4f3ef;--ink:#141414;--body:#3f3e3a;--dim:#6b6a64;--line:#e0ded7;--strong:#b9b7ae;--plate:#ebeae5;
+  --hdr:rgba(244,243,239,.88);--hover:#000000;
+  --airy:#0f7b53;--burnin:#c4610a;--nora:#8a6a3e;
+  color-scheme:light;
 }
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Geist,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background-color .4s,color .4s}
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--strong)}
+a:hover{color:var(--hover);border-bottom-color:var(--ink)}
+a.bare{border:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.mono{font-family:"Geist Mono",ui-monospace,SFMono-Regular,monospace;font-size:12px;letter-spacing:.02em}
+.dim{color:var(--dim)}
+.wrap{max-width:1280px;margin:0 auto;padding-left:24px;padding-right:24px}
+[data-entry]{scroll-margin-top:72px}
+kbd{display:inline-block;position:relative;overflow:hidden;font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;line-height:1.5;color:var(--ink);border:1px solid var(--strong);border-radius:4px;padding:0 6px;margin-right:6px}
+.hold-fill{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--ink)}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 12px;z-index:100}
+.skip:focus{left:8px}
 
-/* ─── RESET + BASE ────────────────────────────────────────── */
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:"Inter","Helvetica Neue",Arial,sans-serif;
-  background:var(--bg);color:var(--ink);
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  transition:background .35s,color .35s;
-}
-a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit}
-.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+/* ─── Header ─── */
+.site-head{position:sticky;top:0;z-index:20;background:var(--hdr);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.head-row{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center;min-height:56px}
+.nav{display:flex;align-items:center;gap:24px}
+.nav a{border:0;color:var(--dim);padding:12px 0}
+.nav a:hover{color:var(--ink)}
+.icon-btn{all:unset;cursor:pointer;width:44px;height:44px;margin:-6px -12px -6px -8px;display:inline-flex;align-items:center;justify-content:center;color:var(--dim)}
+.icon-btn:hover{color:var(--ink)}
+.icon-btn:focus-visible{outline:1px solid var(--ink)}
+.icon-btn .sun,[data-theme="light"] .icon-btn .moon{display:none}
+[data-theme="light"] .icon-btn .sun{display:block}
 
-/* ─── NAV ─────────────────────────────────────────────────── */
-nav{
-  position:fixed;inset:0 0 auto;z-index:100;
-  background:var(--nav);
-  backdrop-filter:saturate(180%) blur(22px);
-  -webkit-backdrop-filter:saturate(180%) blur(22px);
-  border-bottom:1px solid var(--hair);
-  transition:background .35s,border-color .35s;
-}
-.nav-inner{
-  height:48px;width:min(1080px,calc(100% - 28px));
-  margin:0 auto;display:grid;
-  grid-template-columns:1fr auto 1fr;align-items:center;
-}
-.mark{width:28px;height:28px;display:grid;place-items:center;color:var(--ink)}
-.mark svg{width:28px;height:28px;display:block}
-.nav-links{display:flex;gap:2px;list-style:none}
-.nav-links a{
-  display:block;padding:7px 12px;color:var(--muted);
-  font-size:12px;border-radius:8px;
-  transition:background .2s,color .2s;
-}
-.nav-links a:hover{background:rgba(128,128,128,.12);color:var(--ink)}
-.nav-actions{justify-self:end;display:flex;gap:8px;align-items:center}
-.icon-btn{
-  height:30px;width:34px;border:1px solid var(--line);border-radius:8px;
-  background:rgba(128,128,128,.08);color:var(--ink);cursor:pointer;
-  display:grid;place-items:center;transition:background .2s,border-color .35s;
-}
-.icon-btn svg{width:15px;height:15px;fill:currentColor}
-.lang-btn{
-  height:30px;padding:0 10px;border:1px solid var(--line);border-radius:8px;
-  background:rgba(128,128,128,.08);color:var(--ink);cursor:pointer;
-  font-size:11px;font-weight:700;letter-spacing:.04em;
-  transition:background .2s,border-color .35s;
-}
+/* ─── Hero ─── */
+.hero{padding:120px 0 160px;display:flex;flex-direction:column;align-items:center;gap:20px}
+.plate{all:unset;cursor:pointer;aspect-ratio:1/1;width:100%;max-width:560px;box-sizing:border-box;background:var(--plate);border:1px solid var(--line);padding:40px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:border-color .3s,background-color .4s}
+.plate:hover{border-color:var(--strong)}
+.plate:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+.plate-title{font-weight:300;font-size:clamp(30px,4.2vw,50px);line-height:1.08;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.plate-sub{color:var(--dim);font-size:15px;line-height:1.5;max-width:36ch}
+.caption{width:100%;max-width:560px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--dim)}
+@keyframes settle{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:blur(0)}}
+.w,.fade{animation:settle .8s cubic-bezier(.2,.7,.2,1) both}
 
-/* ─── HERO: CINEMATIC SCROLL ─────────────────────────────── */
-.hero-scroll{
-  min-height:250svh;
-  background:var(--paper);
-  transition:background .35s;
-}
-.hero-sticky{
-  position:sticky;top:48px;
-  height:calc(100svh - 48px);min-height:580px;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.hero-sticky::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 60% 50% at 50% 44%,rgba(0,113,227,.05),transparent 65%);
-}
-.hero-name{
-  font-size:18vw;line-height:.84;letter-spacing:-.03em;font-weight:800;
-  text-align:center;will-change:font-size;
-  position:relative;z-index:2;pointer-events:none;user-select:none;
-}
-.hero-name .dim{color:var(--muted);transition:color .35s}
-.hero-foot{
-  position:absolute;
-  bottom:clamp(44px,7svh,88px);
-  left:max(20px,calc((100vw - 1120px)/2));
-  right:max(20px,calc((100vw - 1120px)/2));
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:24px;flex-wrap:wrap;
-  opacity:0;transform:translateY(18px);
-  transition:opacity .55s,transform .55s;z-index:3;
-}
-.hero-foot.show{opacity:1;transform:none}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 12px;border:1px solid var(--line);border-radius:999px;
-  background:var(--panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  color:var(--muted);font-size:13px;font-weight:500;margin-bottom:14px;
-  transition:background .35s,border-color .35s;
-}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 0 4px rgba(40,167,69,.12)}
-.hero-copy-col h2{font-size:clamp(22px,2.8vw,34px);font-weight:700;line-height:1.12;letter-spacing:-.01em}
-.hero-copy-col p{margin-top:10px;color:var(--muted);font-size:clamp(15px,1.6vw,18px);line-height:1.5}
-.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:44px;padding:11px 22px;border-radius:980px;
-  font-size:15px;font-weight:600;border:none;cursor:pointer;
-  transition:filter .2s,background .35s,color .35s,border-color .35s;
-}
-.btn-fill{background:var(--blue);color:#fff}
-.btn-fill:hover{filter:brightness(1.1)}
-.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn-outline:hover{background:rgba(128,128,128,.08)}
-.hero-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--hair);z-index:4}
-.hero-fill{height:100%;width:0;background:var(--blue);transition:width .06s linear}
+/* ─── Sections ─── */
+.sec-head{display:flex;justify-content:space-between;gap:16px;color:var(--dim);padding-bottom:14px}
+.sec-head.ruled{border-bottom:1px solid var(--line)}
+.block{padding-top:200px}
+.app{display:grid;grid-template-columns:80px minmax(0,1fr) 260px;gap:24px;padding:36px 0;border-top:1px solid var(--line)}
+.app .name{margin:0;font-size:clamp(40px,5vw,64px);font-weight:300;letter-spacing:-.04em;line-height:1;transition:color .25s}
+.app:hover .name{color:var(--c)}
+.app.airy{--c:var(--airy)}.app.burnin{--c:var(--burnin)}.app.nora{--c:var(--nora)}
+.app p{margin:0;font-size:16px;line-height:1.55;color:var(--body);max-width:56ch}
+.app-links{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding-top:10px}
+.row{display:grid;grid-template-columns:168px minmax(0,1fr) minmax(0,1.2fr);gap:24px;padding:18px 0;border-top:1px solid var(--line)}
+.row .when{white-space:nowrap;padding-top:3px}
+.archive-title{border:0;font-size:22px;font-weight:300;letter-spacing:-.02em;align-self:start}
+.lead{margin:0;font-size:clamp(22px,2.6vw,32px);font-weight:300;line-height:1.3;letter-spacing:-.01em;max-width:30ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.steps li{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--ink);padding-top:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 48px}
+.cards div{display:flex;gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+.small{font-size:14px;line-height:1.5;color:var(--dim)}
+.process{display:flex;flex-direction:column;gap:48px}
+.log{display:flex;flex-direction:column;gap:32px}
+.sub-head{color:var(--dim);padding:24px 0 14px}
 
-/* ─── SECTION HELPERS ────────────────────────────────────── */
-.section-eyebrow{
-  font-size:12px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--soft);margin-bottom:18px;
-}
-.section-title{
-  font-size:clamp(36px,5.5vw,74px);
-  line-height:1;letter-spacing:-.01em;font-weight:800;max-width:820px;
-}
-
-/* ─── ABOUT ───────────────────────────────────────────────── */
-.about{
-  padding:120px 0;
-  background:var(--paper);
-  border-top:1px solid var(--hair);
-  transition:background .35s,border-color .35s;
-}
-.about-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
-  margin:64px 0;
-  transition:border-color .35s;
-}
-.about-stat{
-  padding:40px 24px;border-right:1px solid var(--hair);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;transition:border-color .35s;
-}
-.about-stat:last-child{border-right:0}
-.about-stat-num{
-  font-size:clamp(56px,7vw,96px);
-  font-weight:800;letter-spacing:-.02em;line-height:1;
-}
-.about-stat-num sup{font-size:.42em;vertical-align:top;margin-top:.18em}
-.about-stat-label{font-size:15px;color:var(--muted);margin-top:10px}
-.about-bottom{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:64px}
-.about-copy p{color:var(--muted);font-size:18px;line-height:1.6;margin-bottom:16px}
-.skill-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.skill-cloud span{
-  padding:7px 11px;border:1px solid var(--line);border-radius:8px;
-  color:var(--muted);background:var(--panel);font-size:13px;font-weight:600;
-  transition:background .35s,border-color .35s;
-}
-.about-quote{
-  font-size:clamp(20px,2.4vw,28px);
-  font-weight:700;line-height:1.3;letter-spacing:-.01em;color:var(--ink);
-}
-.about-quote .dim{color:var(--muted);font-weight:400}
-
-/* ─── PROJECTS: BENTO GRID ───────────────────────────────── */
-.projects{
-  padding:120px 0;
-  background:var(--bg);
-  border-top:1px solid var(--hair);
-  transition:background .35s,border-color .35s;
-}
-.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:52px}
-.card{
-  position:relative;overflow:hidden;
-  border-radius:18px;border:1px solid var(--line);
-  padding:28px 28px 0;display:flex;flex-direction:column;
-  min-height:420px;
-  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
-}
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
-.card.nora{--nn-hot:217,116,111;--nn-mid:226,166,58;--nn-calm:62,134,80;grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#f4efe6,#f8f4ee)}
-.card.edergi{grid-column:span 6;background:linear-gradient(145deg,#eefbf2,#fff)}
-.card.utts{grid-column:span 6;background:linear-gradient(145deg,#f3efff,#fff)}
-.card.doa{grid-column:span 6;background:linear-gradient(145deg,#fff0ed,#fff)}
-.card.getir{grid-column:span 6;background:linear-gradient(145deg,#fff8dd,#fff)}
-.card.wewalk{grid-column:span 6;background:linear-gradient(145deg,#eafffb,#fff)}
-[data-theme="dark"] .card.nora{--nn-hot:210,126,121;--nn-mid:240,180,77;--nn-calm:99,167,114;background:linear-gradient(145deg,#221f17,#101013)}
-[data-theme="dark"] .card.edergi{background:linear-gradient(145deg,#061b0e,#101013)}
-[data-theme="dark"] .card.utts{background:linear-gradient(145deg,#1b1031,#101013)}
-[data-theme="dark"] .card.doa{background:linear-gradient(145deg,#32110f,#101013)}
-[data-theme="dark"] .card.getir{background:linear-gradient(145deg,#2b2106,#101013)}
-[data-theme="dark"] .card.wewalk{background:linear-gradient(145deg,#062825,#101013)}
-[data-theme="dark"] .card{color:#f5f5f7}
-.card-head{position:relative;z-index:2;padding-bottom:20px}
-.card-num{font-size:12px;font-weight:700;color:var(--soft);margin-bottom:10px}
-.card h3{font-size:clamp(28px,3.8vw,52px);line-height:1;letter-spacing:-.01em;font-weight:800;margin-bottom:10px}
-.card p{color:var(--muted);font-size:15px;line-height:1.5;max-width:400px}
-[data-theme="dark"] .card p{color:rgba(245,245,247,.6)}
-.card-tags{
-  position:absolute;bottom:0;left:0;right:0;z-index:3;
-  display:flex;flex-wrap:wrap;gap:7px;justify-content:center;
-  padding:14px 28px;
-  background:rgba(255,255,255,.55);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-top:1px solid rgba(0,0,0,.06);
-  transition:background .35s,border-color .35s;
-}
-.card-tags span{
-  font-size:12px;color:var(--muted);border:1px solid var(--line);
-  border-radius:999px;padding:5px 10px;background:rgba(255,255,255,.5);
-  transition:background .35s,border-color .35s;
-}
-[data-theme="dark"] .card-tags{background:rgba(10,10,12,.65);border-top-color:rgba(255,255,255,.08)}
-[data-theme="dark"] .card-tags span{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:rgba(245,245,247,.55)}
-.card-arrow{
-  position:absolute;top:24px;right:24px;z-index:2;
-  font-size:20px;color:var(--soft);
-  opacity:0;transition:opacity .2s;
-}
-.card:hover .card-arrow{opacity:1}
-
-/* ─── CARD VISUALS ────────────────────────────────────────── */
-.pv{position:absolute;right:20px;bottom:68px;z-index:0;pointer-events:none}
-
-/* Nora: neural network */
-.nora-neural{width:280px;height:200px;right:0;bottom:68px}
-.nora-neural svg{width:100%;height:100%;overflow:visible}
-.nn-line-hot{stroke:rgba(var(--nn-hot),.32);stroke-width:1.5;fill:none}
-.nn-line{stroke:rgba(var(--nn-mid),.26);stroke-width:1.5;fill:none}
-.nn-line-calm{stroke:rgba(var(--nn-calm),.22);stroke-width:1.5;fill:none}
-.nn-node-hot,.nn-node-mid,.nn-node-calm{transform-box:fill-box;transform-origin:center}
-.nn-node-hot{fill:rgba(var(--nn-hot),.68);filter:drop-shadow(0 0 5px rgba(var(--nn-hot),.65))}
-.nn-node-mid{fill:rgba(var(--nn-mid),.58);filter:drop-shadow(0 0 4px rgba(var(--nn-mid),.5))}
-.nn-node-calm{fill:rgba(var(--nn-calm),.52);filter:drop-shadow(0 0 5px rgba(var(--nn-calm),.5))}
-@keyframes nn-hot{0%,100%{opacity:.65;transform:scale(1)}40%{opacity:1;transform:scale(1.5)}70%{opacity:.75;transform:scale(1.15)}}
-@keyframes nn-mid{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.35)}}
-@keyframes nn-calm{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.88;transform:scale(1.28)}}
-@keyframes nn-flicker{0%,100%{opacity:.32}45%{opacity:.75}65%{opacity:.18}}
-@keyframes nn-glow{0%,100%{opacity:.22}50%{opacity:.52}}
-.nn-h1{animation:nn-hot 1.1s ease-in-out infinite}
-.nn-h2{animation:nn-hot 1.35s ease-in-out infinite .22s}
-.nn-h3{animation:nn-hot 1s ease-in-out infinite .48s}
-.nn-m1{animation:nn-mid 2.1s ease-in-out infinite}
-.nn-m2{animation:nn-mid 2.1s ease-in-out infinite .55s}
-.nn-m3{animation:nn-mid 2.1s ease-in-out infinite 1.1s}
-.nn-c1{animation:nn-calm 3.2s ease-in-out infinite}
-.nn-c2{animation:nn-calm 3.2s ease-in-out infinite .75s}
-.nn-c3{animation:nn-calm 3.2s ease-in-out infinite 1.5s}
-.nn-line-hot{animation:nn-flicker 1.4s ease-in-out infinite}
-.nn-line{animation:nn-glow 2.2s ease-in-out infinite}
-.nn-line-calm{animation:nn-glow 3.2s ease-in-out infinite}
-
-/* e-Dergi: page flip */
-.edergi-book{
-  width:210px;height:160px;
-  perspective:700px;
-}
-.book-left,.book-right{
-  position:absolute;top:0;height:100%;width:100px;
-  border-radius:8px 0 0 8px;
-  background:linear-gradient(160deg,rgba(29,158,117,.18),rgba(255,255,255,.06));
-  border:1px solid rgba(29,158,117,.28);
-  box-shadow:0 14px 36px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.14);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-}
-.book-right{
-  right:0;left:auto;
-  border-radius:0 8px 8px 0;
-  background:linear-gradient(160deg,rgba(0,113,227,.14),rgba(255,255,255,.06));
-  border-color:rgba(0,113,227,.24);
-}
-.book-left::before,.book-left::after{
-  content:"";position:absolute;left:12px;right:12px;
-  height:5px;border-radius:4px;background:rgba(29,158,117,.35);
-}
-.book-left::before{top:22px;box-shadow:0 16px 0 rgba(29,158,117,.22),0 32px 0 rgba(29,158,117,.12)}
-.book-left::after{top:70px;width:55%;background:rgba(29,158,117,.2)}
-.book-right::before,.book-right::after{
-  content:"";position:absolute;left:12px;right:12px;
-  height:5px;border-radius:4px;background:rgba(0,113,227,.3);
-}
-.book-right::before{top:22px;box-shadow:0 16px 0 rgba(0,113,227,.18),0 32px 0 rgba(0,113,227,.1)}
-.book-right::after{top:70px;width:50%;background:rgba(0,113,227,.18)}
-.book-spine{
-  position:absolute;left:50%;top:0;bottom:0;
-  width:3px;margin-left:-1.5px;
-  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06));
-  z-index:4;
-}
-.page-flip{
-  position:absolute;top:0;right:0;
-  width:100px;height:100%;
-  transform-style:preserve-3d;
-  transform-origin:left center;
-  animation:page-turn 3.6s ease-in-out infinite;
-  z-index:2;
-}
-.page-front,.page-back{
-  position:absolute;inset:0;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  border-radius:0 8px 8px 0;
-  border:1px solid rgba(29,158,117,.28);
-  border-left:none;
-}
-.page-front{
-  background:linear-gradient(160deg,rgba(29,158,117,.2),rgba(255,255,255,.08));
-  box-shadow:2px 0 12px rgba(0,0,0,.2);
-}
-.page-front::before{
-  content:"";position:absolute;left:12px;right:12px;top:22px;
-  height:5px;border-radius:4px;background:rgba(29,158,117,.4);
-  box-shadow:0 16px 0 rgba(29,158,117,.25),0 32px 0 rgba(29,158,117,.14);
-}
-.page-back{
-  transform:rotateY(180deg);
-  background:linear-gradient(160deg,rgba(255,209,102,.15),rgba(255,255,255,.06));
-  border-color:rgba(255,209,102,.22);
-}
-.page-back::before{
-  content:"";position:absolute;left:12px;right:12px;top:22px;
-  height:5px;border-radius:4px;background:rgba(255,209,102,.35);
-  box-shadow:0 16px 0 rgba(255,209,102,.22),0 32px 0 rgba(255,209,102,.12);
-}
-@keyframes page-turn{
-  0%,15%{transform:rotateY(0deg)}
-  55%,85%{transform:rotateY(-180deg)}
-  100%{transform:rotateY(-180deg)}
-}
-
-/* UTTS: plate scan */
-.utts-scan{width:220px;height:160px;display:flex;align-items:center;justify-content:center}
-.plate-frame{
-  width:162px;height:72px;
-  border:2px solid rgba(139,135,236,.52);
-  border-radius:10px;
-  background:rgba(139,135,236,.08);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-  box-shadow:0 0 36px rgba(139,135,236,.2),inset 0 0 24px rgba(139,135,236,.06);
-  overflow:hidden;
-}
-.plate-text{
-  font-size:24px;font-weight:800;letter-spacing:.12em;
-  color:rgba(255,255,255,.92);
-  text-shadow:0 0 18px rgba(139,135,236,.75);
-  position:relative;z-index:1;
-}
-.plate-frame::before{
-  content:"";position:absolute;
-  left:0;right:0;height:2px;top:15%;
-  background:linear-gradient(90deg,transparent 0%,rgba(139,135,236,.9) 40%,rgba(139,135,236,.9) 60%,transparent 100%);
-  box-shadow:0 0 10px rgba(139,135,236,.7);
-  animation:plate-scan 2.4s ease-in-out infinite;
-}
-.plate-check{
-  position:absolute;top:-13px;right:-13px;
-  width:26px;height:26px;
-  background:rgba(41,198,130,.92);
-  border-radius:50%;
-  display:grid;place-items:center;
-  font-size:13px;color:#fff;font-weight:700;
-  box-shadow:0 0 14px rgba(41,198,130,.55);
-  z-index:2;
-}
-.plate-corner{
-  position:absolute;width:10px;height:10px;
-  border-color:rgba(139,135,236,.8);border-style:solid;
-}
-.plate-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px;border-radius:2px 0 0 0}
-.plate-corner.tr{top:-1px;right:-1px;border-width:2px 2px 0 0;border-radius:0 2px 0 0}
-.plate-corner.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px;border-radius:0 0 0 2px}
-.plate-corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0;border-radius:0 0 2px 0}
-@keyframes plate-scan{
-  0%{top:5%;opacity:0}
-  8%{opacity:1}
-  92%{opacity:1}
-  100%{top:88%;opacity:0}
-}
-
-/* ─── CARD VISUAL ANIMATIONS ─── */
-@keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes float-y-sm{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes nora-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.4);opacity:.92}}
-@keyframes route-draw{0%{stroke-dashoffset:320}80%,100%{stroke-dashoffset:0}}
-
-.reader-item:nth-child(1){animation:float-y-sm 3.8s ease-in-out infinite}
-.reader-item:nth-child(2){animation:float-y-sm 3.8s ease-in-out infinite .45s}
-.reader-item:nth-child(3){animation:float-y-sm 3.8s ease-in-out infinite .9s}
-.signal-dot-blue{transform-origin:154px 112px;animation:nora-pulse 2.8s ease-in-out infinite}
-.signal-dot-green{transform-origin:280px 76px;animation:nora-pulse 2.8s ease-in-out infinite .8s}
-.doa-return .bottle.one{animation:float-y-sm 3.2s ease-in-out infinite}
-.doa-return .bottle.two{animation:float-y-sm 3.2s ease-in-out infinite .55s}
-.return-arrow{animation:float-y-sm 3.2s ease-in-out infinite 1.1s}
-.bag-item{
-  position:absolute;right:76px;bottom:88px;
-  width:24px;height:24px;border-radius:6px;z-index:3;
-  background:linear-gradient(135deg,rgba(184,134,11,.65),rgba(184,134,11,.32));
-  border:1px solid rgba(184,134,11,.6);
-  animation:item-drop 3.2s ease-in-out infinite;
-}
-.bag-item.b2{
-  right:90px;bottom:88px;
-  background:linear-gradient(135deg,rgba(139,135,236,.55),rgba(139,135,236,.25));
-  border-color:rgba(139,135,236,.5);
-  animation-delay:1.6s;
-}
-@keyframes item-drop{
-  0%,12%{transform:translateY(-52px);opacity:0}
-  22%{opacity:1}
-  48%,100%{transform:translateY(2px);opacity:0}
-}
-@keyframes bag-catch{
-  0%,44%{transform:scaleY(1);transform-origin:bottom center}
-  54%{transform:scaleY(.92);transform-origin:bottom center}
-  63%{transform:scaleY(1.04);transform-origin:bottom center}
-  72%,100%{transform:scaleY(1);transform-origin:bottom center}
-}
-.getir-flow .bag{animation:bag-catch 3.2s ease-in-out infinite}
-.map-route{stroke-dasharray:320;stroke-dashoffset:320;animation:route-draw 4s ease-in-out infinite}
-
-/* DOA */
-.doa-return{width:240px;height:190px}
-.bottle{
-  position:absolute;bottom:0;width:48px;height:132px;
-  border:1px solid rgba(29,158,117,.3);border-radius:10px;
-  background:linear-gradient(180deg,rgba(29,158,117,.24),rgba(255,255,255,.44));
-  box-shadow:0 12px 32px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.6);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-}
-.bottle::before{content:"";position:absolute;left:12px;top:-24px;width:24px;height:28px;border:1px solid rgba(29,158,117,.3);border-bottom:0;border-radius:8px 8px 0 0;background:rgba(29,158,117,.16)}
-.bottle.one{right:128px;transform:rotate(-8deg)}
-.bottle.two{right:82px;height:152px}
-.return-arrow{
-  position:absolute;right:10px;bottom:26px;width:100px;height:100px;
-  border:12px solid rgba(29,158,117,.28);border-left-color:transparent;border-radius:50%;
-  filter:drop-shadow(0 4px 12px rgba(29,158,117,.2));
-}
-.return-arrow::after{content:"";position:absolute;right:-8px;top:4px;border-left:16px solid rgba(29,158,117,.42);border-top:12px solid transparent;border-bottom:12px solid transparent;transform:rotate(28deg)}
-
-/* getir */
-.getir-flow{width:230px;height:190px}
-.bag{
-  position:absolute;right:34px;bottom:4px;width:120px;height:128px;
-  border-radius:14px;border:1px solid rgba(184,134,11,.28);
-  background:linear-gradient(160deg,rgba(255,209,102,.4),rgba(139,135,236,.18));
-  box-shadow:0 16px 40px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.55);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-}
-.bag::before{content:"";position:absolute;left:24px;top:-20px;width:56px;height:38px;border:8px solid rgba(184,134,11,.28);border-bottom:0;border-radius:42px 42px 0 0}
-.bag::after{content:"";position:absolute;left:22px;right:22px;top:42px;height:8px;border-radius:8px;background:rgba(184,134,11,.28);box-shadow:0 22px 0 rgba(139,135,236,.22)}
-.delivery-line{position:absolute;left:8px;top:56px;width:176px;height:72px;border:3px solid rgba(184,134,11,.18);border-right:0;border-top-color:transparent;border-radius:50%;transform:rotate(-8deg)}
-.delivery-line::before,.delivery-line::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(139,135,236,.35)}
-.delivery-line::before{left:4px;top:42px}.delivery-line::after{right:0;top:6px}
-
-/* WeWALK */
-.wewalk-map{width:240px;height:180px;right:14px}
-.wewalk-map svg{width:100%;height:100%;overflow:visible}
-.map-street{fill:none;stroke:rgba(29,158,117,.28);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
-.map-route{fill:none;stroke:rgba(0,113,227,.78);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 8px rgba(0,113,227,.28))}
-.map-start{fill:var(--blue);filter:drop-shadow(0 2px 6px rgba(0,113,227,.4))}
-.map-end{fill:var(--green);filter:drop-shadow(0 2px 6px rgba(29,158,117,.4))}
-
-/* Burnin: on-device video captions */
-.card.burnin{grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#fff3e6,#fff9f2)}
-[data-theme="dark"] .card.burnin{background:linear-gradient(145deg,#2a1600,#101013)}
-.burnin-frame{width:220px;height:158px}
-.burnin-screen{
-  position:absolute;right:0;top:0;width:220px;height:112px;
-  border-radius:14px;border:1px solid rgba(255,138,31,.28);
-  background:rgba(255,138,31,.07);
-}
-.burnin-caption{
-  position:absolute;right:38px;top:78px;width:144px;height:22px;
-  border-radius:6px;background:rgba(20,16,12,.84);
-  animation:burnin-caption-fade 4.4s ease-in-out infinite;
-}
-.burnin-caption::before{
-  content:"";position:absolute;left:14px;top:9px;width:116px;height:5px;
-  border-radius:3px;background:rgba(255,255,255,.88);
-}
-.burnin-timeline{
-  position:absolute;right:0;top:130px;width:220px;height:22px;
-  border-radius:8px;border:1px solid rgba(255,138,31,.22);background:rgba(255,138,31,.05);
-  display:flex;align-items:center;gap:6px;padding:0 8px;
-}
-.burnin-block{height:12px;border-radius:4px;background:rgba(255,138,31,.5)}
-.burnin-block.b1{width:34px}
-.burnin-block.b2{width:52px}
-.burnin-block.b3{width:28px}
-.burnin-playhead{
-  position:absolute;top:126px;width:2px;height:30px;background:rgba(255,90,60,.9);
-  filter:drop-shadow(0 0 4px rgba(255,90,60,.5));
-  animation:burnin-scrub 4.4s ease-in-out infinite;
-}
-@keyframes burnin-caption-fade{0%,40%{opacity:1}50%{opacity:0}60%,100%{opacity:1}}
-@keyframes burnin-scrub{0%,100%{right:194px}50%{right:34px}}
-
-/* Airy: photo and video cleanup */
-.card.airy{--airy:15,123,83;grid-column:span 6;min-height:520px;background:linear-gradient(145deg,#e2f2ea,#f6fbf8)}
-[data-theme="dark"] .card.airy{--airy:76,203,147;background:linear-gradient(145deg,#0a2a1d,#101013)}
-.airy-clean{width:220px;height:158px}
-.airy-grid{position:absolute;right:0;top:0;display:grid;grid-template-columns:repeat(4,46px);gap:8px}
-.airy-tile{
-  position:relative;width:46px;height:46px;border-radius:10px;
-  border:1px solid rgba(var(--airy),.22);background:rgba(var(--airy),.1);
-}
-.airy-tile.t3,.airy-tile.t8{background:rgba(var(--airy),.18)}
-.airy-tile.t5{background:rgba(var(--airy),.06)}
-.airy-tile.junk{animation:airy-sweep 5s ease-in-out infinite}
-.airy-tile.t4{animation-delay:.15s}
-.airy-tile.t6{animation-delay:.3s}
-.airy-tile.junk::after{
-  content:"";position:absolute;right:-5px;top:-5px;width:16px;height:16px;border-radius:50%;
-  background:rgb(var(--airy));box-shadow:0 0 0 2px var(--paper);
-  animation:airy-mark 5s ease-in-out infinite;animation-delay:inherit;
-}
-.airy-storage{
-  position:absolute;right:0;top:128px;width:208px;height:12px;border-radius:6px;
-  border:1px solid rgba(var(--airy),.22);background:rgba(var(--airy),.05);overflow:hidden;
-}
-.airy-storage-fill{
-  height:100%;width:86%;border-radius:6px;background:linear-gradient(90deg,rgb(var(--airy)),rgba(var(--airy),.55));
-  animation:airy-free 5s ease-in-out infinite;
-}
-[data-theme="dark"] .airy-tile.junk::after{box-shadow:0 0 0 2px #101013}
-@keyframes airy-mark{0%,15%{transform:scale(0)}25%,45%{transform:scale(1)}55%,100%{transform:scale(0)}}
-@keyframes airy-sweep{
-  0%,25%{transform:none;opacity:1;border-color:rgba(var(--airy),.22)}
-  30%,42%{transform:none;opacity:1;border-color:rgba(var(--airy),.9)}
-  55%,85%{transform:translateY(-14px) scale(.4);opacity:0}
-  95%,100%{transform:none;opacity:1;border-color:rgba(var(--airy),.22)}
-}
-@keyframes airy-free{0%,45%{width:86%}60%,85%{width:48%}97%,100%{width:86%}}
-
-/* ─── SHIPPING ────────────────────────────────────────────── */
-.shipping{
-  padding:120px 0;
-  background:var(--paper);
-  border-top:1px solid var(--hair);
-  transition:background .35s,border-color .35s;
-}
-.shipping-lead{color:var(--muted);font-size:18px;line-height:1.6;max-width:680px;margin-top:28px}
-.shipping-pipeline{
-  list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;
-  margin-top:52px;
-}
-.shipping-step{
-  position:relative;padding:22px 20px;
-  border:1px solid var(--line);border-radius:18px;
-  background:linear-gradient(145deg,var(--bg),var(--paper));
-  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
-}
-.shipping-step:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
-.shipping-step::after{
-  content:"→";content:"→"/"";
-  position:absolute;top:50%;right:-21px;transform:translateY(-50%);
-  font-size:16px;color:var(--soft);
-}
-.shipping-step:last-child::after{display:none}
-.shipping-step-human,.shipping-step-human:hover{border-color:var(--blue);background:linear-gradient(145deg,#eef6ff,#fff)}
-.shipping-step-human{box-shadow:0 0 0 1px var(--blue)}
-.shipping-step-human:hover{box-shadow:0 0 0 1px var(--blue),var(--shadow)}
-[data-theme="dark"] .shipping-step-human{background:linear-gradient(145deg,#06192a,#101013)}
-.shipping-step-num{display:block;font-size:12px;font-weight:700;color:var(--soft);margin-bottom:10px}
-.shipping-step-human .shipping-step-num{color:var(--blue)}
-.shipping-step h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
-.shipping-step p{color:var(--muted);font-size:14px;line-height:1.5}
-.shipping-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
-.shipping-card{
-  padding:24px;border:1px solid var(--line);border-radius:18px;
-  background:linear-gradient(145deg,var(--bg),var(--paper));
-  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
-}
-.shipping-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(0,113,227,.28)}
-.shipping-card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
-.shipping-card p{color:var(--muted);font-size:15px;line-height:1.5}
-.shipping-live{margin-top:52px}
-.shipping-live-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
-.shipping-live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.live-site{
-  --accent:var(--blue);--tint:color-mix(in srgb,var(--accent) 9%,var(--paper));--glow:var(--accent);
-  position:relative;display:flex;flex-direction:column;overflow:hidden;
-  border:1px solid var(--line);border-radius:18px;color:var(--ink);
-  background:linear-gradient(145deg,var(--tint),var(--paper) 70%);
-  transition:transform .3s,box-shadow .3s,border-color .3s,background .35s;
-}
-.live-site.airy{--accent:#0f7b53;--tint:#e2f2ea}
-.live-site.burnin{--accent:#ff8a1f;--tint:#ffead4}
-.live-site.nora{--accent:#1a1814;--tint:#f4efe6;--glow:#ddcfbc}
-[data-theme="dark"] .live-site.airy{--accent:#4ccb93;--tint:#0c2a1e}
-[data-theme="dark"] .live-site.burnin{--tint:#2e1c0b}
-[data-theme="dark"] .live-site.nora{--accent:#f4efe6;--tint:#221f17;--glow:#6b6459}
-.live-site::after{
-  content:"";position:absolute;right:-40px;bottom:-60px;width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,color-mix(in srgb,var(--glow) 28%,transparent),transparent 70%);
-  pointer-events:none;transition:transform .4s;
-}
-.live-site:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
-.live-site:hover::after{transform:scale(1.25)}
-.live-bar{
-  display:flex;align-items:center;gap:6px;padding:10px 14px;
-  border-bottom:1px solid var(--hair);background:var(--panel);
-}
-.live-bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
-.live-url{
-  flex:1;min-width:0;margin-left:8px;padding:4px 10px;border-radius:999px;
-  background:var(--hair);color:var(--muted);font-size:12px;font-weight:500;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.live-body{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;padding:24px 20px 8px}
-.live-name{font-size:30px;font-weight:800;letter-spacing:-.01em;line-height:1}
-.live-arrow{font-size:18px;color:var(--soft);transition:transform .25s,color .25s}
-.live-site:hover .live-arrow{transform:translate(3px,-3px);color:var(--accent)}
-.live-status{
-  position:relative;z-index:1;display:flex;align-items:center;gap:8px;
-  padding:0 20px 20px;color:var(--muted);font-size:12px;font-weight:600;
-}
-.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:live-ping 2.4s ease-out infinite}
-@keyframes live-ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent)}70%,100%{box-shadow:0 0 0 7px transparent}}
-
-/* ─── CV ──────────────────────────────────────────────────── */
-.cv{
-  padding:120px 0;
-  background:var(--bg);
-  border-top:1px solid var(--hair);
-  transition:background .35s,border-color .35s;
-}
-.cv-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:72px;margin-top:52px;align-items:start}
-.cv-intro{color:var(--muted);font-size:18px;line-height:1.6;margin-bottom:28px}
-.download{
-  display:inline-flex;align-items:center;gap:8px;
-  min-height:44px;padding:10px 20px;border-radius:980px;
-  background:var(--ink);color:var(--bg);font-size:14px;font-weight:700;
-  transition:filter .2s,background .35s,color .35s;
-}
-.download:hover{filter:brightness(1.12)}
-.download svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0}
-.timeline{border-top:1px solid var(--hair);transition:border-color .35s}
-.job{
-  display:grid;grid-template-columns:160px 1fr;gap:16px;
-  padding:18px 0;border-bottom:1px solid var(--hair);
-  transition:border-color .35s;
-}
-.job time{font-size:12px;color:var(--soft);font-weight:500;padding-top:3px}
-.job b{display:block;font-size:15px;font-weight:700}
-.job span{display:block;font-size:14px;color:var(--muted);margin-top:3px}
-
-/* ─── CONTACT ─────────────────────────────────────────────── */
-.contact{
-  padding:120px 0;
-  background:var(--paper);
-  border-top:1px solid var(--hair);
-  overflow:hidden;position:relative;z-index:10;
-  transition:background .35s,border-color .35s;
-}
-.contact::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 55% 50% at 20% 60%,rgba(0,113,227,.06),transparent 55%),
-    radial-gradient(ellipse 42% 38% at 80% 32%,rgba(50,215,75,.04),transparent 50%);
-}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:52px;position:relative;z-index:1}
-.contact-title{
-  font-size:clamp(36px,5vw,68px);
-  line-height:.96;letter-spacing:-.02em;font-weight:800;
-  margin-bottom:40px;
-}
-.contact-links{display:grid;border-top:1px solid var(--hair);max-width:460px;margin-bottom:36px;transition:border-color .35s}
-.contact-links a{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0;border-bottom:1px solid var(--hair);
-  color:var(--muted);font-size:16px;font-weight:500;
-  transition:color .2s,border-color .35s;
-}
-.contact-links a:hover{color:var(--ink)}
-.contact-links a span{opacity:.4;font-size:18px}
-.contact-ctas{display:flex;gap:10px;flex-wrap:wrap}
-form{
-  display:grid;gap:12px;padding:20px;
-  border:1px solid var(--line);border-radius:16px;
-  background:var(--bg);
-  transition:background .35s,border-color .35s;
-}
-.field{display:grid;gap:7px}
-.field label{font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--soft)}
-.input{
-  width:100%;border:1px solid var(--line);border-radius:8px;
-  background:var(--paper);color:var(--ink);padding:12px 13px;
-  outline:none;transition:border-color .18s,box-shadow .18s,background .35s;
-}
-.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.12)}
+/* ─── Contact ─── */
+.contact{padding:240px 0 120px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.contact h2{margin:0;font-size:clamp(32px,4.4vw,52px);font-weight:300;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+.contact .mail{font-size:clamp(18px,2vw,24px)}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+.contact-links a{color:var(--dim)}
+.form{width:100%;max-width:560px;margin-top:40px;display:flex;flex-direction:column;gap:24px;text-align:left}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{color:var(--dim)}
+.input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--strong);border-radius:0;color:var(--ink);font:inherit;font-size:16px;padding:10px 0;outline:0}
+.input:focus{border-bottom-color:var(--ink)}
+.input::placeholder{color:var(--dim);opacity:.8}
 textarea.input{min-height:120px;resize:vertical}
-.submit{
-  min-height:44px;border:0;border-radius:980px;
-  background:var(--blue);color:#fff;font-size:15px;font-weight:600;cursor:pointer;
-  transition:filter .2s,background .35s;
+.submit{all:unset;cursor:pointer;align-self:flex-start;min-height:44px;padding:0 22px;display:inline-flex;align-items:center;border:1px solid var(--ink);font-family:"Geist Mono",ui-monospace,monospace;font-size:12px}
+.submit:hover{background:var(--ink);color:var(--bg)}
+.submit:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.submit[disabled]{opacity:.55;cursor:default}
+.form-ok{display:none;color:var(--dim)}
+
+/* ─── Footer ─── */
+.site-foot{border-top:1px solid var(--line)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;padding-top:20px;padding-bottom:24px;color:var(--dim)}
+.swatches{display:flex;gap:16px;align-items:center}
+.swatch{display:inline-flex;gap:6px;align-items:center}
+.swatch i{width:9px;height:9px;display:inline-block}
+.swatch .bg{background:var(--bg);border:1px solid var(--strong)}
+.swatch .ink{background:var(--ink)}
+.keys-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}
+.hold-btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;min-height:44px;color:var(--dim);touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.hold-btn:hover{color:var(--ink)}
+.hold-btn:focus-visible{outline:1px solid var(--ink)}
+.key-hint{white-space:nowrap}
+.key-btn{all:unset;cursor:pointer;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+.key-btn:hover{color:var(--ink)}
+.key-btn:focus-visible{outline:1px solid var(--ink)}
+
+/* ─── Keys dialog ─── */
+.keys{border:1px solid var(--strong);background:var(--plate);color:var(--ink);padding:28px;max-width:420px;width:calc(100% - 32px)}
+.keys::backdrop{background:rgba(0,0,0,.5)}
+.keys h2{margin:0 0 16px;font-size:18px;font-weight:400}
+.keys dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:baseline}
+.keys dd{margin:0;color:var(--body);font-size:14px}
+.keys form{margin-top:20px}
+
+/* ─── CV view ─── */
+.cv{position:fixed;inset:0;z-index:40;overflow-y:auto;background:var(--bg);padding:0 16px 48px}
+.cv[hidden]{display:none}
+.cv-bar{max-width:794px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px;padding:10px 0}
+.cv-actions{display:flex;flex-wrap:wrap;gap:4px 20px;align-items:center}
+.tool{all:unset;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:6px;color:var(--dim)}
+.tool:hover{color:var(--ink)}
+.tool:focus-visible{outline:1px solid var(--ink)}
+.sheet{max-width:794px;min-height:1123px;margin:0 auto;padding:56px 64px;border:1px solid var(--line);font-size:13px;line-height:1.5;display:flex;flex-direction:column;gap:20px}
+.sheet a{border:0}
+.sheet-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 24px}
+.sheet-head h1{margin:0;font-size:34px;font-weight:300;letter-spacing:-.03em;line-height:1}
+.sheet-contact{display:flex;flex-direction:column;align-items:flex-end;gap:2px;color:var(--body)}
+.sec{display:grid;grid-template-columns:118px minmax(0,1fr);gap:0 24px;padding-top:16px;border-top:1px solid var(--ink)}
+.sec p{margin:0;text-wrap:pretty}
+.line{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:3px 0}
+.line .when{white-space:nowrap;padding-top:1px}
+.strong{font-weight:500}
+.soft{color:var(--body)}
+.sheet-foot{margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--dim);padding-top:12px;border-top:1px solid var(--line)}
+
+/* ─── Stillness ─── */
+.still-layer{position:fixed;inset:0;z-index:30;pointer-events:none;opacity:0;transition:opacity 1s}
+.still-layer .dot{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--ink)}
+.still-layer .clock{position:absolute;right:24px;bottom:24px}
+.site-head,main,.site-foot{transition:opacity 1s}
+body.still .site-head,body.still main,body.still .site-foot{opacity:.07;transition:opacity 2.4s ease}
+body.still .still-layer{opacity:1;transition:opacity 2.4s ease}
+@keyframes breathe{0%{transform:scale(1);opacity:.35}50%{transform:scale(2.4);opacity:.9}100%{transform:scale(1);opacity:.35}}
+body.still .still-layer .dot{animation:breathe 10s ease-in-out infinite}
+
+/* ─── Responsive ─── */
+@media (max-width:820px){
+  .app{grid-template-columns:1fr;gap:8px;padding:28px 0}
+  .app-links{flex-direction:row;flex-wrap:wrap;gap:8px 20px;padding-top:4px}
+  .row{grid-template-columns:1fr;gap:4px}
+  .row .when{padding-top:0}
+  .block{padding-top:140px}
+  .hero{padding:72px 0 112px}
+  .contact{padding:160px 0 96px}
 }
-.submit:hover{filter:brightness(1.1)}
-.form-ok{display:none;text-align:center;color:var(--muted);font-size:13px}
-
-/* ─── FOOTER ──────────────────────────────────────────────── */
-footer{background:var(--bg);border-top:1px solid var(--hair);padding:24px 0;transition:background .35s,border-color .35s}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.foot-left{font-size:13px;color:var(--soft)}
-.foot-links{display:flex;gap:20px}
-.foot-links a{font-size:13px;color:var(--soft);transition:color .2s}
-.foot-links a:hover{color:var(--ink)}
-
-/* ─── REVEAL ──────────────────────────────────────────────── */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
-.reveal.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-
-/* ─── RESPONSIVE ──────────────────────────────────────────── */
-@media(max-width:960px){
-  .nav-inner{grid-template-columns:auto 1fr auto}
-  .nav-links{display:none}
-  .card.airy,.card.burnin,.card.nora{grid-column:span 12}
-  .card.edergi,.card.utts,.card.doa,.card.getir,.card.wewalk{grid-column:span 12}
-  .about-bottom,.cv-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
-  .about-stats{grid-template-columns:1fr 1fr}
-  .about-stat:nth-child(2){border-right:0}
-  .about-stat:nth-child(3){grid-column:span 2;border-right:0}
-  .job{grid-template-columns:140px 1fr}
-  .shipping-pipeline{grid-template-columns:1fr;gap:28px;max-width:560px}
-  .shipping-step::after{content:"↓";content:"↓"/"";top:auto;right:auto;bottom:-25px;left:28px;transform:none}
-  .shipping-grid{grid-template-columns:1fr 1fr}
+@media (max-width:640px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .head-row{flex-direction:column;align-items:stretch;gap:0;padding-top:12px}
+  .nav{overflow-x:auto;gap:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;white-space:nowrap}
+  .nav::-webkit-scrollbar{display:none}
+  .nav .icon-btn{margin-left:auto;flex:none}
+  .plate{padding:28px}
+  .sheet{padding:32px 20px;min-height:0}
+  .sec{grid-template-columns:1fr;gap:6px}
+  .line{grid-template-columns:1fr;gap:0;padding:5px 0}
+  .sheet-contact{align-items:flex-start}
+  .still-layer .clock{right:16px;bottom:16px}
 }
-@media(max-width:640px){
-  .card.edergi,.card.utts,.card.doa{grid-column:span 12}
-  .about-stats{grid-template-columns:1fr}
-  .about-stat{border-right:0;border-bottom:1px solid var(--hair);padding:32px 24px}
-  .about-stat:nth-child(3){grid-column:auto}
-  .about-stat:last-child{border-bottom:0}
-  .about-stat-num{font-size:clamp(48px,14vw,72px)}
-  .job{grid-template-columns:1fr;gap:4px}
-  .hero-name{font-size:22vw}
-  .bento{gap:10px}
-  .airy-clean{bottom:110px}
-  .shipping-grid{grid-template-columns:1fr}
-  .shipping-live-grid{grid-template-columns:1fr}
+@media (hover:none){.key-hint,.key-btn,.nav kbd,#logCv kbd{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .w,.fade{animation:none}
+  body,.plate,.site-head,main,.site-foot,.still-layer{transition:none!important}
+  body.still .still-layer .dot{animation:none;opacity:.6}
+}
+
+/* ─── Print: the CV view is the printed page, always on light paper ─── */
+@media print{
+  :root,[data-theme]{--bg:#ffffff;--ink:#141414;--body:#3f3e3a;--dim:#5f5e59;--line:#d9d7cf;color-scheme:light}
+  @page{size:A4;margin:12mm}
+  body{background:#fff}
+  .site-head,main,.site-foot,.still-layer,.cv-bar,.skip,.keys{display:none!important}
+  .cv,.cv[hidden]{display:block!important;position:static;overflow:visible;padding:0}
+  .sheet{border:0;padding:0;min-height:0;max-width:none}
 }
 </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
+<a class="skip" href="#work" data-i="skip">Skip to work</a>
 
-<!-- ─── NAV ───────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-inner">
-    <a class="mark" href="#hero" aria-label="Ana sayfa">
-      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <path d="M32 16 L48 48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        <path d="M16 48 L38 48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        <path d="M22 36 L32 16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 5"/>
-      </svg>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about" data-i="nav_about"></a></li>
-      <li><a href="#projects" data-i="nav_projects"></a></li>
-      <li><a href="#shipping" data-i="nav_shipping"></a></li>
-      <li><a href="#cv" data-i="nav_cv"></a></li>
-      <li><a href="#contact" data-i="nav_contact"></a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="icon-btn" id="themeButton" aria-label="Tema"><svg viewBox="0 0 16 16"><path id="themePath"></path></svg></button>
-      <button class="lang-btn" id="langButton"><span id="langLabel">EN</span></button>
-    </div>
+<header class="site-head">
+  <div class="wrap head-row mono">
+    <span>yusa sarisoy</span>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work" data-i="nav_work">work</a>
+      <a href="#process" data-i="nav_process">process</a>
+      <a href="#log" data-i="nav_log">log</a>
+      <a href="#contact" data-i="nav_contact">contact</a>
+      <a href="#cv" id="navCv"><kbd>c<span class="hold-fill"></span></kbd><span data-i="nav_cv">cv</span></a>
+      <a href="#" id="langToggle" lang="tr" data-i-aria="lang_aria" aria-label="Türkçe'ye geç">tr</a>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Switch to light mode">
+        <svg class="moon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><path d="M13.5 9.6A5.75 5.75 0 0 1 6.4 2.5a5.75 5.75 0 1 0 7.1 7.1z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+      </button>
+    </nav>
   </div>
-</nav>
+</header>
 
 <main>
-
-<!-- ─── HERO ──────────────────────────────────────────────── -->
-<section class="hero-scroll" id="hero">
-  <div class="hero-sticky">
-    <h1 class="hero-name" id="heroName">Yuşa<br><span class="dim">Sarısoy</span></h1>
-    <div class="hero-foot" id="heroFoot">
-      <div class="hero-copy-col">
-        <div class="hero-badge"><span class="status-dot"></span><span data-i="hero_stage_badge"></span></div>
-        <h2 data-i="hero_stage_title"></h2>
-        <p data-i="hero_stage_sub"></p>
-      </div>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn btn-fill" data-i="hero_cta1"></a>
-        <a href="#contact" class="btn btn-outline" data-i="hero_cta2"></a>
-      </div>
+  <section class="wrap hero" data-entry>
+    <button type="button" class="plate" id="plate" data-i-aria="plate_aria" aria-label="Show the next statement" aria-live="polite">
+      <span class="mono fade" id="slideLabel" style="color:var(--dim)">Product-Minded iOS Engineer</span>
+      <span class="plate-title" id="slideTitle">I think like a user, build like an engineer.</span>
+      <span class="plate-sub fade" id="slideSub">Good code matters, but what the user feels is what counts.</span>
+    </button>
+    <div class="caption mono">
+      <span id="slideCounter">1 / 3</span>
+      <span data-i="stats">based in İstanbul · 6+ years · 9 companies · 15+ live apps</span>
+      <span class="clock"></span>
     </div>
-    <div class="hero-progress"><div class="hero-fill" id="heroFill"></div></div>
-  </div>
-</section>
+  </section>
 
+  <section id="work" class="wrap" data-entry>
+    <div class="sec-head mono"><span data-i="own_head">own apps · live and maintained</span><span>#0002 to #0004</span></div>
+    <div id="ownList"></div>
 
-<!-- ─── ABOUT ─────────────────────────────────────────────── -->
-<section class="about" id="about">
-  <div class="wrap">
-    <p class="section-eyebrow reveal" data-i="about_label"></p>
-    <h2 class="section-title reveal d1" data-i="about_h2"></h2>
+    <div class="sec-head mono" style="padding-top:120px" data-entry><span data-i="archive_head">archive · built with teams</span><span>#0005 to #0009</span></div>
+    <div id="archiveList"></div>
+  </section>
 
-    <div class="about-stats reveal d2">
-      <div class="about-stat">
-        <div class="about-stat-num"><span id="s1">6</span><sup>+</sup></div>
-        <p class="about-stat-label" data-i="stat1"></p>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat-num"><span id="s2">9</span></div>
-        <p class="about-stat-label" data-i="stat2"></p>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat-num">15<sup>+</sup></div>
-        <p class="about-stat-label" data-i="stat3"></p>
-      </div>
+  <section id="process" class="wrap block process" data-entry>
+    <div class="sec-head ruled mono"><span data-i="process_head">under the hood · how I ship apps</span><span>#0010</span></div>
+    <p class="lead" data-i="process_lead">My apps and games ship on a release pipeline I built and maintain. One hub. Every app. A new release every month.</p>
+    <ol class="steps" id="stepList"></ol>
+    <div class="cards" id="cardList"></div>
+  </section>
+
+  <section id="log" class="wrap block log" data-entry>
+    <div class="sec-head mono" style="margin-bottom:-18px"><span data-i="log_exp">log · experience</span><span>#0011</span></div>
+    <div id="jobList"></div>
+    <div id="extraList"></div>
+    <a class="mono" href="#cv" id="logCv" style="align-self:flex-start"><kbd>c</kbd><span data-i="cv_link">read this page as a one-page CV</span></a>
+  </section>
+
+  <section id="contact" class="wrap contact" data-entry>
+    <span class="mono dim">#0012</span>
+    <h2 data-i="contact_h2">Let's talk about the next app.</h2>
+    <p class="small" style="margin:0;max-width:48ch" data-i="contact_desc">Reach out to discuss a product, refactor, team standard, or iOS architecture.</p>
+    <a class="mail" href="mailto:yusasarisoy@icloud.com">yusasarisoy@icloud.com</a>
+    <div class="contact-links mono">
+      <a href="https://github.com/yusasarisoy" target="_blank" rel="noreferrer">github ↗</a>
+      <a href="https://linkedin.com/in/yusasarisoy" target="_blank" rel="noreferrer">linkedin ↗</a>
     </div>
-
-    <div class="about-bottom">
-      <div class="about-copy reveal">
-        <p data-i="about_p1"></p>
-        <p data-i="about_p2"></p>
-        <div class="skill-cloud">
-          <span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>Combine</span>
-          <span>MVVM-C</span><span>VIPER</span><span>SPM</span><span>Core Data</span>
-          <span>CloudKit</span><span>Fastlane</span><span>CI/CD</span><span>Flutter</span>
-        </div>
-      </div>
-      <div class="reveal d1">
-        <p class="about-quote">
-          <span data-i="about_quote_main"></span><br>
-          <span class="dim" data-i="about_quote_dim"></span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── PROJECTS ──────────────────────────────────────────── -->
-<section class="projects" id="projects">
-  <div class="wrap">
-    <p class="section-eyebrow reveal" data-i="proj_label"></p>
-    <h2 class="section-title reveal d1" data-i="proj_h2"></h2>
-    <div class="bento">
-
-      <a class="card airy reveal" href="https://apps.apple.com/app/airy-photo-and-video-cleaner/id6818994109" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">01</p>
-          <h3 data-i="pa_title"></h3>
-          <p data-i="pa_desc"></p>
-        </div>
-        <div class="pv airy-clean">
-          <div class="airy-grid">
-            <div class="airy-tile t1"></div>
-            <div class="airy-tile t2 junk"></div>
-            <div class="airy-tile t3"></div>
-            <div class="airy-tile t4 junk"></div>
-            <div class="airy-tile t5"></div>
-            <div class="airy-tile t6 junk"></div>
-            <div class="airy-tile t7"></div>
-            <div class="airy-tile t8"></div>
-          </div>
-          <div class="airy-storage"><div class="airy-storage-fill"></div></div>
-        </div>
-        <div class="card-tags"><span data-i="pa_tag1"></span><span data-i="pa_tag2"></span><span data-i="pa_tag3"></span></div>
-      </a>
-
-      <a class="card burnin reveal d1" href="https://apps.apple.com/tr/app/burnin-video-captions/id6810343491?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">02</p>
-          <h3 data-i="pb_title"></h3>
-          <p data-i="pb_desc"></p>
-        </div>
-        <div class="pv burnin-frame">
-          <div class="burnin-screen"></div>
-          <div class="burnin-caption"></div>
-          <div class="burnin-timeline">
-            <div class="burnin-block b1"></div>
-            <div class="burnin-block b2"></div>
-            <div class="burnin-block b3"></div>
-          </div>
-          <div class="burnin-playhead"></div>
-        </div>
-        <div class="card-tags"><span data-i="pb_tag1"></span><span data-i="pb_tag2"></span><span data-i="pb_tag3"></span></div>
-      </a>
-
-      <a class="card nora reveal" href="https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">03</p>
-          <h3 data-i="p5_title"></h3>
-          <p data-i="p5_desc"></p>
-        </div>
-        <div class="pv nora-neural">
-          <svg viewBox="0 0 280 200" aria-hidden="true">
-            <line class="nn-line-hot" x1="40" y1="60" x2="90" y2="100"/>
-            <line class="nn-line-hot" x1="90" y1="100" x2="60" y2="145"/>
-            <line class="nn-line-hot" x1="40" y1="60" x2="60" y2="145"/>
-            <line class="nn-line-hot" x1="90" y1="100" x2="130" y2="80"/>
-            <line class="nn-line" x1="130" y1="80" x2="170" y2="110"/>
-            <line class="nn-line" x1="130" y1="80" x2="160" y2="55"/>
-            <line class="nn-line" x1="170" y1="110" x2="210" y2="90"/>
-            <line class="nn-line-calm" x1="210" y1="90" x2="248" y2="70"/>
-            <line class="nn-line-calm" x1="210" y1="90" x2="245" y2="115"/>
-            <line class="nn-line-calm" x1="248" y1="70" x2="245" y2="115"/>
-            <circle class="nn-node-hot nn-h1" cx="40" cy="60" r="7"/>
-            <circle class="nn-node-hot nn-h2" cx="90" cy="100" r="10"/>
-            <circle class="nn-node-hot nn-h3" cx="60" cy="145" r="6"/>
-            <circle class="nn-node-mid nn-m1" cx="130" cy="80" r="7"/>
-            <circle class="nn-node-mid nn-m2" cx="160" cy="55" r="5"/>
-            <circle class="nn-node-mid nn-m3" cx="170" cy="110" r="6"/>
-            <circle class="nn-node-calm nn-c1" cx="210" cy="90" r="8"/>
-            <circle class="nn-node-calm nn-c2" cx="248" cy="70" r="5"/>
-            <circle class="nn-node-calm nn-c3" cx="245" cy="115" r="6"/>
-          </svg>
-        </div>
-        <div class="card-tags"><span data-i="p5_tag1"></span><span data-i="p5_tag2"></span><span data-i="p5_tag3"></span><span data-i="p5_tag4"></span></div>
-      </a>
-
-      <a class="card edergi reveal" href="https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">04</p>
-          <h3 data-i="p2_title"></h3>
-          <p data-i="p2_desc"></p>
-        </div>
-        <div class="pv edergi-book">
-          <div class="book-left"></div>
-          <div class="book-spine"></div>
-          <div class="book-right"></div>
-          <div class="page-flip">
-            <div class="page-front"></div>
-            <div class="page-back"></div>
-          </div>
-        </div>
-        <div class="card-tags"><span data-i="p2_tag1"></span><span data-i="p2_tag2"></span><span data-i="p2_tag3"></span></div>
-      </a>
-
-      <a class="card utts reveal d1" href="https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">05</p>
-          <h3 data-i="p7_title"></h3>
-          <p data-i="p7_desc"></p>
-        </div>
-        <div class="pv utts-scan">
-          <div class="plate-frame">
-            <div class="plate-corner tl"></div>
-            <div class="plate-corner tr"></div>
-            <div class="plate-corner bl"></div>
-            <div class="plate-corner br"></div>
-            <span class="plate-text">34 ABC</span>
-            <div class="plate-check">✓</div>
-          </div>
-        </div>
-        <div class="card-tags"><span data-i="p7_tag1"></span><span data-i="p7_tag2"></span><span data-i="p7_tag3"></span></div>
-      </a>
-
-      <a class="card doa reveal d2" href="https://apps.apple.com/tr/app/doa/id6499423131?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">06</p>
-          <h3 data-i="p8_title"></h3>
-          <p data-i="p8_desc"></p>
-        </div>
-        <div class="pv doa-return">
-          <div class="bottle one"></div>
-          <div class="bottle two"></div>
-          <div class="return-arrow"></div>
-        </div>
-        <div class="card-tags"><span data-i="p8_tag1"></span><span data-i="p8_tag2"></span><span data-i="p8_tag3"></span></div>
-      </a>
-
-      <a class="card getir reveal" href="https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">07</p>
-          <h3 data-i="p6_title"></h3>
-          <p data-i="p6_desc"></p>
-        </div>
-        <div class="pv getir-flow">
-          <div class="delivery-line"></div>
-          <div class="bag-item"></div>
-          <div class="bag-item b2"></div>
-          <div class="bag"></div>
-        </div>
-        <div class="card-tags"><span data-i="p6_tag1"></span><span data-i="p6_tag2"></span><span data-i="p6_tag3"></span></div>
-      </a>
-
-      <a class="card wewalk reveal d1" href="https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911?l=tr" target="_blank" rel="noreferrer">
-        <span class="card-arrow">↗</span>
-        <div class="card-head">
-          <p class="card-num">08</p>
-          <h3>WeWALK</h3>
-          <p data-i="p3_desc"></p>
-        </div>
-        <div class="pv wewalk-map">
-          <svg viewBox="0 0 260 190" aria-hidden="true">
-            <path class="map-street" d="M24 48 H92 M46 26 V96 M114 26 V76 M138 48 H232 M184 22 V138 M68 118 H148 M28 150 H224"/>
-            <path class="map-route" d="M40 146 C78 116 82 70 128 78 C178 86 164 132 218 44"/>
-            <circle class="map-start" cx="40" cy="146" r="9"/>
-            <circle class="map-end" cx="218" cy="44" r="9"/>
-          </svg>
-        </div>
-        <div class="card-tags"><span data-i="p3_tag1"></span><span data-i="p3_tag2"></span><span data-i="p3_tag3"></span></div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── SHIPPING ──────────────────────────────────────────── -->
-<section class="shipping" id="shipping" aria-labelledby="shippingTitle">
-  <div class="wrap">
-    <p class="section-eyebrow reveal" data-i="ship_label"></p>
-    <h2 class="section-title reveal d1" id="shippingTitle" data-i="ship_h2"></h2>
-    <p class="shipping-lead reveal d2" data-i="ship_lead"></p>
-
-    <ol class="shipping-pipeline reveal">
-      <li class="shipping-step">
-        <span class="shipping-step-num">01</span>
-        <h3 data-i="ship_step1_title"></h3>
-        <p data-i="ship_step1_desc"></p>
-      </li>
-      <li class="shipping-step">
-        <span class="shipping-step-num">02</span>
-        <h3 data-i="ship_step2_title"></h3>
-        <p data-i="ship_step2_desc"></p>
-      </li>
-      <li class="shipping-step">
-        <span class="shipping-step-num">03</span>
-        <h3 data-i="ship_step3_title"></h3>
-        <p data-i="ship_step3_desc"></p>
-      </li>
-      <li class="shipping-step">
-        <span class="shipping-step-num">04</span>
-        <h3 data-i="ship_step4_title"></h3>
-        <p data-i="ship_step4_desc"></p>
-      </li>
-      <li class="shipping-step shipping-step-human">
-        <span class="shipping-step-num">05</span>
-        <h3 data-i="ship_step5_title"></h3>
-        <p data-i="ship_step5_desc"></p>
-      </li>
-    </ol>
-
-    <div class="shipping-grid">
-      <div class="shipping-card reveal"><h3 data-i="ship_card1_title"></h3><p data-i="ship_card1_desc"></p></div>
-      <div class="shipping-card reveal d1"><h3 data-i="ship_card2_title"></h3><p data-i="ship_card2_desc"></p></div>
-      <div class="shipping-card reveal d2"><h3 data-i="ship_card3_title"></h3><p data-i="ship_card3_desc"></p></div>
-      <div class="shipping-card reveal"><h3 data-i="ship_card4_title"></h3><p data-i="ship_card4_desc"></p></div>
-      <div class="shipping-card reveal d1"><h3 data-i="ship_card5_title"></h3><p data-i="ship_card5_desc"></p></div>
-      <div class="shipping-card reveal d2"><h3 data-i="ship_card6_title"></h3><p data-i="ship_card6_desc"></p></div>
-      <div class="shipping-card reveal"><h3 data-i="ship_card7_title"></h3><p data-i="ship_card7_desc"></p></div>
-      <div class="shipping-card reveal d1"><h3 data-i="ship_card8_title"></h3><p data-i="ship_card8_desc"></p></div>
-    </div>
-
-    <div class="shipping-live reveal">
-      <p class="shipping-live-label" data-i="ship_live"></p>
-      <div class="shipping-live-grid">
-      <a class="live-site nora" href="https://nora.yusasarisoy.com" target="_blank" rel="noopener">
-        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">nora.yusasarisoy.com</span></span>
-        <span class="live-body"><span class="live-name">Nora</span><span class="live-arrow" aria-hidden="true">↗</span></span>
-        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
-      </a>
-      <a class="live-site burnin" href="https://burnin.yusasarisoy.com" target="_blank" rel="noopener">
-        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">burnin.yusasarisoy.com</span></span>
-        <span class="live-body"><span class="live-name">Burnin</span><span class="live-arrow" aria-hidden="true">↗</span></span>
-        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
-      </a>
-      <a class="live-site airy" href="https://airy.yusasarisoy.com" target="_blank" rel="noopener">
-        <span class="live-bar" aria-hidden="true"><i></i><i></i><i></i><span class="live-url">airy.yusasarisoy.com</span></span>
-        <span class="live-body"><span class="live-name">Airy</span><span class="live-arrow" aria-hidden="true">↗</span></span>
-        <span class="live-status"><span class="live-dot"></span><span data-i="ship_live_status"></span></span>
-      </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── CV ────────────────────────────────────────────────── -->
-<section class="cv" id="cv">
-  <div class="wrap">
-    <p class="section-eyebrow reveal" data-i="cv_label"></p>
-    <h2 class="section-title reveal d1" data-i="cv_h2"></h2>
-    <div class="cv-grid">
-      <div class="reveal">
-        <p class="cv-intro" data-i="cv_intro"></p>
-        <a class="download" href="MuhammedYusaSarisoy_SenioriOSDeveloper.pdf" download>
-          <svg viewBox="0 0 14 14" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 11h10"/></svg>
-          <span data-i="cv_dl"></span>
-        </a>
-      </div>
-      <div class="timeline reveal d1">
-        <div class="job"><time>Mar 2026 - <span data-i="cv_now"></span></time><div><b>Senior iOS Developer</b><span>İnnova Bilişim · İstanbul</span></div></div>
-        <div class="job"><time>Nov 2025 - Mar 2026</time><div><b>Senior iOS Developer</b><span>Kafein Tech Solutions · İstanbul</span></div></div>
-        <div class="job"><time>Mar 2025 - Aug 2025</time><div><b>Senior iOS Developer</b><span>DİAS Teknoloji · İstanbul</span></div></div>
-        <div class="job"><time>Nov 2023 - Feb 2025</time><div><b>Senior iOS Developer</b><span>BMS Corporate Solutions GmbH · Berlin</span></div></div>
-        <div class="job"><time>May 2023 - Oct 2023</time><div><b>iOS Engineer</b><span>Mobimeo · Berlin</span></div></div>
-        <div class="job"><time>Mar 2022 - Mar 2023</time><div><b>iOS Engineer</b><span>getir · İstanbul</span></div></div>
-        <div class="job"><time>Sep 2020 - Feb 2022</time><div><b>iOS Developer</b><span>WeWALK · İstanbul</span></div></div>
-        <div class="job"><time>Mar 2020 - Aug 2020</time><div><b>Mobile App Developer</b><span>Bluedot · İstanbul</span></div></div>
-        <div class="job"><time>Jun 2018 - Aug 2019</time><div><b>Android Developer</b><span>Octovan · İstanbul</span></div></div>
-        <div class="job"><time>2016 - 2019</time><div><b data-i="cv_degree"></b><span>Bahçeşehir Üniversitesi · İstanbul</span></div></div>
-        <div class="job"><time>Jan 2022 - Sep 2025</time><div><b>iOS Tech Editor</b><span>Kodeco · Remote</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── CONTACT ───────────────────────────────────────────── -->
-<section class="contact" id="contact">
-  <div class="wrap">
-    <p class="section-eyebrow reveal" data-i="ct_label"></p>
-    <div class="contact-grid">
-      <div class="reveal">
-        <h2 class="contact-title" data-i="ct_h2"></h2>
-        <div class="contact-links">
-          <a href="mailto:yusasarisoy@icloud.com">yusasarisoy@icloud.com <span>→</span></a>
-          <a href="https://linkedin.com/in/yusasarisoy" target="_blank" rel="noreferrer">linkedin.com/in/yusasarisoy <span>→</span></a>
-          <a href="https://github.com/yusasarisoy" target="_blank" rel="noreferrer">github.com/yusasarisoy <span>→</span></a>
-        </div>
-        <div class="contact-ctas">
-          <a href="mailto:yusasarisoy@icloud.com" class="btn btn-fill" data-i="ct_mail"></a>
-          <a href="MuhammedYusaSarisoy_SenioriOSDeveloper.pdf" download class="btn btn-outline" data-i="ct_cv_dl"></a>
-        </div>
-      </div>
-      <form class="reveal d1" action="https://formspree.io/f/mreynzwd" method="POST">
-        <div class="field"><label for="fn" data-i="f_name"></label><input class="input" type="text" id="fn" name="name" data-i-ph="f_name_ph" required></div>
-        <div class="field"><label for="fe" data-i="f_email"></label><input class="input" type="email" id="fe" name="email" data-i-ph="f_email_ph" required></div>
-        <div class="field"><label for="fm" data-i="f_msg"></label><textarea class="input" id="fm" name="message" data-i-ph="f_msg_ph" required></textarea></div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAADr3tYCkkKvWW9q-" data-theme="auto"></div>
-        <button class="submit" type="submit" data-i="f_send"></button>
-        <div class="form-ok" id="formOk" data-i="f_ok"></div>
-      </form>
-    </div>
-  </div>
-</section>
-
+    <form class="form" id="contactForm" action="https://formspree.io/f/mreynzwd" method="POST">
+      <div class="field"><label class="mono" for="fn" data-i="f_name">Name</label><input class="input" type="text" id="fn" name="name" autocomplete="name" data-i-ph="f_name_ph" placeholder="Your name" required></div>
+      <div class="field"><label class="mono" for="fe" data-i="f_email">Email</label><input class="input" type="email" id="fe" name="email" autocomplete="email" data-i-ph="f_email_ph" placeholder="you@example.com" required></div>
+      <div class="field"><label class="mono" for="fm" data-i="f_msg">Message</label><textarea class="input" id="fm" name="message" data-i-ph="f_msg_ph" placeholder="What would you like to discuss?" required></textarea></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAADr3tYCkkKvWW9q-" data-theme="auto"></div>
+      <button class="submit" type="submit" data-i="f_send">Send</button>
+      <p class="form-ok mono" id="formOk" role="status" data-i="f_ok">Message received.</p>
+    </form>
+  </section>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <span class="foot-left">© 2026 Yuşa Sarısoy</span>
-    <div class="foot-links">
-      <a href="https://github.com/yusasarisoy" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://linkedin.com/in/yusasarisoy" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="mailto:yusasarisoy@icloud.com" data-i="footer_email"></a>
-    </div>
+<footer class="site-foot">
+  <div class="wrap foot-row mono">
+    <span>© 2026 Yuşa Sarısoy</span>
+    <span class="swatches" data-i-aria="hex_aria" aria-label="Page colors">
+      <span class="swatch"><i class="bg"></i><span class="hex-bg">#0a0a0a</span></span>
+      <span class="swatch"><i class="ink"></i><span class="hex-ink">#ecebe6</span></span>
+    </span>
+    <span class="keys-legend">
+      <span class="key-hint"><kbd>j</kbd><kbd>k</kbd><span data-i="key_entries">entries</span></span>
+      <button type="button" class="hold-btn" id="holdBtn" data-i-aria="hold_aria" aria-label="Tap for the CV view, hold to save the CV as a PDF"><kbd>c<span class="hold-fill"></span></kbd><span class="hold-text">cv · hold to save</span></button>
+      <span class="key-hint"><kbd>d</kbd><span data-i="key_theme">dark / light</span></span>
+      <span class="key-hint"><kbd>t</kbd><span lang="tr">türkçe</span></span>
+      <span class="key-hint"><kbd>e</kbd><span lang="en">english</span></span>
+      <button type="button" class="key-btn" id="keysBtn"><kbd>?</kbd><span data-i="key_all">all keys</span></button>
+    </span>
   </div>
 </footer>
 
+<div class="still-layer" aria-hidden="true">
+  <span class="dot"></span>
+  <span class="clock mono dim"></span>
+</div>
+
+<dialog class="keys" id="keysDialog" aria-labelledby="keysTitle">
+  <h2 id="keysTitle" data-i="keys_title">Keyboard</h2>
+  <dl class="mono">
+    <dt><kbd>j</kbd></dt><dd data-i="keys_j">next entry</dd>
+    <dt><kbd>k</kbd></dt><dd data-i="keys_k">previous entry</dd>
+    <dt><kbd>c</kbd></dt><dd data-i="keys_c">tap for the CV view, hold to save it as a PDF</dd>
+    <dt><kbd>d</kbd></dt><dd data-i="keys_d">dark or light</dd>
+    <dt><kbd>t</kbd></dt><dd lang="tr">Türkçe</dd>
+    <dt><kbd>e</kbd></dt><dd lang="en">English</dd>
+    <dt><kbd>?</kbd></dt><dd data-i="keys_q">this list</dd>
+    <dt><kbd>esc</kbd></dt><dd data-i="keys_esc">close</dd>
+  </dl>
+  <form method="dialog"><button class="submit" type="submit" data-i="keys_close">Close</button></form>
+</dialog>
+
+<div class="cv" id="cv" hidden role="dialog" aria-modal="true" aria-labelledby="cvName">
+  <div class="cv-bar mono">
+    <button type="button" class="tool" id="cvBack"><span aria-hidden="true">←</span>yusasarisoy.com</button>
+    <span class="cv-actions">
+      <button type="button" class="tool" id="cvTheme"></button>
+      <button type="button" class="tool" id="cvPrint" data-i="cv_print">print</button>
+      <a class="tool bare" href="MuhammedYusaSarisoy_SenioriOSDeveloper.pdf" download data-i="cv_pdf">pdf ↓</a>
+    </span>
+  </div>
+  <article class="sheet">
+    <header class="sheet-head">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <h1 id="cvName">Yuşa Sarısoy</h1>
+        <span style="font-size:15px" data-i="cv_title">Product-Minded iOS Engineer, based in İstanbul</span>
+      </div>
+      <div class="sheet-contact mono">
+        <a href="mailto:yusasarisoy@icloud.com">yusasarisoy@icloud.com</a>
+        <a href="https://yusasarisoy.com">yusasarisoy.com</a>
+        <a href="https://linkedin.com/in/yusasarisoy">linkedin.com/in/yusasarisoy</a>
+        <a href="https://github.com/yusasarisoy">github.com/yusasarisoy</a>
+      </div>
+    </header>
+    <section class="sec"><span class="mono dim" data-i="cv_profile_h">Profile</span><p data-i="cv_profile">Product-minded iOS engineer with 6+ years and 15+ live apps, built with teams in İstanbul and Berlin: consumer, accessibility, finance and content products. Architecture, performance, testing, release process and team standards all shape how a product feels.</p></section>
+    <section class="sec"><span class="mono dim" data-i="cv_exp_h">Experience</span><div id="cvJobs"></div></section>
+    <section class="sec"><span class="mono dim" data-i="cv_work_h">Selected work</span><div id="cvWorks"></div></section>
+    <section class="sec"><span class="mono dim" data-i="cv_stack_h">Stack</span><p>Swift, SwiftUI, UIKit, Combine, MVVM-C, VIPER, SPM, Core Data, CloudKit, Fastlane, CI/CD, Flutter</p></section>
+    <section class="sec"><span class="mono dim" data-i="cv_ship_h">Shipping</span><p data-i="cv_ship">Maintains a release hub that versions, tags and localizes every app monthly, with generated store screenshots and landing pages. The final submit stays manual.</p></section>
+    <section class="sec"><span class="mono dim" data-i="cv_contrib_h">Contribution</span><div id="cvContrib"></div></section>
+    <section class="sec"><span class="mono dim" data-i="cv_edu_h">Education</span><div id="cvEdu"></div></section>
+    <footer class="sheet-foot mono">
+      <span data-i="cv_foot">Typeset from yusasarisoy.com</span>
+      <span class="swatches"><span class="swatch"><i class="bg"></i><span class="hex-bg">#0a0a0a</span></span><span class="swatch"><i class="ink"></i><span class="hex-ink">#ecebe6</span></span></span>
+    </footer>
+  </article>
+</div>
 
 <script>
-(function(){
-const S={
-  tr:{
-    page_title:"Yuşa Sarısoy | Ürün Odaklı iOS Mühendisi",
-    page_desc:"Ürün odaklı iOS mühendisi: 6 yılı aşkın deneyim, 15'ten fazla yayındaki uygulama. İstanbul ve Berlin'de tüketici, erişilebilirlik, finans ve içerik ürünleri.",
-    nav_about:"Hakkımda",nav_projects:"Projeler",nav_shipping:"Yayın",nav_cv:"CV",nav_contact:"İletişim",
-    hero_stage_badge:"Ürün Odaklı iOS Mühendisi",
-    hero_stage_title:"Kullanıcı gibi düşünür, mühendis gibi uygularım.",
-    hero_stage_sub:"İyi kod yazmak gerekir ama asıl ölçüt kullanıcıya ne hissettirdiğim.",
-    hero_cta1:"İşlerime Göz At",hero_cta2:"Tanışalım",
-    about_label:"Profil",
-    about_h2:"Ürün gibi hissettiren. Sistem gibi büyüyen.",
-    about_p1:"İstanbul ve Berlin'de farklı ürün ekipleriyle çalıştım. Tüketici uygulamaları, erişilebilirlik araçları, finansal akışlar ve içerik platformları. Her biri başka bir ölçek, başka bir kullanıcı alışkanlığı.",
-    about_p2:"Benim için iyi mühendislik sadece ekranı bitirmek değil. Mimari, performans, test, yayın süreci ve ekip alışkanlıkları da ürünün kullanıcıya nasıl hissettirdiğini belirliyor.",
-    about_quote_main:"iOS güçlü tarafım.",
-    about_quote_dim:"Ama ürün neyi gerektiriyorsa onu seçerim. Araç, ihtiyaca göre şekillenir.",
-    stat1:"Yıllık deneyim",stat2:"Şirket",stat3:"Yayındaki uygulama",
-    proj_label:"Seçtiğim işler",proj_h2:"Yayına çıkan, kullanılan ve büyüyen ürünler.",
-    pa_title:"Airy",pa_desc:"Galerindeki artık ihtiyacın olmayan fotoğraf ve videoları ayıklayıp telefonunda yer açmana yardım eden iOS uygulaması.",pa_tag1:"Fotoğraf temizliği",pa_tag2:"Video temizliği",pa_tag3:"Daha fazla alan",
-    pb_title:"Burnin",pb_desc:"Videodaki konuşmayı telefonda yazıya döken, boşlukları ve konuşmacıları otomatik tespit eden, düzenlenebilir altyazıları videoya gömen iOS uygulaması.",pb_tag1:"Otomatik altyazı",pb_tag2:"Konuşmacı ayrımı",pb_tag3:"Hesap yok",
-    p2_title:"e-Dergi",
-    p2_desc:"Yüzlerce e-dergi ve gazeteyi tek yerde sunan dijital okuma platformu. Favoriler, çevrimdışı okuma ve yapay zeka destekli Sesli Gündem.",
-    p2_tag1:"Dergi & gazete",p2_tag2:"Sesli Gündem",p2_tag3:"Çevrimdışı okuma",
-    p3_desc:"Görme engelli kullanıcıların şehirde daha özgür hareket etmesine yardımcı olan akıllı harita deneyimi.",
-    p3_tag1:"Erişilebilirlik",p3_tag2:"Akıllı harita",p3_tag3:"Bağımsız hareket",
-    p5_title:"Nora",
-    p5_desc:"Panik anında nefes egzersiziyle yanında olan, sakinleşince de HRV, semptom ve duygu kayıtlarından bedeninin verdiği sinyalleri anlamana yardım eden sağlık uygulaması.",
-    p5_tag1:"HRV takibi",p5_tag2:"Kriz modu",p5_tag3:"Apple Watch",p5_tag4:"Gizlilik",
-    p6_title:"getir",
-    p6_desc:"Market, yemek ve günlük ihtiyaç siparişlerini hızlıca kullanıcıya ulaştıran yüksek trafikli teslimat deneyimi.",
-    p6_tag1:"Market",p6_tag2:"Yemek",p6_tag3:"Sipariş akışı",
-    p7_title:"UTTS",
-    p7_desc:"Akaryakıt satışlarında vergi güvenliği için geliştirilen Ulusal Taşıt Tanıma Sistemi. Plaka bilgisinin otomatik iletildiği ve satışın kayıt altına alındığı akışlar.",
-    p7_tag1:"Akaryakıt istasyonu",p7_tag2:"Plaka aktarımı",p7_tag3:"Pompa fişi",
-    p8_title:"DOA",
-    p8_desc:"Depozitosu olan ambalajları iade noktalarıyla buluşturan geri dönüşüm sistemi.",
-    p8_tag1:"İade noktaları",p8_tag2:"Geri dönüşüm",p8_tag3:"İade bedeli",
-    ship_label:"Perde arkası",ship_h2:"Uygulamalarımı nasıl yayınlıyorum",
-    ship_lead:"Uygulamalarım ve oyunlarım, kurduğum ve sürdürdüğüm bir yayın hattından çıkıyor. Tek merkez. Hepsi için. Her ay yeni bir sürüm, her biri desteklediği tüm dillerde sürüm notlarıyla.",
-    ship_step1_title:"Commit",ship_step1_desc:"İş main'e gelir. Son sürümden bu yana atılan commit'ler sürüm notlarının kaynağı olur.",
-    ship_step2_title:"Build",ship_step2_desc:"Her ay belirli bir günde merkez tüm uygulamaların sürümünü belirleyip tag'ler. Build'ler kendiliğinden başlar.",
-    ship_step3_title:"Lokalizasyon",ship_step3_desc:"Yenilikler metni bu commit'lerden, uygulamanın desteklediği her dilde yazılır ve sürümle birlikte commit'lenir.",
-    ship_step4_title:"Yayın",ship_step4_desc:"Build'ler ve notlar App Store Connect'e ulaşır. Uygulama siteleri de aynı anda güncellenir.",
-    ship_step5_title:"İnceleme",ship_step5_desc:"Her sürümü ve notu okur, gerekirse düzenler, incelemeye elle gönderirim. Bilerek.",
-    ship_card1_title:"Yayın otomasyonu",ship_card1_desc:"Tek merkez, tüm uygulama ve oyunları sabit bir aylık ritimde yürütür. Sürüm, tag, sürüm notları ve App Store Connect, hepsi ortak iş akışlarından.",
-    ship_card2_title:"Lokalize sürüm notları",ship_card2_desc:"Her dil için Yenilikler metni commit geçmişinden yazılır, otomatik doğrulanır ve yayından önce benim tarafımdan okunur.",
-    ship_card3_title:"Site ve mağaza uyumlu",ship_card3_desc:"Her sürümden sonra uygulama siteleri yayına çıkanla karşılaştırılıp her dilde güncellenir. Site ve mağaza sayfası aynı şeyi anlatır.",
-    ship_card4_title:"Her dilde konuşur",ship_card4_desc:"Uygulama, web sitesi ve sürüm notları ilk günden birden fazla dilde yayında. Yeni bir dil eklemek bir proje değil, birkaç adım. İstediğim an hazır.",
-    ship_card5_title:"Üretilen mağaza görselleri",ship_card5_desc:"App Store görselleri doğrudan tasarımlardan, her cihaz boyutu ve her dil için üretilir. Metinler uygulamanın kendisinden gelir.",
-    ship_card6_title:"Mağazaya hazır siteler",ship_card6_desc:"Canonical URL'ler, sosyal kartlar, çok dilli sayfalar ve App Review için gizlilik, kullanım koşulları ve destek sayfaları.",
-    ship_card7_title:"Yayın bekçisi",ship_card7_desc:"Planlanan bir yayın çalışmazsa aynı gün haberim olur.",
-    ship_card8_title:"İnsan kontrol noktası",ship_card8_desc:"İncelemeye gönderime kadar her şey otomatik. Son karar bir insanda kalıyor.",
-    ship_live:"Canlı örnekler",ship_live_status:"Yayında",
-    cv_label:"CV",cv_h2:"Deneyim. Ürünle birlikte büyüyen.",
-    cv_intro:"Ürün Odaklı iOS Mühendisi olarak odağım net: iyi mobil ürün, güçlü ekip standardı ve zamanında teslimat.",
-    cv_now:"günümüz",cv_degree:"Yazılım Mühendisliği",cv_dl:"CV'yi indir",
-    ct_label:"İletişim",ct_h2:"Aklındaki uygulamayı konuşalım.",
-    ct_desc:"Yeni bir ürün, mevcut bir uygulamanın toparlanması, ekip standardı ya da iOS mimarisi.",
-    ct_mail:"Mail gönder",ct_cv_dl:"CV indir",
-    f_name:"İsim",f_name_ph:"Adın Soyadın",
-    f_email:"E-posta",f_email_ph:"ornek@mail.com",
-    f_msg:"Mesaj",f_msg_ph:"Kısaca anlatman yeterli.",
-    f_send:"Gönder",f_ok:"Mesajın alındı.",
-    footer_email:"E-posta"
+(() => {
+"use strict";
+
+const PDF = "MuhammedYusaSarisoy_SenioriOSDeveloper.pdf";
+const HOLD_MS = 600;
+const IDLE_MS = 30000;
+const SLIDE_MS = 7000;
+const HEX = { dark: ["#0a0a0a", "#ecebe6"], light: ["#f4f3ef", "#141414"] };
+
+const store = {
+  get(key) { try { return localStorage.getItem(key); } catch (_) { return null; } },
+  set(key, value) { try { localStorage.setItem(key, value); } catch (_) {} }
+};
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (sel, el = document) => el.querySelector(sel);
+const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+/* ─── Copy ─── */
+const S = {
+  en: {
+    page_title: "Yuşa Sarısoy | Product-Minded iOS Engineer",
+    page_desc: "Product-minded iOS engineer with 6+ years and 15+ live apps, built with teams in Istanbul and Berlin: consumer, accessibility, finance and content products.",
+    skip: "Skip to work",
+    nav_work: "work", nav_process: "process", nav_log: "log", nav_contact: "contact", nav_cv: "cv",
+    lang_label: "tr", lang_aria: "Türkçe'ye geç",
+    theme_to_light: "Switch to light mode", theme_to_dark: "Switch to dark mode",
+    cv_theme_dark: "dark · switch to light", cv_theme_light: "light · switch to dark",
+    plate_aria: "Show the next statement",
+    stats: "based in İstanbul · 6+ years · 9 companies · 15+ live apps",
+    own_head: "own apps · live and maintained",
+    archive_head: "archive · built with teams",
+    process_head: "under the hood · how I ship apps",
+    process_lead: "My apps and games ship on a release pipeline I built and maintain. One hub. Every app. A new release every month.",
+    log_exp: "log · experience", log_contribution: "log · contribution", log_education: "log · education",
+    cv_link: "read this page as a one-page CV",
+    contact_h2: "Let's talk about the next app.",
+    contact_desc: "Reach out to discuss a product, refactor, team standard, or iOS architecture.",
+    f_name: "Name", f_name_ph: "Your name", f_email: "Email", f_email_ph: "you@example.com",
+    f_msg: "Message", f_msg_ph: "What would you like to discuss?", f_send: "Send", f_ok: "Message received.",
+    hex_aria: "Page colors",
+    key_entries: "entries", key_theme: "dark / light", key_all: "all keys",
+    hold_aria: "Tap for the CV view, hold to save the CV as a PDF",
+    hold_idle: "cv · hold to save", hold_active: "keep holding", hold_saved: "CV.pdf saved",
+    keys_title: "Keyboard", keys_j: "next entry", keys_k: "previous entry",
+    keys_c: "tap for the CV view, hold to save it as a PDF", keys_d: "dark or light",
+    keys_q: "this list", keys_esc: "close", keys_close: "Close",
+    cv_print: "print", cv_pdf: "pdf ↓",
+    cv_title: "Product-Minded iOS Engineer, based in İstanbul",
+    cv_profile_h: "Profile",
+    cv_profile: "Product-minded iOS engineer with 6+ years and 15+ live apps, built with teams in İstanbul and Berlin: consumer, accessibility, finance and content products. Architecture, performance, testing, release process and team standards all shape how a product feels.",
+    cv_exp_h: "Experience", cv_work_h: "Selected work", cv_stack_h: "Stack", cv_ship_h: "Shipping",
+    cv_ship: "Maintains a release hub that versions, tags and localizes every app monthly, with generated store screenshots and landing pages. The final submit stays manual.",
+    cv_contrib_h: "Contribution", cv_edu_h: "Education",
+    cv_foot: "Typeset from yusasarisoy.com",
+    now: "now", range: " to ",
+    slides: [
+      { label: "Product-Minded iOS Engineer", title: "I think like a user, build like an engineer.", sub: "Good code matters, but what the user feels is what counts." },
+      { label: "Profile", title: "Mobile experiences that feel like products and scale like systems.", sub: "Product teams across İstanbul and Berlin: consumer apps, accessibility tools, financial flows and content platforms." },
+      { label: "Approach", title: "iOS is my strong suit.", sub: "But I choose what the product requires. The tool follows the need." }
+    ]
   },
-  en:{
-    page_title:"Yuşa Sarısoy | Product-Minded iOS Engineer",
-    page_desc:"Product-minded iOS engineer with 6+ years and 15+ live apps, built with teams in Istanbul and Berlin: consumer, accessibility, finance and content products.",
-    nav_about:"About",nav_projects:"Projects",nav_shipping:"Shipping",nav_cv:"CV",nav_contact:"Contact",
-    hero_stage_badge:"Product-Minded iOS Engineer",
-    hero_stage_title:"I think like a user, build like an engineer.",
-    hero_stage_sub:"Good code matters, but what the user feels is what counts.",
-    hero_cta1:"View My Work",hero_cta2:"Get in touch",
-    about_label:"Profile",
-    about_h2:"Mobile experiences that feel like products and scale like systems.",
-    about_p1:"I have worked with product teams across Istanbul and Berlin, from consumer apps and accessibility tools to financial flows and content platforms.",
-    about_p2:"My lane is more than shipping iOS screens. Architecture, performance, testing, release process, and team standards all shape how a product feels.",
-    about_quote_main:"iOS is my strong suit.",
-    about_quote_dim:"But I choose what the product requires. The tool follows the need.",
-    stat1:"Years",stat2:"Companies",stat3:"Live apps",
-    proj_label:"Selected work",proj_h2:"App Store work with real users and real scale.",
-    pa_title:"Airy",pa_desc:"An iOS app that helps you sort out the photos and videos you no longer need and free up space on your phone.",pa_tag1:"Photo cleanup",pa_tag2:"Video cleanup",pa_tag3:"More space",
-    pb_title:"Burnin",pb_desc:"An iOS app that transcribes speech on the phone, detects gaps and speakers automatically, and burns editable captions into the video.",pb_tag1:"Automatic captions",pb_tag2:"Speaker labeling",pb_tag3:"No account",
-    p2_title:"e-Magazine",
-    p2_desc:"A digital reading platform for hundreds of magazines and newspapers. Favorites, offline reading, and AI-powered audio news highlights.",
-    p2_tag1:"Magazines & newspapers",p2_tag2:"Audio digest",p2_tag3:"Offline reading",
-    p3_desc:"A smart map experience that helps visually impaired users move through the city with more confidence and independence.",
-    p3_tag1:"Accessibility",p3_tag2:"Smart map",p3_tag3:"Independent mobility",
-    p5_title:"Nora",
-    p5_desc:"A health app that guides users through panic moments, then helps them understand body signals through HRV, symptom logs, mood check-ins, and privacy-first insights.",
-    p5_tag1:"HRV tracking",p5_tag2:"Crisis mode",p5_tag3:"Apple Watch",p5_tag4:"Privacy",
-    p6_title:"getir",
-    p6_desc:"A high-traffic delivery experience for groceries, food, and daily needs. Work focused on making core ordering flows more reliable at scale.",
-    p6_tag1:"Groceries",p6_tag2:"Food",p6_tag3:"Order flow",
-    p7_title:"UTTS",
-    p7_desc:"National Vehicle Recognition System for tax-secure fuel sales. Vehicle plate data is transferred automatically and each sale is recorded in the regulated flow.",
-    p7_tag1:"Fuel stations",p7_tag2:"Plate recognition",p7_tag3:"Pump receipts",
-    p8_title:"DOA",
-    p8_desc:"A recycling system that connects deposit packaging with return points. Each return supports the environment and gives users deposit value back.",
-    p8_tag1:"Return points",p8_tag2:"Recycling",p8_tag3:"Deposit refund",
-    ship_label:"Under the hood",ship_h2:"How I ship apps",
-    ship_lead:"My apps and games ship on a release pipeline I built and maintain. One hub. Every app. A new release every month, with release notes in every language each one speaks.",
-    ship_step1_title:"Commit",ship_step1_desc:"Work lands on main. The commits since the last release become the source for the release notes.",
-    ship_step2_title:"Build",ship_step2_desc:"On a set day each month, the hub versions and tags every app. The builds start on their own.",
-    ship_step3_title:"Localize",ship_step3_desc:"What's New is written from those commits, in each language the app supports, and committed with the release.",
-    ship_step4_title:"Publish",ship_step4_desc:"Builds and notes land in App Store Connect. The app websites update right alongside.",
-    ship_step5_title:"Review",ship_step5_desc:"I read every version and note, edit if needed, and submit by hand. On purpose.",
-    ship_card1_title:"Release automation",ship_card1_desc:"One hub runs every app and game on a fixed monthly rhythm. Version, tag, release notes and App Store Connect, all from shared workflows.",
-    ship_card2_title:"Localized release notes",ship_card2_desc:"Per-language What's New written from commit history, validated automatically and read by me before release.",
-    ship_card3_title:"Web and store in sync",ship_card3_desc:"After each release, the app websites are checked against what shipped and updated in every language, so the site and the listing tell the same story.",
-    ship_card4_title:"Speaks your language",ship_card4_desc:"App, website and release notes ship in multiple languages from day one. Adding another is a few steps, not a project. Ready whenever I am.",
-    ship_card5_title:"Generated store screenshots",ship_card5_desc:"App Store images are rendered straight from the designs, for every device size and every language, with copy taken from the app itself.",
-    ship_card6_title:"Store-ready landing pages",ship_card6_desc:"Canonical URLs, social cards, multilingual pages, plus privacy, terms and support for App Review.",
-    ship_card7_title:"Release watchdog",ship_card7_desc:"If a scheduled release doesn't run, I hear about it the same day.",
-    ship_card8_title:"A human gate",ship_card8_desc:"Everything up to submission is automated. The final call stays with a person.",
-    ship_live:"See it live",ship_live_status:"Live",
-    cv_label:"CV",cv_h2:"Experience line.",
-    cv_intro:"A career shaped around product-minded iOS engineering, mobile product development, team standards, and delivery.",
-    cv_now:"present",cv_degree:"Software Engineering",cv_dl:"Download CV",
-    ct_label:"Contact",ct_h2:"Let's talk about the next app.",
-    ct_desc:"Reach out to discuss a product, refactor, team standard, or iOS architecture.",
-    ct_mail:"Send email",ct_cv_dl:"Download CV",
-    f_name:"Name",f_name_ph:"Your name",
-    f_email:"Email",f_email_ph:"you@example.com",
-    f_msg:"Message",f_msg_ph:"What would you like to discuss?",
-    f_send:"Send",f_ok:"Message received.",
-    footer_email:"Email"
+  tr: {
+    page_title: "Yuşa Sarısoy | Ürün Odaklı iOS Mühendisi",
+    page_desc: "Ürün odaklı iOS mühendisi: 6 yılı aşkın deneyim, 15'ten fazla yayındaki uygulama. İstanbul ve Berlin'de tüketici, erişilebilirlik, finans ve içerik ürünleri.",
+    skip: "İşlere geç",
+    nav_work: "işler", nav_process: "süreç", nav_log: "kayıt", nav_contact: "iletişim", nav_cv: "cv",
+    lang_label: "en", lang_aria: "Switch to English",
+    theme_to_light: "Açık temaya geç", theme_to_dark: "Koyu temaya geç",
+    cv_theme_dark: "koyu · açığa geç", cv_theme_light: "açık · koyuya geç",
+    plate_aria: "Sonraki cümleyi göster",
+    stats: "İstanbul'da · 6+ yıl · 9 şirket · 15+ yayında uygulama",
+    own_head: "kendi uygulamalarım · yayında ve bakımda",
+    archive_head: "arşiv · ekiplerle birlikte",
+    process_head: "perde arkası · uygulamalarımı nasıl yayınlıyorum",
+    process_lead: "Uygulamalarım ve oyunlarım, kurduğum ve sürdürdüğüm bir yayın hattından çıkıyor. Tek merkez. Hepsi için. Her ay yeni bir sürüm.",
+    log_exp: "kayıt · deneyim", log_contribution: "kayıt · katkı", log_education: "kayıt · eğitim",
+    cv_link: "bu sayfayı tek sayfalık CV olarak oku",
+    contact_h2: "Aklındaki uygulamayı konuşalım.",
+    contact_desc: "Yeni bir ürün, mevcut bir uygulamanın toparlanması, ekip standardı ya da iOS mimarisi.",
+    f_name: "İsim", f_name_ph: "Adın Soyadın", f_email: "E-posta", f_email_ph: "ornek@mail.com",
+    f_msg: "Mesaj", f_msg_ph: "Kısaca anlatman yeterli.", f_send: "Gönder", f_ok: "Mesajın alındı.",
+    hex_aria: "Sayfa renkleri",
+    key_entries: "bölümler", key_theme: "koyu / açık", key_all: "tüm tuşlar",
+    hold_aria: "Dokun: CV görünümü, basılı tut: CV'yi PDF olarak indir",
+    hold_idle: "cv · basılı tut, indir", hold_active: "bırakma", hold_saved: "CV.pdf indirildi",
+    keys_title: "Klavye", keys_j: "sonraki bölüm", keys_k: "önceki bölüm",
+    keys_c: "dokun: CV görünümü, basılı tut: PDF olarak indir", keys_d: "koyu ya da açık",
+    keys_q: "bu liste", keys_esc: "kapat", keys_close: "Kapat",
+    cv_print: "yazdır", cv_pdf: "pdf ↓",
+    cv_title: "Ürün Odaklı iOS Mühendisi, İstanbul",
+    cv_profile_h: "Profil",
+    cv_profile: "Ürün odaklı iOS mühendisi: 6 yılı aşkın deneyim ve 15'ten fazla yayındaki uygulama. İstanbul ve Berlin'de ekiplerle tüketici, erişilebilirlik, finans ve içerik ürünleri geliştirdi. Mimari, performans, test, yayın süreci ve ekip standartları, bir ürünün nasıl hissettirdiğini birlikte belirler.",
+    cv_exp_h: "Deneyim", cv_work_h: "Seçili işler", cv_stack_h: "Teknolojiler", cv_ship_h: "Yayın süreci",
+    cv_ship: "Her uygulamayı her ay sürümleyen, tag'leyen ve lokalize eden bir yayın merkezi sürdürüyor; mağaza görselleri ve siteler de buradan üretiliyor. Son gönderim elle yapılıyor.",
+    cv_contrib_h: "Katkı", cv_edu_h: "Eğitim",
+    cv_foot: "yusasarisoy.com'dan dizildi",
+    now: "bugün", range: " - ",
+    slides: [
+      { label: "Ürün Odaklı iOS Mühendisi", title: "Kullanıcı gibi düşünür, mühendis gibi uygularım.", sub: "İyi kod yazmak gerekir ama asıl ölçüt kullanıcıya ne hissettirdiğim." },
+      { label: "Profil", title: "Ürün gibi hissettiren. Sistem gibi büyüyen.", sub: "İstanbul ve Berlin'de ürün ekipleriyle: tüketici uygulamaları, erişilebilirlik araçları, finansal akışlar ve içerik platformları." },
+      { label: "Yaklaşım", title: "iOS güçlü tarafım.", sub: "Ama ürün neyi gerektiriyorsa onu seçerim. Araç, ihtiyaca göre şekillenir." }
+    ]
   }
 };
 
-let lang=(navigator.language||"en").toLowerCase().startsWith("tr")?"tr":"en";
+/* ─── Content ─── */
+const OWN = [
+  { key: "airy", no: "#0002", title: "Airy", platform: "iOS", host: "airy.yusasarisoy.com", url: "https://apps.apple.com/app/airy-photo-and-video-cleaner/id6818994109",
+    desc: { en: "An iOS app that helps you sort out the photos and videos you no longer need and clear out space on your phone.", tr: "Galerindeki artık ihtiyacın olmayan fotoğraf ve videoları ayıklayıp telefonunda yer açmana yardım eden iOS uygulaması." },
+    tags: { en: "photo cleanup · video cleanup · more space", tr: "fotoğraf temizliği · video temizliği · daha fazla alan" } },
+  { key: "burnin", no: "#0003", title: "Burnin", platform: "iOS", host: "burnin.yusasarisoy.com", url: "https://apps.apple.com/app/burnin-video-captions/id6810343491",
+    desc: { en: "An iOS app that transcribes speech on the phone, detects gaps and speakers automatically, and burns editable captions into the video.", tr: "Videodaki konuşmayı telefonda yazıya döken, boşlukları ve konuşmacıları otomatik tespit eden, düzenlenebilir altyazıları videoya gömen iOS uygulaması." },
+    tags: { en: "automatic captions · speaker labeling · no account", tr: "otomatik altyazı · konuşmacı ayrımı · hesap yok" } },
+  { key: "nora", no: "#0004", title: "Nora", platform: "iOS · watchOS", host: "nora.yusasarisoy.com", url: "https://apps.apple.com/app/nora-panic-anxiety-relief/id6760661722",
+    desc: { en: "A health app that guides users through panic moments, then helps them understand body signals through HRV, symptom logs, mood check-ins, and privacy-first insights.", tr: "Panik anında nefes egzersiziyle yanında olan, sakinleşince de HRV, semptom ve duygu kayıtlarından bedeninin verdiği sinyalleri anlamana yardım eden sağlık uygulaması." },
+    tags: { en: "HRV tracking · crisis mode · Apple Watch · privacy", tr: "HRV takibi · kriz modu · Apple Watch · gizlilik" } }
+];
 
-const SUN="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 1.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zM8 1.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 1.5zm0 11a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 12.5zm4.95-8.364a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 0 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM4.818 11.596a.75.75 0 0 1 0 1.06l-.707.708a.75.75 0 1 1-1.06-1.06l.707-.708a.75.75 0 0 1 1.06 0zM13.5 8a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 13.5 8zm-11 0a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1A.75.75 0 0 1 2.5 8zm9.718 3.182a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06zM5.65 5.65a.75.75 0 0 1-1.06 0l-.708-.707a.75.75 0 0 1 1.06-1.06l.708.707a.75.75 0 0 1 0 1.06z";
-const MOON="M7.5 1.5A6 6 0 1 0 13.945 9.5.75.75 0 0 0 13 8.572a4.5 4.5 0 1 1-4.5-4.5.75.75 0 0 0 .832-1.244A6 6 0 0 0 7.5 1.5z";
-const darkMQ=window.matchMedia("(prefers-color-scheme:dark)");
-let dark=darkMQ.matches;
+const ARCHIVE = [
+  { no: "#0005", title: { en: "e-Magazine", tr: "e-Dergi" }, url: "https://apps.apple.com/tr/app/t%C3%BCrk-telekom-e-dergi/id1300055075",
+    desc: { en: "A digital reading platform for hundreds of magazines and newspapers, with offline reading and AI-powered audio news highlights.", tr: "Yüzlerce e-dergi ve gazeteyi tek yerde sunan dijital okuma platformu. Favoriler, çevrimdışı okuma ve yapay zeka destekli Sesli Gündem." } },
+  { no: "#0006", title: { en: "UTTS", tr: "UTTS" }, url: "https://apps.apple.com/tr/app/ulusal-ta%C5%9F%C4%B1t-tan%C4%B1ma-sistemi/id6738048572",
+    desc: { en: "National Vehicle Recognition System for tax-secure fuel sales, with each sale recorded in the regulated flow.", tr: "Akaryakıt satışlarında vergi güvenliği için geliştirilen Ulusal Taşıt Tanıma Sistemi. Plaka bilgisi otomatik iletilir, satış kayıt altına alınır." } },
+  { no: "#0007", title: { en: "DOA", tr: "DOA" }, url: "https://apps.apple.com/tr/app/doa/id6499423131",
+    desc: { en: "A recycling system that connects deposit packaging with return points and gives users deposit value back.", tr: "Depozitosu olan ambalajları iade noktalarıyla buluşturan ve iade bedelini kullanıcıya geri veren geri dönüşüm sistemi." } },
+  { no: "#0008", title: { en: "getir", tr: "getir" }, url: "https://apps.apple.com/tr/app/getir-market-yemek-ve-dahas%C4%B1/id995280265",
+    desc: { en: "A high-traffic delivery experience. Work focused on making core ordering flows more reliable at scale.", tr: "Market, yemek ve günlük ihtiyaç siparişlerini hızlıca ulaştıran yüksek trafikli teslimat deneyimi. Odak, temel sipariş akışlarını ölçekte daha güvenilir kılmaktı." } },
+  { no: "#0009", title: { en: "WeWALK", tr: "WeWALK" }, url: "https://apps.apple.com/tr/app/wewalk-ak%C4%B1ll%C4%B1-harita/id1344297911",
+    desc: { en: "A smart map that helps visually impaired users move through the city with more confidence and independence.", tr: "Görme engelli kullanıcıların şehirde daha özgür hareket etmesine yardımcı olan akıllı harita deneyimi." } }
+];
 
-function applyTheme(){
-  document.documentElement.setAttribute("data-theme",dark?"dark":"light");
-  document.getElementById("themePath").setAttribute("d",dark?MOON:SUN);
+const STEPS = [
+  { en: ["Commit", "Work lands on main. The commits since the last release become the source for the release notes."], tr: ["Commit", "İş main'e gelir. Son sürümden bu yana atılan commit'ler sürüm notlarının kaynağı olur."] },
+  { en: ["Build", "On a set day each month, the hub versions and tags every app. The builds start on their own."], tr: ["Build", "Her ay belirli bir günde merkez tüm uygulamaların sürümünü belirleyip tag'ler. Build'ler kendiliğinden başlar."] },
+  { en: ["Localize", "What’s New is written from those commits, in each language the app supports, and committed with the release."], tr: ["Lokalizasyon", "Yenilikler metni bu commit'lerden, uygulamanın desteklediği her dilde yazılır ve sürümle birlikte commit'lenir."] },
+  { en: ["Publish", "Builds and notes land in App Store Connect. The app websites update right alongside."], tr: ["Yayın", "Build'ler ve notlar App Store Connect'e ulaşır. Uygulama siteleri de aynı anda güncellenir."] },
+  { en: ["Review", "I read every version and note, edit if needed, and submit by hand. On purpose."], tr: ["İnceleme", "Her sürümü ve notu okur, gerekirse düzenler, incelemeye elle gönderirim. Bilerek."] }
+];
+
+const CARDS = [
+  { en: ["Release automation", "One hub runs every app and game on a fixed monthly rhythm. Version, tag, release notes and App Store Connect, all from shared workflows."], tr: ["Yayın otomasyonu", "Tek merkez, tüm uygulama ve oyunları sabit bir aylık ritimde yürütür. Sürüm, tag, sürüm notları ve App Store Connect, hepsi ortak iş akışlarından."] },
+  { en: ["Localized release notes", "Per-language What’s New written from commit history, validated automatically and read by me before release."], tr: ["Lokalize sürüm notları", "Her dil için Yenilikler metni commit geçmişinden yazılır, otomatik doğrulanır ve yayından önce benim tarafımdan okunur."] },
+  { en: ["Web and store in sync", "After each release, the app websites are checked against what shipped and updated in every language, so the site and the listing tell the same story."], tr: ["Site ve mağaza uyumlu", "Her sürümden sonra uygulama siteleri yayına çıkanla karşılaştırılıp her dilde güncellenir. Site ve mağaza sayfası aynı şeyi anlatır."] },
+  { en: ["Speaks your language", "App, website and release notes ship in multiple languages from day one. Adding another is a few steps, not a project."], tr: ["Her dilde konuşur", "Uygulama, web sitesi ve sürüm notları ilk günden birden fazla dilde yayında. Yeni bir dil eklemek bir proje değil, birkaç adım."] },
+  { en: ["Generated store screenshots", "App Store images are rendered straight from the designs, for every device size and every language, with copy taken from the app itself."], tr: ["Üretilen mağaza görselleri", "App Store görselleri doğrudan tasarımlardan, her cihaz boyutu ve her dil için üretilir. Metinler uygulamanın kendisinden gelir."] },
+  { en: ["Store-ready landing pages", "Canonical URLs, social cards, multilingual pages, plus privacy, terms and support for App Review."], tr: ["Mağazaya hazır siteler", "Canonical URL'ler, sosyal kartlar, çok dilli sayfalar ve App Review için gizlilik, kullanım koşulları ve destek sayfaları."] },
+  { en: ["Release watchdog", "If a scheduled release doesn’t run, I hear about it the same day."], tr: ["Yayın bekçisi", "Planlanan bir yayın çalışmazsa aynı gün haberim olur."] },
+  { en: ["A human gate", "Everything up to submission is automated. The final call stays with a person."], tr: ["İnsan kontrol noktası", "İncelemeye gönderime kadar her şey otomatik. Son karar bir insanda kalıyor."] }
+];
+
+const JOBS = [
+  { from: "2026.03", to: null, role: "Senior iOS Developer", where: "İnnova Bilişim" },
+  { from: "2025.11", to: "2026.03", role: "Senior iOS Developer", where: "Kafein Tech Solutions" },
+  { from: "2025.03", to: "2025.08", role: "Senior iOS Developer", where: "DİAS Teknoloji" },
+  { from: "2023.11", to: "2025.02", role: "Senior iOS Developer", where: "BMS Corporate Solutions GmbH · Berlin" },
+  { from: "2023.05", to: "2023.10", role: "iOS Engineer", where: "Mobimeo · Berlin" },
+  { from: "2022.03", to: "2023.03", role: "iOS Engineer", where: "getir" },
+  { from: "2020.09", to: "2022.02", role: "iOS Developer", where: "WeWALK" },
+  { from: "2020.03", to: "2020.08", role: "Mobile App Developer", where: "Bluedot" },
+  { from: "2018.06", to: "2019.08", role: "Android Developer", where: "Octovan" }
+];
+
+const CONTRIBUTION = { from: "2022.01", to: "2025.09", role: { en: "iOS Tech Editor", tr: "iOS Tech Editor" }, where: { en: "Kodeco · volunteer technical contribution", tr: "Kodeco · gönüllü teknik katkı" } };
+const EDUCATION = { from: "2016", to: "2019", role: { en: "Software Engineering", tr: "Yazılım Mühendisliği" }, where: { en: "Bahçeşehir Üniversitesi", tr: "Bahçeşehir Üniversitesi" } };
+
+const CV_WORKS = [
+  { title: "Nora", en: "Panic support and body signals: HRV, symptom logs, Apple Watch.", tr: "Panik anında destek ve beden sinyalleri: HRV, semptom kaydı, Apple Watch." },
+  { title: "Burnin", en: "On-device transcription with speaker labels and burned-in captions.", tr: "Cihazda yazıya dökme, konuşmacı ayrımı ve videoya gömülen altyazılar." },
+  { title: "Airy", en: "Sorts out the photos and videos you no longer need.", tr: "Artık ihtiyacın olmayan fotoğraf ve videoları ayıklar." },
+  { title: { en: "e-Magazine", tr: "e-Dergi" }, en: "Hundreds of magazines and newspapers, offline reading, audio digest.", tr: "Yüzlerce dergi ve gazete, çevrimdışı okuma, Sesli Gündem." },
+  { title: "UTTS", en: "National vehicle recognition for tax-secure fuel sales.", tr: "Akaryakıt satışlarında vergi güvenliği için ulusal taşıt tanıma." },
+  { title: "DOA", en: "Deposit packaging returns and refunds at return points.", tr: "Depozitolu ambalajların iade noktalarında iadesi ve bedeli." },
+  { title: "getir", en: "More reliable core ordering flows at high traffic.", tr: "Yüksek trafikte daha güvenilir sipariş akışları." },
+  { title: "WeWALK", en: "A smart map for visually impaired users in the city.", tr: "Görme engelli kullanıcılar için şehirde akıllı harita." }
+];
+
+/* ─── State ─── */
+let lang = store.get("ys-lang");
+if (lang !== "en" && lang !== "tr") {
+  lang = (navigator.language || "en").toLowerCase().startsWith("tr") ? "tr" : "en";
 }
-function applyLang(next){
-  lang=next;
-  const d=S[lang];
-  const metaDescription=document.querySelector('meta[name="description"]');
-  document.documentElement.lang=lang;
-  document.title=d.page_title;
-  if(metaDescription)metaDescription.setAttribute("content",d.page_desc);
-  document.getElementById("langLabel").textContent=lang==="tr"?"EN":"TR";
-  document.querySelectorAll("[data-i]").forEach(el=>{const k=el.getAttribute("data-i");if(d[k])el.textContent=d[k]});
-  document.querySelectorAll("[data-i-ph]").forEach(el=>{const k=el.getAttribute("data-i-ph");if(d[k])el.placeholder=d[k]});
+let theme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+let slide = 0;
+let slideTimer = null;
+
+const t = (key) => S[lang][key];
+const pick = (value) => (typeof value === "string" ? value : value[lang]);
+const range = (item) => esc(item.from) + t("range") + esc(item.to || t("now"));
+
+/* ─── Rendering ─── */
+function renderLists() {
+  $("#ownList").innerHTML = OWN.map((app) => `
+    <article class="app ${app.key}">
+      <span class="mono dim" style="padding-top:10px">${app.no}</span>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h3 class="name">${app.title}</h3>
+        <p>${esc(pick(app.desc))}</p>
+        <span class="mono dim">${esc(pick(app.tags))}</span>
+      </div>
+      <div class="app-links mono">
+        <span class="dim">${app.platform}</span>
+        <a href="https://${app.host}/" target="_blank" rel="noopener">${app.host} ↗</a>
+        <a href="${app.url}" target="_blank" rel="noopener">App Store ↗</a>
+      </div>
+    </article>`).join("");
+
+  $("#archiveList").innerHTML = ARCHIVE.map((item) => `
+    <div class="row">
+      <span class="mono dim when">${item.no}</span>
+      <a class="archive-title" href="${item.url}" target="_blank" rel="noopener">${esc(pick(item.title))} <span class="mono dim">↗</span></a>
+      <span class="small">${esc(pick(item.desc))}</span>
+    </div>`).join("");
+
+  $("#stepList").innerHTML = STEPS.map((step, i) => `
+    <li>
+      <span class="mono dim">0${i + 1}</span>
+      <span style="font-size:18px">${esc(step[lang][0])}</span>
+      <span class="small">${esc(step[lang][1])}</span>
+    </li>`).join("");
+
+  $("#cardList").innerHTML = CARDS.map((card, i) => `
+    <div>
+      <span class="mono dim" style="min-width:28px">${"abcdefgh"[i]}</span>
+      <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px">${esc(card[lang][0])}</span><span class="small">${esc(card[lang][1])}</span></span>
+    </div>`).join("");
+
+  $("#jobList").innerHTML = JOBS.map((job) => `
+    <div class="row">
+      <span class="mono dim when">${range(job)}</span>
+      <span style="font-size:15px">${esc(job.role)}</span>
+      <span class="dim" style="font-size:15px">${esc(job.where)}</span>
+    </div>`).join("");
+
+  $("#extraList").innerHTML = [["log_contribution", CONTRIBUTION], ["log_education", EDUCATION]].map(([head, item]) => `
+    <div class="mono sub-head">${esc(t(head))}</div>
+    <div class="row">
+      <span class="mono dim when">${range(item)}</span>
+      <span style="font-size:15px">${esc(pick(item.role))}</span>
+      <span class="dim" style="font-size:15px">${esc(pick(item.where))}</span>
+    </div>`).join("");
+
+  $("#cvJobs").innerHTML = JOBS.map((job) => `
+    <div class="line"><span class="mono dim when">${range(job)}</span><span><span class="strong">${esc(job.role)}</span><span class="soft">, ${esc(job.where.replace(" · ", ", "))}</span></span></div>`).join("");
+
+  $("#cvWorks").innerHTML = CV_WORKS.map((work) => `
+    <div class="line"><span class="strong">${esc(pick(work.title))}</span><span class="soft">${esc(work[lang])}</span></div>`).join("");
+
+  const cvLine = (item) => `<div class="line" style="padding:0"><span class="mono dim when">${range(item)}</span><span><span class="strong">${esc(pick(item.role))}</span><span class="soft">, ${esc(pick(item.where).replace(" · ", ", "))}</span></span></div>`;
+  $("#cvContrib").innerHTML = cvLine(CONTRIBUTION);
+  $("#cvEdu").innerHTML = cvLine(EDUCATION);
 }
 
-document.getElementById("themeButton").addEventListener("click",()=>{dark=!dark;applyTheme()});
-darkMQ.addEventListener("change",e=>{dark=e.matches;applyTheme()});
-document.getElementById("langButton").addEventListener("click",()=>applyLang(lang==="tr"?"en":"tr"));
-applyTheme();
+function renderSlide(animate) {
+  const s = t("slides")[slide];
+  const label = $("#slideLabel");
+  const title = $("#slideTitle");
+  const sub = $("#slideSub");
+  label.textContent = s.label;
+  sub.textContent = s.sub;
+  const words = s.title.split(" ");
+  title.innerHTML = animate && !reducedMotion
+    ? words.map((w, i) => `<span class="w" style="animation-delay:${i * 45}ms">${esc(w)} </span>`).join("")
+    : esc(s.title);
+  if (animate && !reducedMotion) {
+    [label, sub].forEach((el) => { el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); });
+    sub.style.animationDelay = words.length * 45 + 120 + "ms";
+  }
+  $("#slideCounter").textContent = `${slide + 1} / ${t("slides").length}`;
+}
+
+function advanceSlide() {
+  slide = (slide + 1) % t("slides").length;
+  renderSlide(true);
+}
+
+function startSlides() {
+  if (reducedMotion) { return; }
+  slideTimer = setInterval(() => {
+    if (!document.hidden && !document.body.classList.contains("still")) { advanceSlide(); }
+  }, SLIDE_MS);
+}
+
+function updateClock() {
+  const time = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(new Date());
+  $$(".clock").forEach((el) => { el.textContent = time; });
+}
+
+/* ─── Language ─── */
+function applyLang(next) {
+  lang = next;
+  store.set("ys-lang", lang);
+  document.documentElement.lang = lang;
+  document.title = t("page_title");
+  $('meta[name="description"]').setAttribute("content", t("page_desc"));
+  $$("[data-i]").forEach((el) => { const v = t(el.dataset.i); if (typeof v === "string") { el.textContent = v; } });
+  $$("[data-i-ph]").forEach((el) => { el.placeholder = t(el.dataset.iPh); });
+  $$("[data-i-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.iAria)); });
+  const toggle = $("#langToggle");
+  toggle.textContent = t("lang_label");
+  toggle.lang = lang === "en" ? "tr" : "en";
+  renderLists();
+  renderSlide(false);
+  updateThemeLabels();
+  setHoldText("idle");
+}
+
+/* ─── Theme ─── */
+function updateThemeLabels() {
+  const dark = theme === "dark";
+  $("#themeToggle").setAttribute("aria-label", t(dark ? "theme_to_light" : "theme_to_dark"));
+  $("#cvTheme").textContent = t(dark ? "cv_theme_dark" : "cv_theme_light");
+  const [bg, ink] = HEX[theme];
+  $$(".hex-bg").forEach((el) => { el.textContent = bg; });
+  $$(".hex-ink").forEach((el) => { el.textContent = ink; });
+  $('meta[name="theme-color"]').setAttribute("content", bg);
+}
+
+function applyTheme(next, persist) {
+  theme = next;
+  document.documentElement.setAttribute("data-theme", theme);
+  if (persist) { store.set("ys-theme", theme); }
+  updateThemeLabels();
+}
+
+const toggleTheme = () => applyTheme(theme === "dark" ? "light" : "dark", true);
+
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+  if (!store.get("ys-theme")) { applyTheme(e.matches ? "light" : "dark", false); }
+});
+window.addEventListener("storage", (e) => {
+  if (e.key === "ys-theme" && (e.newValue === "dark" || e.newValue === "light")) { applyTheme(e.newValue, false); }
+});
+
+/* ─── CV view ─── */
+const cvView = $("#cv");
+let cvReturnFocus = null;
+
+function openCV(push = true) {
+  if (!cvView.hidden) { return; }
+  cvReturnFocus = document.activeElement;
+  cvView.hidden = false;
+  document.body.style.overflow = "hidden";
+  if (push && location.hash !== "#cv") { history.pushState({ cv: true }, "", "#cv"); }
+  $("#cvBack").focus();
+}
+
+function closeCV(fromHistory = false) {
+  if (cvView.hidden) { return; }
+  if (!fromHistory && history.state && history.state.cv) { history.back(); return; }
+  cvView.hidden = true;
+  document.body.style.overflow = "";
+  if (!fromHistory && location.hash === "#cv") { history.replaceState(null, "", location.pathname + location.search); }
+  if (cvReturnFocus && cvReturnFocus.focus) { cvReturnFocus.focus(); }
+}
+
+window.addEventListener("popstate", () => {
+  if (location.hash === "#cv") { openCV(false); } else { closeCV(true); }
+});
+
+/* ─── Hold to save ─── */
+let holdStartedAt = 0;
+let holdFrame = 0;
+let holdDone = false;
+let holdReset = 0;
+
+function setHoldText(state) {
+  const key = { idle: "hold_idle", active: "hold_active", saved: "hold_saved" }[state];
+  $$(".hold-text").forEach((el) => { el.textContent = t(key); });
+}
+
+function setFill(progress) {
+  $$(".hold-fill").forEach((el) => { el.style.width = Math.round(progress * 100) + "%"; });
+}
+
+function downloadPDF() {
+  const a = document.createElement("a");
+  a.href = PDF;
+  a.download = PDF;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function beginHold() {
+  if (holdStartedAt) { return; }
+  clearTimeout(holdReset);
+  holdDone = false;
+  holdStartedAt = performance.now();
+  setHoldText("active");
+  const tick = (now) => {
+    const progress = Math.min(1, (now - holdStartedAt) / HOLD_MS);
+    setFill(progress);
+    if (progress < 1) { holdFrame = requestAnimationFrame(tick); return; }
+    holdDone = true;
+    holdStartedAt = 0;
+    downloadPDF();
+    setHoldText("saved");
+    holdReset = setTimeout(() => { setFill(0); setHoldText("idle"); }, 2400);
+  };
+  holdFrame = requestAnimationFrame(tick);
+}
+
+function endHold(openOnTap) {
+  if (!holdStartedAt) { return; }
+  cancelAnimationFrame(holdFrame);
+  const wasTap = performance.now() - holdStartedAt < HOLD_MS;
+  holdStartedAt = 0;
+  setFill(0);
+  setHoldText("idle");
+  if (openOnTap && wasTap && !holdDone) { openCV(); }
+}
+
+const holdBtn = $("#holdBtn");
+holdBtn.addEventListener("pointerdown", (e) => { if (e.button === 0) { holdBtn.setPointerCapture(e.pointerId); beginHold(); } });
+holdBtn.addEventListener("pointerup", () => endHold(true));
+holdBtn.addEventListener("pointercancel", () => endHold(false));
+holdBtn.addEventListener("lostpointercapture", () => endHold(false));
+holdBtn.addEventListener("contextmenu", (e) => e.preventDefault());
+holdBtn.addEventListener("click", (e) => { if (e.detail === 0) { openCV(); } });
+
+/* ─── Keyboard ─── */
+const keysDialog = $("#keysDialog");
+const isTyping = (el) => el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
+
+function jump(direction) {
+  const entries = $$("main [data-entry]");
+  const y = window.scrollY + 80;
+  const tops = entries.map((el) => el.getBoundingClientRect().top + window.scrollY);
+  let target;
+  if (direction > 0) { target = entries.find((_, i) => tops[i] > y + 4); }
+  else { target = [...entries].reverse().find((el) => el.getBoundingClientRect().top + window.scrollY < y - 4); }
+  if (target) { target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" }); }
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey || isTyping(e.target)) { return; }
+  if (keysDialog.open && e.key !== "Escape") { return; }
+  const key = e.key.toLowerCase();
+  if (key === "escape" && !cvView.hidden) { closeCV(); return; }
+  if (e.repeat) { return; }
+  switch (key) {
+    case "j": if (cvView.hidden) { jump(1); } break;
+    case "k": if (cvView.hidden) { jump(-1); } break;
+    case "c": beginHold(); break;
+    case "d": toggleTheme(); break;
+    case "t": applyLang("tr"); break;
+    case "e": applyLang("en"); break;
+    case "?": keysDialog.showModal(); break;
+    default: return;
+  }
+  e.preventDefault();
+});
+
+document.addEventListener("keyup", (e) => {
+  if (e.key.toLowerCase() === "c") { endHold(true); }
+});
+window.addEventListener("blur", () => endHold(false));
+
+/* ─── Stillness ─── */
+let idleTimer = 0;
+function rest() {
+  const busy = document.hidden || !cvView.hidden || keysDialog.open || isTyping(document.activeElement);
+  if (busy) { idleTimer = setTimeout(rest, IDLE_MS); return; }
+  document.body.classList.add("still");
+}
+function wake() {
+  document.body.classList.remove("still");
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(rest, IDLE_MS);
+}
+["pointermove", "pointerdown", "keydown", "wheel", "touchstart", "scroll", "focusin"].forEach((type) => {
+  window.addEventListener(type, wake, { passive: true });
+});
+
+/* ─── Wiring ─── */
+$("#plate").addEventListener("click", () => { clearInterval(slideTimer); advanceSlide(); });
+$("#themeToggle").addEventListener("click", toggleTheme);
+$("#cvTheme").addEventListener("click", toggleTheme);
+$("#langToggle").addEventListener("click", (e) => { e.preventDefault(); applyLang(lang === "en" ? "tr" : "en"); });
+$("#navCv").addEventListener("click", (e) => { e.preventDefault(); openCV(); });
+$("#logCv").addEventListener("click", (e) => { e.preventDefault(); openCV(); });
+$("#cvBack").addEventListener("click", () => closeCV());
+$("#cvPrint").addEventListener("click", () => window.print());
+$("#keysBtn").addEventListener("click", () => keysDialog.showModal());
+
+const form = $("#contactForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = form.querySelector(".submit");
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+    if (res.ok) { form.reset(); $("#formOk").style.display = "block"; }
+  } catch (_) {}
+  if (window.turnstile) { window.turnstile.reset(); }
+  btn.disabled = false;
+});
+
+applyTheme(theme, false);
 applyLang(lang);
-
-/* ─── Cinematic scroll ─── */
-const hs=document.querySelector(".hero-scroll");
-const hn=document.getElementById("heroName");
-const hf=document.getElementById("heroFoot");
-const hfill=document.getElementById("heroFill");
-function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-function tickHero(){
-  if(!hs)return;
-  const r=hs.getBoundingClientRect();
-  const p=clamp(-r.top/(r.height-window.innerHeight),0,1);
-  hn.style.fontSize=(18-9*clamp(p/.6,0,1))+"vw";
-  hfill.style.width=(p*100).toFixed(1)+"%";
-  hf.classList.toggle("show",p>.65);
-}
-tickHero();
-window.addEventListener("scroll",tickHero,{passive:true});
-window.addEventListener("resize",tickHero);
-
-/* ─── Reveal ─── */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add("in");obs.unobserve(e.target)});
-},{threshold:.1});
-document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
-
-/* ─── Count-up (visual only: the real values are already in the HTML) ─── */
-function countUp(id){
-  const el=document.getElementById(id);if(!el)return;
-  const target=parseInt(el.textContent,10);if(!(target>0))return;
-  let n=0;
-  const go=()=>{n++;el.textContent=n;if(n<target)requestAnimationFrame(go)};go();
-}
-const reducedMotion=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-const stats=document.querySelector(".about-stats");
-if(stats&&!reducedMotion){
-  const sobs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting)return;
-      countUp("s1");countUp("s2");
-      sobs.disconnect();
-    });
-  },{threshold:.3});
-  sobs.observe(stats);
-}
-
-/* ─── Form ─── */
-const form=document.querySelector("form");
-if(form){
-  form.addEventListener("submit",async e=>{
-    e.preventDefault();
-    const btn=form.querySelector(".submit");
-    btn.disabled=true;btn.style.opacity=".55";
-    try{
-      const res=await fetch(form.action,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});
-      if(res.ok){form.reset();document.getElementById("formOk").style.display="block"}
-    }catch(_){}
-    if(window.turnstile){turnstile.reset()}
-    btn.disabled=false;btn.style.opacity="";
-  });
-}
-
+updateClock();
+setInterval(updateClock, 20000);
+startSlides();
+wake();
+if (location.hash === "#cv") { history.replaceState({ cv: true }, "", "#cv"); openCV(false); }
 })();
 </script>
 </body>
